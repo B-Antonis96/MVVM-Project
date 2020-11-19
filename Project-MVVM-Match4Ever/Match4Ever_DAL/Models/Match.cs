@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Match4Ever_DAL.Models
 {
-    [Table("Matchen")]
+    [Table("Matchen", Schema = "Match4Ever")]
     public class Match
     {
         //PRIMARY KEY
