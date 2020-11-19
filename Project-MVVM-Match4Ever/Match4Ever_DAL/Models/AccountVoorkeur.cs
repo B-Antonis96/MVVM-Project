@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Match4Ever_DAL.Models
 {
     //Tussentabel voor Account en Voorkeur (meer op meer relatie)
-    [Table("AccountVoorkeuren")]
+    [Table("AccountVoorkeuren", Schema = "Match4Ever")]
     public class AccountVoorkeur
     {
         //PRIMARY KEY

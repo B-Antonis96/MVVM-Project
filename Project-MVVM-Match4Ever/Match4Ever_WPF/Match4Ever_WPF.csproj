@@ -109,6 +109,12 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Match4Ever_DAL\Match4Ever_DAL.csproj">
+      <Project>{12086658-e66b-409d-acaf-8b1c7280e37f}</Project>
+      <Name>Match4Ever_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

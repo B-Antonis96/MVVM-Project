@@ -18,3 +18,6 @@ C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Proj
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.csproj.CopyComplete
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.exe
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.pdb
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.dll
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.pdb
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.dll.config

@@ -51,8 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountVoorkeur.cs" />
     <Compile Include="Models\Locatie.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Melding.cs" />
+    <Compile Include="Models\Voorkeur.cs" />
+    <Compile Include="Models\VoorkeurAntwoord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
