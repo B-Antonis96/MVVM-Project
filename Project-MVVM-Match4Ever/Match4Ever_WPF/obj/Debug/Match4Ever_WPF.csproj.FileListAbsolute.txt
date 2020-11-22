@@ -2,12 +2,14 @@ C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Proj
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_WPF.exe
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_WPF.pdb
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.csprojAssemblyReference.cache
-C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\Login.g.cs
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\LognView.g.cs
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\Window1.g.cs
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\App.g.cs
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF_MarkupCompile.cache
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF_MarkupCompile.lref
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\App.baml
-C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\Login.baml
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\LognView.baml
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\Window1.baml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.g.resources
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.Properties.Resources.resources
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.csproj.GenerateResource.cache

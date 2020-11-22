@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountVoorkeur.cs" />
     <Compile Include="Models\Locatie.cs" />
@@ -65,7 +66,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
