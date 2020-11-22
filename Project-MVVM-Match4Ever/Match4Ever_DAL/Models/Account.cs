@@ -12,8 +12,10 @@ namespace Match4Ever_DAL.Models
     public class Account
     {
         //PRIMARY KEY
-        [Key]
         public int AccountID { get; set; }
+
+        //FOREIGN KEY
+        public int LocatieID { get; set; }
 
         //ATTRIBUTEN
         [Required]
@@ -53,8 +55,7 @@ namespace Match4Ever_DAL.Models
 
         //NAVIGATIE
 
-        //FOREIGN KEY naar Locatie
-        [ForeignKey("LocatieID")]
+        //Locatie meegeven
         public Locatie Locatie { get; set; }
 
         //Collectie van AccountVoorkeur

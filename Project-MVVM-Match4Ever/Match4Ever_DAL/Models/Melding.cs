@@ -12,8 +12,10 @@ namespace Match4Ever_DAL.Models
     public class Melding
     {
         //PRIMARY KEY
-        [Key]
         public int MeldingID { get; set; }
+
+        //FOREIGN KEY
+        public int MatchID { get; set; }
 
         //ATTRIBUTEN
         [MaxLength(255)]
@@ -23,8 +25,7 @@ namespace Match4Ever_DAL.Models
 
         //NAVIGATIE
 
-        //FOREIGN KEY naar match
-        [ForeignKey("MatchID")]
+        //Match meegeven
         public Match Match { get; set; }
     }
 }

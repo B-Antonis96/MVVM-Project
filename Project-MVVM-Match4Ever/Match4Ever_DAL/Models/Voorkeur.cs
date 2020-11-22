@@ -12,7 +12,6 @@ namespace Match4Ever_DAL.Models
     public class Voorkeur
     {
         //PRIMARY KEY
-        [Key]
         public int VoorkeurID { get; set; }
 
         //ATTRIBUTEN

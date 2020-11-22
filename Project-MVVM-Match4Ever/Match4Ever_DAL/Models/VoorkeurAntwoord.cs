@@ -12,8 +12,10 @@ namespace Match4Ever_DAL.Models
     public class VoorkeurAntwoord
     {
         //PRIMARY KEY
-        [Key]
         public int VoorkeurAntwoordID { get; set; }
+
+        //FOREIGN KEY
+        public int VoorkeurID { get; set; }
 
         //ATTRIBUTEN
         [Required]
@@ -21,8 +23,7 @@ namespace Match4Ever_DAL.Models
 
         //NAVIGATIE
 
-        //FOREIGN KEY van Voorkeur
-        [ForeignKey("VoorkeurID")]
+        //Voorkeur meegeven
         public Voorkeur Voorkeur { get; set; }
     }
 }

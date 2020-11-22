@@ -12,7 +12,6 @@ namespace Match4Ever_DAL.Models
     public class Locatie
     {
         //PRIMARY KEY
-        [Key]
         public int LocatieID { get; set; }
 
         //ATTRIBUTEN
@@ -31,6 +30,7 @@ namespace Match4Ever_DAL.Models
         public string Land { get; set; }
 
         //NAVIGATIE
+
         //Collectie van Account('s)
         public ICollection<Account> Accounts { get; set; }
     }

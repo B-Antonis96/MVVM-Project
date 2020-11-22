@@ -12,8 +12,11 @@ namespace Match4Ever_DAL.Models
     public class Match
     {
         //PRIMARY KEY
-        [Key]
         public int MatchID { get; set; }
+
+        //FOREIGN KEY('S)
+        public int Account1ID { get; set; }
+        public int Account2ID { get; set; }
 
         //ATTRIBUTEN
         public int Score { get; set; }
@@ -25,11 +28,9 @@ namespace Match4Ever_DAL.Models
         //NAVIGATIE
 
         //FOREIGN KEY naar Account1 (eigen Account)
-        [ForeignKey("AccountID")]
         public Account Account1 { get; set; }
 
         //FOREIGN KEY naar Account2 (andere Account => match)
-        [ForeignKey("AccountID")]
         public Account Account2 { get; set; }
 
         //Collectie van Melding(en)
