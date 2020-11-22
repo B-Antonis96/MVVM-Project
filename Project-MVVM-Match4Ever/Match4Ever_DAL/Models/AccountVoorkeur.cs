@@ -13,16 +13,19 @@ namespace Match4Ever_DAL.Models
     public class AccountVoorkeur
     {
         //PRIMARY KEY
-        [Key]
         public int AccountVoorkeurID { get; set; }
+
+        //FOREIGN KEY('S)
+        public int AccountID { get; set; }
+
+        public int VoorkeurID { get; set; }
 
         //NAVIGATIE
 
-        //FOREIGN KEY naar Account
-        [ForeignKey("AccountID")]
+        //Account meegeven
         public Account Account { get; set; }
 
-        //FOREIGN KEY naar Voorkeur
+        //Voorkeur meegeven
         [ForeignKey("VoorkeurID")]
         public Voorkeur Voorkeur { get; set; }
     }
