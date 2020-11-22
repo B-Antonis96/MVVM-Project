@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasisModels\BasisKlasse.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountVoorkeur.cs" />

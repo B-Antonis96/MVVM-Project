@@ -1,40 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 
-namespace Match4Ever_WPF.ViewModels
+namespace Match4Ever_DAL.BasisModels
 {
-    public abstract class BasisViewModel : IDataErrorInfo, INotifyPropertyChanged, ICommand
+    public abstract class BasisKlasse : IDataErrorInfo, INotifyPropertyChanged
     {
-        #region ICommand
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public abstract bool CanExecute(object parameter);
-
-        public abstract void Execute(object parameter);
-
-        #endregion
-
-        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyname = "")
+        public void NotifyPropertyChanged([CallerMemberName] string propertyname = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
-        #endregion
 
-        #region IDataErrorInfo
         public abstract string this[string columnName] { get; }
+
+        public bool IsGeldig()
+        {
+            return string.IsNullOrWhiteSpace(Error);
+        }
+
         public string Error
         {
             get
@@ -56,13 +45,5 @@ namespace Match4Ever_WPF.ViewModels
                 return foutmeldingen;
             }
         }
-        #endregion
-
-        #region HulpMethodes
-        public bool IsGeldig()
-        {
-            return string.IsNullOrWhiteSpace(Error);
-        }
-        #endregion
     }
 }
