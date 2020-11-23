@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Match4Ever_WPF.Views
 {
     /// <summary>
-    /// Interaction logic for LognView.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LognView : Window
+    public partial class LoginView : Window
     {
-        public LognView()
+        public LoginView()
         {
             InitializeComponent();
         }

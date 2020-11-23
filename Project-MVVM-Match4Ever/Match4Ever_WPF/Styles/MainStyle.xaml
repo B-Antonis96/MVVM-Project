@@ -1,5 +1,32 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Match4Ever_WPF.Styles">
+
+    <!--STIJL TEKST-->
+    <Style x:Key="TextStyle" TargetType="{x:Type Label}">
+        <Setter Property="FontFamily" Value="Impact"/>
+    </Style>
     
+    <!--STIJL VOOR TITEL-->
+    <Style x:Key="TitleStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource TextStyle}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+
+    <!--STIJL RONDE TEXTBOX-->
+    <Style x:Key="RoundTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Margin" Value="10, 0, 10, 0"/>
+        <Setter Property="FontFamily" Value="Impact"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
 </ResourceDictionary>
