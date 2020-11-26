@@ -6,6 +6,8 @@ C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Proj
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\bin\Debug\EntityFramework.xml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.csprojAssemblyReference.cache
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.Migrations.InitialMigration.resources
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.csproj.GenerateResource.cache
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.csproj.CoreCompileInputs.cache
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.csproj.Fody.CopyLocal.cache
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_DAL\obj\Debug\Match4Ever_DAL.csproj.CopyComplete

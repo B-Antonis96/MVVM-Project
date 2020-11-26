@@ -57,6 +57,11 @@
   <ItemGroup>
     <Compile Include="BasisModels\BasisKlasse.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
+    <Compile Include="Migrations\202011241817371_InitialMigration.cs" />
+    <Compile Include="Migrations\202011241817371_InitialMigration.designer.cs">
+      <DependentUpon>202011241817371_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountVoorkeur.cs" />
     <Compile Include="Models\Locatie.cs" />
@@ -71,7 +76,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <EmbeddedResource Include="Migrations\202011241817371_InitialMigration.resx">
+      <DependentUpon>202011241817371_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

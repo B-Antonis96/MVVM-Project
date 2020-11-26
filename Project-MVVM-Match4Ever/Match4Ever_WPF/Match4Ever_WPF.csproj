@@ -60,6 +60,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\BasisViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -92,11 +93,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Styles\MainStyle.xaml">
+    <Page Include="Styles\CustomWindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\StackPanelsStyle.xaml">
+    <Page Include="Styles\MainStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

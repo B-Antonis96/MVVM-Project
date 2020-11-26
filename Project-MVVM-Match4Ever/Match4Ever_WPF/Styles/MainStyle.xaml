@@ -11,6 +11,8 @@
     <Style x:Key="TitleStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource TextStyle}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="0 20 0 20"/>
+        <Setter Property="Foreground" Value="red"/>
     </Style>
 
     <!--STIJL RONDE TEXTBOX-->
@@ -18,7 +20,6 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="Margin" Value="10, 0, 10, 0"/>
         <Setter Property="FontFamily" Value="Impact"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -27,6 +28,11 @@
                 <Setter Property="CornerRadius" Value="8"/>
             </Style>
         </Style.Resources>
+    </Style>
+    
+    <!--STACKPANEL MET MARGIN-->
+    <Style x:Key="MarginStackPanel" TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="50 0 50 30"/>
     </Style>
 
 </ResourceDictionary>
