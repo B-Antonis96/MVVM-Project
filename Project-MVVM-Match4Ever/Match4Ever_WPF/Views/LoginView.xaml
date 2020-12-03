@@ -9,14 +9,27 @@
         Style="{StaticResource CustomWindow}">
     
     <StackPanel>
-        <Label Content="AANMELDEN" Style="{StaticResource TitleStyle}"/>
-        <StackPanel Style="{StaticResource MarginStackPanel}">
+        <Label Content="AANMELDEN" Style="{StaticResource HeadTitleStyle}"/>
+        <StackPanel Style="{StaticResource MarginLoginStackPanel}">
             <Label Content="Gebruikersnaam / Email" Style="{StaticResource TextStyle}"/>
             <TextBox Style="{StaticResource RoundTextBox}"/>
         </StackPanel>
-        <StackPanel Style="{StaticResource MarginStackPanel}">
+        <StackPanel Style="{StaticResource MarginLoginStackPanel}">
             <Label Content="Wachtwoord" Style="{StaticResource TextStyle}"/>
-            <TextBox Style="{StaticResource RoundTextBox}"/>
+            <PasswordBox Style="{DynamicResource RoundPasswordBox}"/>
         </StackPanel>
+        <DockPanel>
+            <TextBlock HorizontalAlignment="Left" Margin="100 10 0 20">
+                <Hyperlink>
+                    Nog geen profiel? Registreer je!
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Right" Margin="0 10 100 20">
+                <Hyperlink>
+                    Wachtwoord vergeten?
+                </Hyperlink>
+            </TextBlock>
+        </DockPanel>
+        <Button Style="{StaticResource  LoginRegisterButton}"/>
     </StackPanel>
 </Window>

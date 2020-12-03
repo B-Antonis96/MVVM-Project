@@ -10,7 +10,7 @@ namespace Match4Ever_DAL.Data
 {
     public class Match4EverEntities : DbContext
     {
-        public Match4EverEntities() : base("name=Match4EverDB")
+        public Match4EverEntities() : base("name=Match4EverDBAnt")
         {
 
         }

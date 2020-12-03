@@ -57,9 +57,13 @@
   <ItemGroup>
     <Compile Include="BasisModels\BasisKlasse.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
-    <Compile Include="Migrations\202011241817371_InitialMigration.cs" />
-    <Compile Include="Migrations\202011241817371_InitialMigration.designer.cs">
-      <DependentUpon>202011241817371_InitialMigration.cs</DependentUpon>
+    <Compile Include="Data\Repositories\IRepository.cs" />
+    <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Data\UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="Migrations\202011302100045_InitialMigration.cs" />
+    <Compile Include="Migrations\202011302100045_InitialMigration.designer.cs">
+      <DependentUpon>202011302100045_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -76,12 +80,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011241817371_InitialMigration.resx">
-      <DependentUpon>202011241817371_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FodyWeavers.xml" />
+    <EmbeddedResource Include="Migrations\202011302100045_InitialMigration.resx">
+      <DependentUpon>202011302100045_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

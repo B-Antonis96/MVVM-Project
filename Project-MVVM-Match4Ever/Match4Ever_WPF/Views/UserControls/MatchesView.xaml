@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.UserControls.MatchesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+    
+    <Grid Background="Yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="OVERZICHT VAN MATCHEN" Style="{StaticResource SecondTitleStyle}"/>
+
+        <ListBox Grid.Row="1" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem>
+                        <DockPanel>
+                            <Border>
+                                <Label Style="{StaticResource MatchListLabel}">
+                                    <Grid Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Label}}, Path=ActualWidth}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Rectangle Style="{StaticResource MatchImageRectangle}">
+                                            <Rectangle.Fill>
+                                                <ImageBrush Stretch="Fill" ImageSource="C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Styles\TestImages\ProfilePicTest.png"/>
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                        
+                                        <Label x:Name="lblScoreLabel" Grid.Row="1" Style="{StaticResource MatchScoreLabel}">
+                                            <TextBlock Style="{StaticResource MatchScoreTextBlock}">
+                                                SCORE
+                                            </TextBlock>
+                                        </Label>
+
+                                        <Label Grid.Column="1">
+                                            <TextBlock Style="{StaticResource MatchInfoTextBlock}">
+                                                '{Gebruikernaam}' <LineBreak/><LineBreak/>
+                                                '{Leeftijd}' <LineBreak/><LineBreak/>
+                                                '{Plaats}'
+                                            </TextBlock>
+                                        </Label>
+
+                                        <Label Grid.Row="1" Grid.Column="1">
+                                            <TextBlock Style="{StaticResource MatchInfoTextBlock}">
+                                                GELIKED ja of nee?
+                                            </TextBlock>
+                                        </Label>
+
+                                        <Grid Grid.Column="2">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <Button Content="LIKE" Style="{StaticResource MatchLikeButton}"/>
+
+                                            <Button Grid.Row="1" Content="VERWIJDER" Style="{StaticResource MatchDeleteButton}"/>
+                                        </Grid>
+                                    </Grid>
+                                </Label>
+                            </Border>
+                        </DockPanel>
+                    </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            TEST > !!!VERWIJDEREN!!!
+
+        </ListBox>
+    </Grid>
+</UserControl>

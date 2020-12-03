@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,8 +63,29 @@
     </Compile>
     <Compile Include="ViewModels\BasisViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\AdminStartschermView.xaml.cs">
+      <DependentUpon>AdminStartschermView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistreerEnWachtwoordView.xaml.cs">
+      <DependentUpon>RegistreerEnWachtwoordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartschermView.xaml.cs">
+      <DependentUpon>StartschermView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MatchesView.xaml.cs">
+      <DependentUpon>MatchesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MeldingenView.xaml.cs">
+      <DependentUpon>MeldingenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\VoorkeurenView.xaml.cs">
+      <DependentUpon>VoorkeurenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\WelkomView.xaml.cs">
+      <DependentUpon>WelkomView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +114,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Match4Ever_DAL\Match4Ever_DAL.csproj">
+      <Project>{5096ddd9-3bb0-4fec-a80f-37fb1360da42}</Project>
+      <Name>Match4Ever_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Styles\CustomWindowStyle.xaml">
       <SubType>Designer</SubType>
@@ -101,10 +129,48 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\MiscStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminStartschermView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegistreerEnWachtwoordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartschermView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MatchesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MeldingenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\VoorkeurenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\WelkomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\TestImages\ProfilePicTest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\UserControls %28admin%29\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
