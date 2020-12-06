@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
              mc:Ignorable="d" 
-             Style="{StaticResource UserControlStijl}"
-             Background="AliceBlue">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock FontFamily="Impact" Text="Welkom bij Match4Ever! Klaar om uw ideale match te vinden?"/>
-    </StackPanel>
+             Style="{StaticResource UserControlStijl}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource WelkomTextBlock}" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Klaar om uw ideale match te vinden?" FontSize="14" Style="{StaticResource WelkomTextBlock}" Grid.Row="1"/>
+    </Grid>
 </UserControl>

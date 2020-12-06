@@ -18,64 +18,48 @@
 
         <Label Content="OVERZICHT VAN MATCHEN" Style="{StaticResource SecondTitleStyle}"/>
 
-        <ListBox Grid.Row="1" Margin="10">
+        <ListBox Grid.Row="1" Style="{StaticResource RoundListBox}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <ListBoxItem>
-                        <DockPanel>
-                            <Border>
-                                <Label Style="{StaticResource MatchListLabel}">
-                                    <Grid Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Label}}, Path=ActualWidth}">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
+                    <ListBoxItem Style="{StaticResource MatchListboxItem}">
+                        <Grid Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=ActualWidth}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                                        <Rectangle Style="{StaticResource MatchImageRectangle}">
-                                            <Rectangle.Fill>
-                                                <ImageBrush Stretch="Fill" ImageSource="C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Styles\TestImages\ProfilePicTest.png"/>
-                                            </Rectangle.Fill>
-                                        </Rectangle>
-                                        
-                                        <Label x:Name="lblScoreLabel" Grid.Row="1" Style="{StaticResource MatchScoreLabel}">
-                                            <TextBlock Style="{StaticResource MatchScoreTextBlock}">
-                                                SCORE
-                                            </TextBlock>
-                                        </Label>
+                            <Rectangle Style="{StaticResource MatchImageRectangle}">
+                                <Rectangle.Fill>
+                                    <ImageBrush Stretch="Fill" ImageSource="pack://application:,,,/Styles/TestImages/ProfilePicTest.png"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
 
-                                        <Label Grid.Column="1">
-                                            <TextBlock Style="{StaticResource MatchInfoTextBlock}">
-                                                '{Gebruikernaam}' <LineBreak/><LineBreak/>
-                                                '{Leeftijd}' <LineBreak/><LineBreak/>
-                                                '{Plaats}'
-                                            </TextBlock>
-                                        </Label>
+                            <Label Content="Score" Grid.Row="1" Style="{StaticResource MatchScoreLabel}"/>
 
-                                        <Label Grid.Row="1" Grid.Column="1">
-                                            <TextBlock Style="{StaticResource MatchInfoTextBlock}">
-                                                GELIKED ja of nee?
-                                            </TextBlock>
-                                        </Label>
+                            <StackPanel Grid.Column="1">
+                                <Label Content="Gebruikersnaam" Style="{StaticResource MatchInfoLabel}"/>
+                                <Label Content="Leeftijd" Style="{StaticResource MatchInfoLabel}"/>
+                                <Label Content="Plaats" Style="{StaticResource MatchInfoLabel}"/>
+                            </StackPanel>
 
-                                        <Grid Grid.Column="2">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
+                            <Label Content="Like ja of nee?" Grid.Row="1" Grid.Column="1" Style="{StaticResource MatchInfoLabel}"/>
 
-                                            <Button Content="LIKE" Style="{StaticResource MatchLikeButton}"/>
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                                            <Button Grid.Row="1" Content="VERWIJDER" Style="{StaticResource MatchDeleteButton}"/>
-                                        </Grid>
-                                    </Grid>
-                                </Label>
-                            </Border>
-                        </DockPanel>
+                                <Button Content="LIKE" Style="{StaticResource MatchLikeButton}"/>
+
+                                <Button Grid.Row="1" Content="VERWIJDER" Style="{StaticResource MatchDeleteButton}"/>
+                            </Grid>
+                        </Grid>
                     </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>

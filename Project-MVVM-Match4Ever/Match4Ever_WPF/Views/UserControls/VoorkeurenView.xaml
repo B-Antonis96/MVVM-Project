@@ -10,12 +10,55 @@
     
     <Grid Background="Yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="VOORKEUREN OPGEVEN" Style="{StaticResource SecondTitleStyle}"/>
+        <TextBlock Text="VOORKEUREN OPGEVEN" Style="{StaticResource SecondTitleTextblock}"/>
 
-        <Label />
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.40*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Voorkeur vraag:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
+
+                <Label Content="Voorkeurvraag : 1 " Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BasisVoorkeurLabel}"/>
+
+                <Button Content="◀" HorizontalAlignment="Right" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Content="▶" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Voorkeur antwoord:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
+
+                <ListBox Grid.Row="1" Style="{StaticResource VoorkeurListbox}"/>
+
+                <Button Content="ANTWOORD OPSLAAN" Grid.Row="2" Style="{StaticResource AanvaardVoorkeurButton}"/>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -9,7 +9,7 @@
         Style="{StaticResource CustomWindow}">
     
     <StackPanel>
-        <Label Content="AANMELDEN" Style="{StaticResource HeadTitleStyle}"/>
+        <TextBlock Text="AANMELDEN" Style="{StaticResource HeadTitleStyle}"/>
         <StackPanel Style="{StaticResource MarginLoginStackPanel}">
             <Label Content="Gebruikersnaam / Email" Style="{StaticResource TextStyle}"/>
             <TextBox Style="{StaticResource RoundTextBox}"/>

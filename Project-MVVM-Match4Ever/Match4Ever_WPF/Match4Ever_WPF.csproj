@@ -66,6 +66,12 @@
     <Compile Include="Views\AdminStartschermView.xaml.cs">
       <DependentUpon>AdminStartschermView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginControls\RegistreerView.xaml.cs">
+      <DependentUpon>RegistreerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginControls\WachtwoordView.xaml.cs">
+      <DependentUpon>WachtwoordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -74,6 +80,18 @@
     </Compile>
     <Compile Include="Views\StartschermView.xaml.cs">
       <DependentUpon>StartschermView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls %28admin%29\InstellingenAdminView.xaml.cs">
+      <DependentUpon>InstellingenAdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls %28admin%29\LijstGebruikersView.xaml.cs">
+      <DependentUpon>LijstGebruikersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls %28admin%29\VoorkeurenWijzigenView.xaml.cs">
+      <DependentUpon>VoorkeurenWijzigenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\InstellingenUserView.xaml.cs">
+      <DependentUpon>InstellingenUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\MatchesView.xaml.cs">
       <DependentUpon>MatchesView.xaml</DependentUpon>
@@ -137,6 +155,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LoginControls\RegistreerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginControls\WachtwoordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +172,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartschermView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls %28admin%29\InstellingenAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls %28admin%29\LijstGebruikersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls %28admin%29\VoorkeurenWijzigenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\InstellingenUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,8 +211,6 @@
   <ItemGroup>
     <Resource Include="Styles\TestImages\ProfilePicTest.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\UserControls %28admin%29\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

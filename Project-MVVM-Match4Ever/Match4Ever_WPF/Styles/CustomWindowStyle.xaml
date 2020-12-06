@@ -4,10 +4,14 @@
     
     <!--CUSTOM WINDOW MAIN STIJL-->
     <Style x:Key="CustomWindow" TargetType="{x:Type Window}">
-        <Setter Property="WindowStyle" Value="ToolWindow"/> <!--Tijdelijk!-->
-        <Setter Property="ResizeMode" Value="NoResize"/>
+        <!--<Setter Property="WindowStyle" Value="ThreeDBorderWindow"/> --><!--Tijdelijk!-->
+        <!--<Setter Property="ResizeMode" Value="NoResize"/>-->
         <Setter Property="Width" Value="700"/>
         <Setter Property="Height" Value="550"/>
+        <Setter Property="MaxWidth" Value="700"/>
+        <Setter Property="MaxHeight" Value="550"/>
+        <Setter Property="MinWidth" Value="700"/>
+        <Setter Property="MinHeight" Value="550"/>
         <!--<Setter Property="AllowsTransparency" Value="True"/>-->
         <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0.3"/>

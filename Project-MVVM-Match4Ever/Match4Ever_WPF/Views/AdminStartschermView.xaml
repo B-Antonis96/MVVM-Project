@@ -19,7 +19,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ToggleButton Grid.Column="0" Content="VOORKEUREN AANPASSEN" Style="{StaticResource ToggleButtonMenu}"/>
+            <ToggleButton Grid.Column="0" Content="VOORKEUREN WIJZIGEN" Style="{StaticResource ToggleButtonMenu}"/>
             <ToggleButton Grid.Column="1" Content="LIJST VAN GEBRUIKERS" Style="{StaticResource ToggleButtonMenu}"/>
             <ToggleButton Grid.Column="3" Content="INSTELLINGEN" Style="{StaticResource ToggleButtonMenu}"/>
         </Grid>

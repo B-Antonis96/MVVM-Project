@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.UserControls__admin_.InstellingenAdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+
+    <Grid Background="Yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="INSTELLINGEN" Grid.ColumnSpan="2" Style="{StaticResource SecondTitleTextblock}"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.15*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Wachtwoord veranderen" Grid.ColumnSpan="2" Style="{StaticResource InstellingenTussenTitel}"/>
+
+            <TextBlock Text="Huidig wachtwoord" Grid.Row="1" Style="{StaticResource InstellingenTextBlock}"/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+
+            <TextBlock Text="Nieuw wachtwoord" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
+            <PasswordBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+
+            <TextBlock Text="Bevestig wachtwoord" Grid.Row="3" Style="{StaticResource InstellingenTextBlock}"/>
+            <PasswordBox Grid.Row="3" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+
+            <Label Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingenInfoLabel}"/>
+        </Grid>
+
+        <Button Content="WIJZIG WACHTWOORD" Grid.Row="2" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
+        <Button Content="VERWIJDER ACCOUNT" Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenVerwijderAccountButton}"/>
+
+    </Grid>
+</UserControl>
