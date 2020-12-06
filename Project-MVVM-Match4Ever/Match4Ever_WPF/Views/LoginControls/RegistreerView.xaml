@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.LoginControls.RegistreerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+    
+    <Grid Background="yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.12*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="REGISTEREN" Style="{StaticResource RegistrationTitleStyle}"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Account aanmaken" Style="{StaticResource RegTussenTitleStyle}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Gebruikersnaam" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="1" Text="Emailadres" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="2" Text="Wachtwoord" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="3" Text="Wachtwoord bevestigen" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+            </Grid>
+
+            <TextBlock Text="Account informatie" Grid.Row="3" Style="{StaticResource RegTussenTitleStyle}"/>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Naam" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="1" Text="Geslacht" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="2" Text="Land" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+
+                <TextBlock Grid.Row="3" Text="Stad" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+            </Grid>
+        </Grid>
+
+        <Button Content="INDIENEN" Grid.Row="3" Style="{StaticResource RegistrationButton}"/>
+    </Grid>
+</UserControl>

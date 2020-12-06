@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.LoginControls.WachtwoordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+
+    <Grid Background="yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="WACHTWOORD VERGETEN" Grid.ColumnSpan="3" Style="{StaticResource RegistrationTitleStyle}"/>
+
+        <TextBlock Text="Wachtwoord opnieuw instellen" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RegTussenTitleStyle}"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0">
+            <TextBlock Text="Emailadres" Style="{StaticResource PasswordItemStyle}"/>
+            <TextBox Style="{StaticResource PasswordTextBox}"/>
+            <Button Content="VERSTUUR CODE" Style="{StaticResource RegistrationButton}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <TextBlock Text="Voer ontvangen code in" Style="{StaticResource PasswordItemStyle}"/>
+            <TextBox Style="{StaticResource PasswordTextBox}"/>
+            <Button Content="CHECK CODE" Style="{StaticResource RegistrationButton}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBlock Text="Voer nieuw wachtwoord in" Style="{StaticResource PasswordItemStyle}"/>
+            <PasswordBox Style="{StaticResource RoundPasswordBox}"/>
+            <TextBlock Text="Bevestig nieuw wachtwoord" Style="{StaticResource PasswordItemStyle}"/>
+            <PasswordBox Style="{StaticResource RoundPasswordBox}"/>
+            <Button Content="VERANDER WACHTWOORD" Style="{StaticResource PasswordButton}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

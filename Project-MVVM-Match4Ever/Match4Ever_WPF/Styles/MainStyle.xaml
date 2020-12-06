@@ -2,31 +2,458 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Match4Ever_WPF.Styles">
 
-    <!--STIJL TEKST-->
-    <Style x:Key="TextStyle" TargetType="{x:Type Label}">
-        <Setter Property="FontFamily" Value="Impact"/>
-    </Style>
+
+    <!--/////////// ALGEMEEN ///////////-->
     
-    <!--STIJL VOOR TITEL-->
-    <Style x:Key="TitleStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource TextStyle}">
+    <!--STIJL BASIS TEKST-->
+    <Style x:Key="TextStyle" TargetType="{x:Type Label}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="22"/>
+    </Style>
+
+    <!--STIJL BASIS TEKST-->
+    <Style x:Key="BasisTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="22"/>
+    </Style>
+
+    <!--STIJL VOOR ROND BASIS LABEL-->
+    <Style x:Key="RoundBasisLabel" TargetType="{x:Type Label}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Label}">
+                    <Border CornerRadius="8" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True"
+                            Margin="{TemplateBinding Margin}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--STIJL VOOR HEAD TITEL-->
+    <Style x:Key="HeadTitleStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="Margin" Value="0 10 0 50"/>
+        <Setter Property="Foreground" Value="{StaticResource MainRoodColor}"/>
+    </Style>
+
+    <!--STIJL VOOR TUSSEN TITEL LABEL-->
+    <Style x:Key="SecondTitleStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource TextStyle}">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Margin" Value="5 0 0 5"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+    </Style>
+
+    <!--STIJL VOOR TUSSEN TITEL TEXTBLOCK-->
+    <Style x:Key="SecondTitleTextblock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlockStyle}">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Margin" Value="5 0 0 5"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+    </Style>
+
+    <!--STIJL VOOR BASIS TEXTBLOCK-->
+    <Style x:Key="BasisTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
     </Style>
 
     <!--STIJL RONDE TEXTBOX-->
     <Style x:Key="RoundTextBox" TargetType="{x:Type TextBox}">
-        <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="Margin" Value="10, 0, 10, 0"/>
-        <Setter Property="FontFamily" Value="Impact"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
         <Style.Resources>
             <Style TargetType="{x:Type Border}">
                 <Setter Property="CornerRadius" Value="8"/>
             </Style>
         </Style.Resources>
     </Style>
+
+    <!--STIJL VOOR RONDE BASISKNOP-->
+    <Style x:Key="RoundBasisButton" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!--BASIS STIJL VOOR TOGGLEBUTTON (ROND)-->
+    <Style x:Key="ToggleButtonBaseRound" TargetType="{x:Type ToggleButton}">
+        <Setter Property="FontFamily" Value="Impact"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="1"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!--STIJL VOOR RONDE LISTBOX-->
+    <Style x:Key="RoundListBox" TargetType="{x:Type ListBox}">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!--STIJL VOOR ROND LISTBOX ITEM-->
+    <Style x:Key="RoundListBoxItem" TargetType="{x:Type ListBoxItem}">
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!--STIJL VOOR BASIS IMAGE RECTANGLE-->
+    <Style x:Key="BasisImageRectangle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Stroke" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="StrokeThickness" Value="2"/>
+        <Setter Property="RadiusX" Value="20"/>
+        <Setter Property="RadiusY" Value="20"/>
+    </Style>
+
+
+
+    <!--/////////// LOGIN, RESGISTRATIE & WACHTWOORD ///////////-->
+
+    <!--STIJL RONDE PASSWORDBOX-->
+    <Style x:Key="RoundPasswordBox" TargetType="{x:Type PasswordBox}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Name="Border" CornerRadius="8" BorderBrush="{StaticResource MainZwartColor}" BorderThickness="1">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--STIJL VOOR LOGIN/REGISTER KNOP-->
+    <Style x:Key="LoginRegisterButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainRoodColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Margin" Value="220 50 220 50"/>
+        <Setter Property="Content" Value="LOGIN"/>
+    </Style>
+
+    <!--STACKPANEL MET MARGIN-->
+    <Style x:Key="MarginLoginStackPanel" TargetType="{x:Type StackPanel}">
+        <Setter Property="Margin" Value="100 0 100 30"/>
+    </Style>
+
+    <!--STIJL VOOR REGISTRATIE TITEL-->
+    <Style x:Key="RegistrationTitleStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource HeadTitleStyle}">
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="28"/>
+    </Style>
+
+    <!--STIJL VOOR REGISTRATIE TUSSEN TITEL-->
+    <Style x:Key="RegTussenTitleStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource HeadTitleStyle}">
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <!--STIJL VOOR REGISTRATIE ITEMS-->
+    <Style x:Key="RegistrationItemStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource RegTussenTitleStyle}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="10 10 0 0"/>
+    </Style>
+    
+    <!--STIJL VOOR REGISTRATIE TEXTBOX-->
+    <Style x:Key="RegistrationTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
+        <Setter Property="Margin" Value="5 5 0 5"/>
+    </Style>
+    
+    <!--STIJL REGISTRATIE KNOP-->
+    <Style x:Key="RegistrationButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainRoodColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Margin" Value="0 8 0 8"/>
+    </Style>
+
+    <!--STIJL VOOR WACHTWOORD ITEMS-->
+    <Style x:Key="PasswordItemStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource RegTussenTitleStyle}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0 10 0 0"/>
+    </Style>
+
+    <!--STIJL VOOR WACHTWOORD TEXTBOX-->
+    <Style x:Key="PasswordTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
+        <Setter Property="Margin" Value="0 5 0 5"/>
+    </Style>
+    
+    <!--STIJL VOOR WACHTWOORD KNOP-->
+    <Style x:Key="PasswordButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RegistrationButton}">
+        <Setter Property="Width" Value="220"/>
+        <Setter Property="Margin" Value="0 8 0 8"/>
+    </Style>
+
+
+
+
+    <!--/////////// STARTSCHERM BASIS ///////////-->
+
+    <!--STIJL VOOR MENU KNOP-->
+    <Style x:Key="MenuButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainGrijsColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="250"/>
+    </Style>
+
+    <!--STIJL VOOR MENU KNOPPEN-->
+    <Style x:Key="ToggleButtonMenu" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ToggleButtonBaseRound}">
+        <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
+    </Style>
+
+    <!--STIJL VOOR BASIS RONDE CHECKBOX-->
+    <Style x:Key="BasisRoundCheckbox" TargetType="{x:Type CheckBox}">
+        <Setter Property="LayoutTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+    
+    <!--STIJL VOOR WELKOM VIEW-->
+    <Style x:Key="WelkomTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Text" Value="Welkom bij Match4Ever!"/>
+    </Style>
+
+
+    <!--/////////// MELDINGENVIEW ///////////-->
+
+    <!--STIJL VOOR MELDING TEXTBLOCK-->
+    <Style x:Key="MeldingTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+    </Style>
+
+    <!--STIJL VOOR LABEL MELDING-->
+    <Style x:Key="MeldingLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
+        <Setter Property="Background" Value="{StaticResource MainGrijsColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Width" Value="620"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+
+
+    <!--/////////// MATCHENVIEW ///////////-->
+
+    <!--STIJL VOOR LISTBOX ITEM MATCH-->
+    <Style x:Key="MatchListboxItem" TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource RoundListBoxItem}">
+        <Setter Property="Background" Value="{StaticResource MainGrijsColor}"/>
+        <Setter Property="Width" Value="655"/>
+        <Setter Property="Height" Value="220"/>
+    </Style>
+
+    <!--STIJL VOOR MATCH IMAGE RECTANGLE-->
+    <Style x:Key="MatchImageRectangle" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource BasisImageRectangle}">
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Height" Value="160"/>
+        <Setter Property="Margin" Value="5 5 50 5"/>
+    </Style>
+
+    <!--STIJL VOOR MATCH SCORE LABEL-->
+    <Style x:Key="MatchScoreLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
+        <Setter Property="Margin" Value="5 0 26 3"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Background" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <!--STIJL VOOR MATCH INFO TEXTBLOCK-->
+    <Style x:Key="MatchInfoLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
+        <Setter Property="Background" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="0 5 0 5"/>
+    </Style>
+    
+    <!--STIJL VOOR MATCH LIKE BUTTON-->
+    <Style x:Key="MatchLikeButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainGroenColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="150"/>
+    </Style>
+
+    <!--STIJL VOOR MATCH VERWIJDER BUTTON-->
+    <Style x:Key="MatchDeleteButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MatchLikeButton}">
+        <Setter Property="Background" Value="{StaticResource MainWarningRoodColor}"/>
+    </Style>
+    
+    
+
+    <!--/////////// VOORKEUREN ///////////-->
+    
+    <!--STIJL VOOR VOORKEURVRAAG LABEL-->
+    <Style x:Key="BasisVoorkeurLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{StaticResource MainGrijsColor}"/>
+    </Style>
+    
+    <!--STIJL VOOR VOORKEUR TITEL TEXTBLOCK-->
+    <Style x:Key="VoorkeurTitleTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="0 10 0 0"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+    </Style>
+
+    <!--STIJL BOOR VOORKEUREN BACK / FORWARD BUTTON-->
+    <Style x:Key="BackForwardVoorkeurButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Margin" Value="10 0 10 5"/>
+        <Setter Property="FontSize" Value="25"/>
+    </Style>
+
+    <!--STIJL BOOR VOORKEUREN AANVAARDEN BUTTON-->
+    <Style x:Key="AanvaardVoorkeurButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Margin" Value="10 0 10 0"/>
+        <Setter Property="FontSize" Value="25"/>
+    </Style>
+    
+    <!--STIJL VOOR VOORKEUR LISTBOX-->
+    <Style x:Key="VoorkeurListbox" TargetType="{x:Type ListBox}" BasedOn="{StaticResource RoundListBox}">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <!--STIJL VOOR VOORKEUR TEXTBOX (ADMIN)-->
+    <Style x:Key="VoorkeurTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10 0 10 0"/>
+    </Style>
+
+    <!--STIJL VOOR VOORKEUR LISTBOX (ADMIN)-->
+    <Style x:Key="VoorkeurAdminListbox" TargetType="{x:Type ListBox}" BasedOn="{StaticResource RoundListBox}">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <!--STIJL VOOR VOORKEUR TITEL TEXTBLOCK (ADMIN)-->
+    <Style x:Key="VoorkeurAdminTitleTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Margin" Value="10 10 0 0"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+    </Style>
+
+
+    <!--/////////// INSTELLINGEN ///////////-->
+    
+    <!--STIJL VOOR INSTELLINGEN TEXTBLOCK-->
+    <Style x:Key="InstellingenTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Margin" Value="0 0 5 0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <!--STIJL VOOR INSTELLINGEN LISTBOX-->
+    <Style x:Key="InstellingenListBox" TargetType="{x:Type ListBox}" BasedOn="{StaticResource RoundListBox}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <!--STIJL VOOR INSTELLINGEN IMAGE RECTANGLE-->
+    <Style x:Key="InstellingImageRectangle" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource BasisImageRectangle}">
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Height" Value="170"/>
+    </Style>
+    
+    <!--STIJL VOOR INSTELLINGEN TUSSENTITEL-->
+    <Style x:Key="InstellingenTussenTitel" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="5 20 0 5"/>
+    </Style>
+    
+    <!--STIJL VOOR INSTELLINGEN PASSWORDBOX-->
+    <Style x:Key="InstellingenPasswordBox" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource RoundPasswordBox}">
+        <Setter Property="Height" Value="30"/>
+    </Style>
+    
+    <!--STIJL VOOR INSTELLINGEN INFO LABEL-->
+    <Style x:Key="InstellingenInfoLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
+        <Setter Property="Margin" Value="10 15 10 5"/>
+        <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    
+    <!--STIJL VOOR INSTELLINGEN WACHTWOORD BUTTON-->
+    <Style x:Key="InstellingenWijzigWachtwoordButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainGroenColor}"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="30"/>
+    </Style>
+
+    <!--STIJL VOOR INSTELLINGEN VERWIJDER ACCOUNT BUTTON-->
+    <Style x:Key="InstellingenVerwijderAccountButton" TargetType="{x:Type Button}" BasedOn="{StaticResource InstellingenWijzigWachtwoordButton}">
+        <Setter Property="Background" Value="{StaticResource MainWarningRoodColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+    </Style>
+
+
+
+    <!--/////////// LIJST GEBRUIKERS (ADMIN) ///////////-->
+    
 
 </ResourceDictionary>
