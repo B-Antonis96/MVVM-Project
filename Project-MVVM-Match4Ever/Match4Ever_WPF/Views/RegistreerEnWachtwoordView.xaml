@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Match4Ever_WPF.Views"
         mc:Ignorable="d"
-        Title="RegistreerEnWachtwoordView" Height="450" Width="800">
+        Title="RegistreerEnWachtwoordView" Style="{StaticResource CustomWindow}">
     <Grid>
         
     </Grid>
