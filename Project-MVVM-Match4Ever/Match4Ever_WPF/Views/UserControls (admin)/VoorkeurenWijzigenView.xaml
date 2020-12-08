@@ -71,7 +71,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Voorkeur antwoord selecteren:" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
-                <ListBox Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurAdminListbox}"/>
+                <ComboBox Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurComboBox}"/>
 
                 <TextBlock Text="Voorkeur antwoord wijzigen / toevoegen:" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
                 <TextBox Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurTextBox}"/>

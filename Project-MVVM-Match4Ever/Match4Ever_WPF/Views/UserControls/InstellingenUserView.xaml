@@ -38,16 +38,16 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Profielfoto uploaden" Style="{StaticResource InstellingenTextBlock}"/>
-            <ListBox Grid.Column="1" Style="{StaticResource InstellingenListBox}"/>
+            <ComboBox Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
             <TextBlock Text="Geaardheid" Grid.Row="1" Style="{StaticResource InstellingenTextBlock}"/>
-            <ListBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenListBox}"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
             <TextBlock Text="Land" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
-            <ListBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenListBox}"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
             <TextBlock Text="Stad" Grid.Row="3" Style="{StaticResource InstellingenTextBlock}"/>
-            <ListBox Grid.Row="3" Grid.Column="1" Style="{StaticResource InstellingenListBox}"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
             <Rectangle Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingImageRectangle}">
                 <Rectangle.Fill>

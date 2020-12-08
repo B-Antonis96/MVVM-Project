@@ -9,6 +9,65 @@
     
     
     <Grid Background="Yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="GEBRUIKERS BEHEREN" Style="{StaticResource SecondTitleTextblock}"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.65*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Zoeken op gebruikersnaam" Style="{StaticResource GebruikersBeheerTextBlock}"/>
+            <TextBox Grid.Row="1" Style="{StaticResource GebruikersBeheerTextBox}"/>
             
+            <TextBlock Text="Selecteer gebruiker" Grid.Row="2" Style="{StaticResource GebruikersBeheerTextBlock}"/>
+            <ComboBox Grid.Row="3" Style="{StaticResource GebruikersBeheerComboBox}"/>
+
+            <Button Content="VERWIJDER GEBRUIKER" Grid.Row="4" Style="{StaticResource VerwijderGebruikerButton}"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.675*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="VOEG ADMIN TOE" Style="{StaticResource GebruikerTussenTitelTextBlock}"/>
+
+            <TextBlock Text="Gebruikersnaam" Grid.Row="1" Style="{StaticResource GebruikerInvoerTextBlock}"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+
+            <TextBlock Text="Emailadres" Grid.Row="2" Style="{StaticResource GebruikerInvoerTextBlock}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+
+            <TextBlock Text="Wachtwoord" Grid.Row="3" Style="{StaticResource GebruikerInvoerTextBlock}"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+
+            <TextBlock Text="Bevestig wachtwoord" Grid.Row="4" Style="{StaticResource GebruikerInvoerTextBlock}"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+
+
+        </Grid>
+
+        <Button Content="VOEG ADMIN TOE" Grid.Row="3" Style="{StaticResource VoegAdminToeButton}"/>
     </Grid>
 </UserControl>
