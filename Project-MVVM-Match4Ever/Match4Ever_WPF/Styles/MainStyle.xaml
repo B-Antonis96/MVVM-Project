@@ -68,7 +68,6 @@
     <!--STIJL RONDE TEXTBOX-->
     <Style x:Key="RoundTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -86,7 +85,7 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
         <Style.Resources>
-            <Style TargetType="Border">
+            <Style TargetType="{x:Type Border}">
                 <Setter Property="CornerRadius" Value="8"/>
             </Style>
         </Style.Resources>
@@ -97,7 +96,7 @@
         <Setter Property="FontFamily" Value="Impact"/>
         <Setter Property="FontSize" Value="22"/>
         <Style.Resources>
-            <Style TargetType="Border">
+            <Style TargetType="{x:Type Border}">
                 <Setter Property="CornerRadius" Value="1"/>
             </Style>
         </Style.Resources>
@@ -132,6 +131,107 @@
         <Setter Property="RadiusY" Value="20"/>
     </Style>
 
+
+
+    <!--/////////// RONDE COMBOBOX ///////////-->
+
+    <!--STIJL RONDE TEXTBOX VOOR COMBOBOX-->
+    <Style x:Key="RoundComboTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border 
+                            CornerRadius="8 0 0 8"
+                            BorderThickness="1 1 0 1"
+                            Background="Transparent"
+                            BorderBrush="{StaticResource MainDonkerZwartColor}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--STIJL VOOR TOGGLEBUTTON (ROND) VOOR COMBOBOX-->
+    <Style x:Key="ToggleButtonComboRound" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border 
+                        CornerRadius="0 8 8 0" 
+                        BorderThickness="0 1 1 1"
+                        Background="Transparent" 
+                        BorderBrush="{StaticResource MainDonkerZwartColor}">
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--STIJL VOOR RONDE COMBOBOX-->
+    <Style  x:Key="RoundComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition MaxWidth="25"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                             Style="{StaticResource RoundComboTextBox}"
+                             Height="{TemplateBinding Height}"/>
+                        <ToggleButton 
+                            Style="{StaticResource ToggleButtonComboRound}"
+                            Grid.Column="1"
+                            Height="{TemplateBinding Height}"
+                            Focusable="False"
+                            IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                            <Path Grid.Column="1"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"
+                                  Fill="{StaticResource MainRoodColor}" />
+                        </ToggleButton>
+                        <ContentPresenter
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="20 0 0 0"/>
+                        <Popup Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid
+                                SnapsToDevicePixels="True"                
+                                MinWidth="{TemplateBinding ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border 
+                                    x:Name="DropDownBorder"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    BorderBrush="Black"/>
+                                <ScrollViewer 
+                                    Margin="4,6,4,6" 
+                                    SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" 
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
     <!--/////////// LOGIN, RESGISTRATIE & WACHTWOORD ///////////-->
@@ -367,9 +467,10 @@
         <Setter Property="FontSize" Value="25"/>
     </Style>
     
-    <!--STIJL VOOR VOORKEUR LISTBOX-->
-    <Style x:Key="VoorkeurListbox" TargetType="{x:Type ListBox}" BasedOn="{StaticResource RoundListBox}">
-        <Setter Property="Height" Value="50"/>
+    <!--STIJL VOOR VOORKEUR COMBOBOX-->
+    <Style x:Key="VoorkeurComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource RoundComboBox}">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="480"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
     </Style>
 
@@ -404,11 +505,9 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
     
-    <!--STIJL VOOR INSTELLINGEN LISTBOX-->
-    <Style x:Key="InstellingenListBox" TargetType="{x:Type ListBox}" BasedOn="{StaticResource RoundListBox}">
+    <!--STIJL VOOR INSTELLINGEN COMBOBOX-->
+    <Style x:Key="InstellingenComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource RoundComboBox}">
         <Setter Property="Height" Value="30"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
         <Setter Property="Margin" Value="0"/>
     </Style>
 
@@ -455,5 +554,64 @@
 
     <!--/////////// LIJST GEBRUIKERS (ADMIN) ///////////-->
     
+    <!--STIJL VOOR GEBRUIKERSBEHEER TEXTBLOCK-->
+    <Style x:Key="GebruikersBeheerTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+    </Style>
+    
+    <!--STIJL VOOR GEBRUIKERSBEHEER TEXTBOX-->
+    <Style x:Key="GebruikersBeheerTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
+        <Setter Property="Width" Value="350"/>
+        <Setter Property="Height" Value="30"/>
+    </Style>
+
+    <!--STIJL VOOR GEBRUIKERSBEHEER TEXTBOX-->
+    <Style x:Key="AdminBeheerTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
+        <Setter Property="Width" Value="350"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <!--STIJL VOOR GEBRUIKERSBEHEER LISTBOX-->
+    <Style x:Key="GebruikersBeheerComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource RoundComboBox}">
+        <Setter Property="Width" Value="350"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+    
+    <!--STIJL VOOR TUSSENTITEL GEBRUIKERBEHEREN TEXTBLOCK-->
+    <Style x:Key="GebruikerTussenTitelTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--STIJL VOOR INVOER GEBRUIKERBEHEREN TEXTBLOCK-->
+    <Style x:Key="GebruikerInvoerTextBlock" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BasisTextBlock}">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 0 10 0"/>
+    </Style>
+
+    <!--STIJL VOOR VERWIJDER GEBRUIKER BUTTON-->
+    <Style x:Key="VerwijderGebruikerButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainWarningRoodColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="0 15 0 0"/>
+    </Style>
+
+    <!--STIJL VOOR "VOEG ADMIN TOE" BUTTON-->
+    <Style x:Key="VoegAdminToeButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="Background" Value="{StaticResource MainGroenColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource MainDonkerZwartColor}"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Margin" Value="0 15 0 10"/>
+    </Style>
 
 </ResourceDictionary>
