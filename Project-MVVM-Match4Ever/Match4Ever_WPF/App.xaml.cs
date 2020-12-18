@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using Match4Ever_WPF.Views;
 using Match4Ever_WPF.ViewModels;
+using System.Windows.Input;
+using Match4Ever_WPF.ViewModels.Props;
 
 namespace Match4Ever_WPF
 {
@@ -15,12 +17,16 @@ namespace Match4Ever_WPF
     /// </summary>
     public partial class App : Application
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            LoginView loginView = new LoginView();
-            LoginViewModel loginViewModel = new LoginViewModel();
-            loginView.DataContext = loginViewModel;
-            loginView.Show();
+            Window startWindow = new MainWindow()
+            {
+                DataContext = new MainWindowViewModel()
+            };
+
+            startWindow.Show();
+
+            base.OnStartup(e);
         }
     }
 }

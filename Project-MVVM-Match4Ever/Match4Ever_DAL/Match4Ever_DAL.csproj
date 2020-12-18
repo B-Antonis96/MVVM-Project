@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticatieService\AuthenticatieService.cs" />
+    <Compile Include="AuthenticatieService\IAccountService.cs" />
+    <Compile Include="AuthenticatieService\IAuthenticatieService.cs" />
+    <Compile Include="AuthenticatieService\StringHasher.cs" />
     <Compile Include="BasisModels\BasisKlasse.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />

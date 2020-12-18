@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.LoginControls.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+             xmlns:components="clr-namespace:Match4Ever_WPF.Components"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+    
+    <StackPanel>
+        <TextBlock Text="AANMELDEN" Style="{StaticResource HeadTitleStyle}"/>
+        <StackPanel Style="{StaticResource MarginLoginStackPanel}">
+            <Label Content="Gebruikersnaam / Email" Style="{StaticResource TextStyle}"/>
+            <TextBox Text="{Binding Account}" Style="{StaticResource RoundTextBox}"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource MarginLoginStackPanel}">
+            <Label Content="Wachtwoord" Style="{StaticResource TextStyle}"/>
+            <components:BindablePasswordBox />
+        </StackPanel>
+        <DockPanel>
+            <TextBlock HorizontalAlignment="Left" Margin="100 10 0 20">
+                <Hyperlink>
+                    Nog geen profiel? Registreer je!
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Right" Margin="0 10 100 20">
+                <Hyperlink>
+                    Wachtwoord vergeten?
+                </Hyperlink>
+            </TextBlock>
+        </DockPanel>
+        <Button Style="{StaticResource  LoginRegisterButton}"/>
+    </StackPanel>
+</UserControl>
