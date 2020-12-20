@@ -41,12 +41,22 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.3.3.1\lib\net40\PropertyChanged.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +66,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasisModels\BasisKlasse.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\AuthenticationEnums.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\WachtwoordHasher.cs" />
+    <Compile Include="DALServices\AuthenticationServices\LoginService.cs" />
+    <Compile Include="DALServices\AuthenticationServices\RegistrationService.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
@@ -64,6 +78,10 @@
     <Compile Include="Migrations\202011302100045_InitialMigration.cs" />
     <Compile Include="Migrations\202011302100045_InitialMigration.designer.cs">
       <DependentUpon>202011302100045_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012181650332_ModelsUpdateMigration.cs" />
+    <Compile Include="Migrations\202012181650332_ModelsUpdateMigration.designer.cs">
+      <DependentUpon>202012181650332_ModelsUpdateMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -85,6 +103,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011302100045_InitialMigration.resx">
       <DependentUpon>202011302100045_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012181650332_ModelsUpdateMigration.resx">
+      <DependentUpon>202012181650332_ModelsUpdateMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

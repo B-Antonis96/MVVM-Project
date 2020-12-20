@@ -1,14 +1,20 @@
 ﻿<Application x:Class="Match4Ever_WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Match4Ever_WPF"
-             Startup="Application_Startup">
+             xmlns:local="clr-namespace:Match4Ever_WPF">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
+                <!--STIJLEN-->
                 <ResourceDictionary Source="Styles/MiscStyles.xaml"/>
                 <ResourceDictionary Source="Styles/CustomWindowStyle.xaml"/>
                 <ResourceDictionary Source="Styles/MainStyle.xaml"/>
+
+                <!--DATATEMPLATES-->
+                <ResourceDictionary Source="DataTemplates/Datatemplates.xaml"/>
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

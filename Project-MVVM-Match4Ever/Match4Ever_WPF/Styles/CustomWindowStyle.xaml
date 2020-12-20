@@ -72,6 +72,12 @@
     <Style x:Key="UserControlStijl" TargetType="{x:Type UserControl}">
         <Setter Property="Width" Value="700"/>
         <Setter Property="Height" Value="480"/>
-    </Style> 
-           
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <!--STIJL VOOR LOGIN USERCONTROL-->
+    <Style x:Key="LoginControlStijl" TargetType="{x:Type UserControl}" BasedOn="{StaticResource UserControlStijl}">
+        <Setter Property="Height" Value="500"/>
+    </Style>
+
 </ResourceDictionary>

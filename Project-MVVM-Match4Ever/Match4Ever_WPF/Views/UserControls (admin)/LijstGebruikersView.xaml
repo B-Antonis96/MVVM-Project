@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
-    
-    
-    <Grid Background="Yellow"> <!--BACKGROUND VERWIJDEREN!! ENKEL VOOR ONTWIKKELING!!-->
+
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

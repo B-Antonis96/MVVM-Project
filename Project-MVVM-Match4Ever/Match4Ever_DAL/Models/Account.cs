@@ -24,22 +24,19 @@ namespace Match4Ever_DAL.Models
         public string Gebruikersnaam { get; set; }
 
         [Required]
-        [MaxLength(255)] //50
+        [MaxLength(50)]
         [Index(IsUnique = true)]
-        public string Emailadres { get; set; } //Beter ook encryptie?
+        public string Emailadres { get; set; }
 
         [Required]
         [MaxLength(255)]
         public string Wachtwoord { get; set; } //Zeker geëncrypteerd!
 
-        [MaxLength(255)] //50
-        public string ProfielfotoLink { get; set; } //Beter ook encryptie?
+        [MaxLength(50)]
+        public string ProfielfotoLink { get; set; }
 
-        [MaxLength(255)] //26
-        public string Voornaam { get; set; } //Beter ook encryptie?
-
-        [MaxLength(255)] //26
-        public string Achternaam { get; set; } //Beter ook encryptie?
+        [MaxLength(26)]
+        public string Naam { get; set; }
 
         [MaxLength(25)]
         public string Geslacht { get; set; }
@@ -47,11 +44,10 @@ namespace Match4Ever_DAL.Models
         [MaxLength(25)]
         public string Geaardheid { get; set; }
 
-        public DateTime Geboortedatum { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? Geboortedatum { get; set; }
 
-        public DateTime LaatsteLogin { get; set; }
-
-        public bool IsAdmin { get; set; } //Kijken of gebruiker (Account) Admin is!
+        public bool? IsAdmin { get; set; } //Kijken of gebruiker (Account) Admin is!
 
         //NAVIGATIE
 

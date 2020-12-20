@@ -7,20 +7,28 @@ using System.Threading.Tasks;
 using System.Windows;
 using Match4Ever_WPF.Views;
 using Match4Ever_WPF.ViewModels;
+using System.Windows.Input;
+using Match4Ever_WPF.ViewModels.Props;
+using Match4Ever_WPF.ViewModels.Login_Reg;
 
 namespace Match4Ever_WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : Application //Geïmplementeerd uit het voorbeeld van Kilian (BindablePasswordBox)!
     {
-        private void Application_Startup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            LoginView loginView = new LoginView();
-            LoginViewModel loginViewModel = new LoginViewModel();
-            loginView.DataContext = loginViewModel;
-            loginView.Show();
+            Window startWindow = new MainWindow
+            {
+
+                DataContext = new MainWindowViewModel()
+            };
+
+            startWindow.Show();
+
+            base.OnStartup(e);
         }
     }
 }

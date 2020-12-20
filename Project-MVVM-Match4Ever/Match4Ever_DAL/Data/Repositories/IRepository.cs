@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.Data.Repositories
 {
-    public interface IRepository<T> where T : class, new()
+    public interface IRepository<T> where T : class, new() //Geïmplementeerd uit het voorbeeld van Maaike!
     {
-        IEnumerable<T> Ophalen();
-        void Toevoegen(T entity);
-        void Aanpassen(T entity);
-        void Verwijderen(T entity);
+        IEnumerable<T> AllesOphalen();
+        void EntityToevoegen(T entity);
+        void EntityAanpassen(T entity);
+        void EntityVerwijderen(T entity);
 
         //Uitbreidingen
-        IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden);
-        IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes);
-        IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes);
+        IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden);
+        IEnumerable<T> AllesOphalen(params Expression<Func<T, object>>[] includes);
+        IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes);
 
         //Handige Functies
-        T ZoekOpPrimaryKey<TPrimaryKey>(TPrimaryKey id);
+        T ZoekenOpPrimaryKey<TPrimaryKey>(TPrimaryKey id);
         void ToevoegenOfAanpassen(T entity);
         void ToevoegenRange(IEnumerable<T> entities);
         void Verwijderen<TPrimaryKey>(TPrimaryKey id);

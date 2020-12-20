@@ -23,6 +23,7 @@ namespace Match4Ever_DAL.Models
         //NAVIGATIE
 
         //Account meegeven
+        [ForeignKey("AccountID")]
         public Account Account { get; set; }
 
         //Voorkeur meegeven

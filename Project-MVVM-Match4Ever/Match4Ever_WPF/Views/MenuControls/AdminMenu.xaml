@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.MenuControls.AdminMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.MenuControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="700">
+    
+    <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ToggleButton Grid.Column="0" Content="VOORKEUREN WIJZIGEN" Style="{StaticResource ToggleButtonMenu}"/>
+        <ToggleButton Grid.Column="1" Content="LIJST VAN GEBRUIKERS" Style="{StaticResource ToggleButtonMenu}"/>
+        <ToggleButton Grid.Column="3" Content="INSTELLINGEN" Style="{StaticResource ToggleButtonMenu}"/>
+    </Grid>
+</UserControl>

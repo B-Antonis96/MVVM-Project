@@ -1,14 +1,18 @@
 ﻿
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\App.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Components\BindablePasswordBox.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Components\StartKnop.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\DataTemplates\DataTemplates.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Styles\CustomWindowStyle.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Styles\MainStyle.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Styles\MiscStyles.xaml;;
-FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\AdminStartschermView.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\LoginControls\LoginView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\LoginControls\RegistreerView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\LoginControls\WachtwoordView.xaml;;
-FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\LoginView.xaml;;
-FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\RegistreerEnWachtwoordView.xaml;;
-FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\StartschermView.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\LoginControls\WelkomView.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\MainWindow.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\MenuControls\AdminMenu.xaml;;
+FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\MenuControls\UserMenu.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls (admin)\InstellingenAdminView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls (admin)\LijstGebruikersView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls (admin)\VoorkeurenWijzigenView.xaml;;
@@ -16,5 +20,4 @@ FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Pro
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls\MatchesView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls\MeldingenView.xaml;;
 FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls\VoorkeurenView.xaml;;
-FC:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\Views\UserControls\WelkomView.xaml;;
 
