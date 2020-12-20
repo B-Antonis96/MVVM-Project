@@ -30,9 +30,22 @@ namespace Match4Ever_WPF.Commands
         {
             switch (parameter.ToString())
             {
-                case "Start":
-                    mainViewModel.SelectedMainViewModel = new LoginViewModel();
-                    break;
+                //LOGIN & REGISTRATIE COMMANDS
+                //case "Start":
+                //    mainViewModel.SelectedMainViewModel = new LoginViewModel(mainViewModel);
+                //    break;
+
+                //case "TerugNaarLogin":
+                //    mainViewModel.SelectedMainViewModel = new LoginViewModel(mainViewModel);
+                //    break;
+
+                //case "Registreer":
+                //    mainViewModel.SelectedMainViewModel = new RegistreerViewModel(mainViewModel);
+                //    break;
+
+                //case "Wachtwoord":
+                //    mainViewModel.SelectedMainViewModel = new WachtwoordViewModel(mainViewModel);
+                //    break;
 
             }
         }

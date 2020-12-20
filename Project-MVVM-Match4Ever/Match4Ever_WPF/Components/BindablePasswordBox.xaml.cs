@@ -18,15 +18,15 @@ namespace Match4Ever_WPF.Components
     /// <summary>
     /// Interaction logic for BindablePasswordBox.xaml
     /// </summary>
-    public partial class BindablePasswordBox : UserControl
+    public partial class BindablePasswordBox : UserControl //Geïmplementeerd uit het voorbeeld van Kilian!
     {
-        public static readonly DependencyProperty PasswdProperty = DependencyProperty.Register("Password", typeof(string), typeof(BindablePasswordBox),
+        public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register("Password", typeof(string), typeof(BindablePasswordBox),
             new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public string Passwd
+        public string Password
         {
-            get { return (string)GetValue(PasswdProperty); }
-            set { SetValue(PasswdProperty, value); }
+            get { return (string)GetValue(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
         }
 
         public BindablePasswordBox()
@@ -34,9 +34,9 @@ namespace Match4Ever_WPF.Components
             InitializeComponent();
         }
 
-        private void mvvmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void MvvmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            Passwd = mvvmPasswordBox.Password;
+            Password = MvvmPasswordBox.Password;
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace Match4Ever_WPF.ViewModels.Props
 {
-    public abstract class BasisViewModel : IDataErrorInfo, INotifyPropertyChanged, ICommand
+    public abstract class BasisViewModel : IDataErrorInfo, INotifyPropertyChanged, ICommand  //Geïmplementeerd uit het voorbeeld van Maaike!
     {
         #region ICommand
         public event EventHandler CanExecuteChanged

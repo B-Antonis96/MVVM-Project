@@ -16,18 +16,21 @@ C:\Users\bryan\Desktop\Git clones\MVVM-Project\Project-MVVM-Match4Ever\Match4Eve
 C:\Users\bryan\Desktop\Git clones\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.exe
 C:\Users\bryan\Desktop\Git clones\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.pdb
 C:\Users\bryan\Desktop\Git clones\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.csprojAssemblyReference.cache
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.xml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_WPF.exe.config
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_WPF.exe
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_WPF.pdb
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.dll
-C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.dll
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.pdb
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Match4Ever_DAL.dll.config
-C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.xml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF.csprojAssemblyReference.cache
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Components\BindablePasswordBox.g.cs
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Components\StartKnop.g.cs
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\LoginControls\LoginView.g.cs
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\LoginControls\RegistreerView.g.cs
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Views\LoginControls\WachtwoordView.g.cs
@@ -48,6 +51,8 @@ C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Proj
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Match4Ever_WPF_MarkupCompile.lref
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\App.baml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Components\BindablePasswordBox.baml
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Components\StartKnop.baml
+C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\DataTemplates\DataTemplates.baml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Styles\CustomWindowStyle.baml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Styles\MainStyle.baml
 C:\Users\bryan\Desktop\SCHOOLprojecten\Match4Ever MVVM Project\MVVM-Project\Project-MVVM-Match4Ever\Match4Ever_WPF\obj\Debug\Styles\MiscStyles.baml

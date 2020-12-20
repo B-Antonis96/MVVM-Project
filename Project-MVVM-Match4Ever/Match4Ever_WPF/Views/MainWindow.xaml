@@ -5,37 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Match4Ever_WPF.Views"
         
-             xmlns:propsiewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Props"
-             xmlns:menuviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Menu"
-             xmlns:loginregviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Login_Reg"
-             xmlns:userviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.User"
-             xmlns:adminviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Admin"
-             
-             xmlns:window="clr-namespace:Match4Ever_WPF.Views"
-             xmlns:loginviews="clr-namespace:Match4Ever_WPF.Views.LoginControls"
-             xmlns:menuviews="clr-namespace:Match4Ever_WPF.Views.MenuControls"
-             xmlns:adminviews="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
-             xmlns:userviews="clr-namespace:Match4Ever_WPF.Views.UserControls"
+        xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
         
         mc:Ignorable="d"
         Title="Match4Ever" Style="{StaticResource CustomWindow}">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--!!!! START KNOP !!!!-->
-        <Button Content="Start App" Command="{Binding UpdateMainViewCommand}" CommandParameter="Start" Visibility="{Binding KnopZichtbaarheid}"/>
+        <comps:StartKnop Grid.Row="1" DataContext="{Binding Navigator}"/>
 
-        <!--!!!! MENU !!!!-->
-        <Grid Visibility="{Binding MenuZichtbaarheid}">
-            <ContentControl Content="{Binding SelectedMenuViewModel}"/>
-        </Grid>
-
-        <!--!!!! MAIN VIEW !!!!-->
-        <ContentPresenter Grid.Row="1" Content="{Binding SelectedMainViewModel}"/>
-
+        <ContentControl Grid.Row="1" Content="{Binding Navigator.HuidigViewModel}"/>
     </Grid>
 </Window>

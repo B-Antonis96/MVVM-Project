@@ -8,43 +8,35 @@ using System.Collections.ObjectModel;
 using Match4Ever_DAL.Data;
 using Match4Ever_DAL.Data.UnitOfWork;
 using Match4Ever_WPF.ViewModels.Props;
+using System.Windows.Input;
+using Match4Ever_WPF.State.Commands;
+using Match4Ever_WPF.State.Authenticators;
+using Match4Ever_WPF.State.Navigators;
 
 namespace Match4Ever_WPF.ViewModels.Login_Reg
 {
-    public class LoginViewModel : MainWindowViewModel
+    public class LoginViewModel : BasisViewModel
     {
-        //Uniy Of Work
-        //IUnitOfWork unitOfWork = new UnitOfWork(new Match4EverEntities());
+        #region WindowControls
+        public INavigator Navigator { get; set; }
+        public UpdateHuidigViewModelCommand UpdateHuidigViewModelCommand { get; set; }
 
-        //Initiaties
-        private string _accountLogin;
-        public string AccountLogin
+        public LoginViewModel(INavigator navigator)
         {
-            get { return _accountLogin; }
-            set { _accountLogin = value; NotifyPropertyChanged(nameof(AccountLogin)); }
+            this.Navigator = navigator;
+            this.UpdateHuidigViewModelCommand = new UpdateHuidigViewModelCommand(Navigator);
         }
 
-        private string _wachtwoord;
-        public string Wachtwoord
-        {
-            get { return _wachtwoord; }
-            set { _wachtwoord = value; NotifyPropertyChanged(); }
-        }
+        #endregion
 
-        private ObservableCollection<Account> _accounts;
-        public ObservableCollection<Account> Accounts
-        {
-            get { return _accounts; }
-            set { _accounts = value; NotifyPropertyChanged(nameof(Wachtwoord)); }
-        }
+        //Attributen
+        public string AccountLogin { get; set; }
+
+        public string Wachtwoord { get; set; }
+
+        public ObservableCollection<Account> Accounts { get; set; }
 
 
-        public LoginViewModel()
-        {
-            //Accounts = new ObservableCollection<Account>(unitOfWork.AccountRepo.Ophalen());
-        }
-
-        #region Overriding
         public override string this[string columnName]
         {
             get { return ""; }
@@ -67,8 +59,6 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
 
             };
         }
-        #endregion
-
 
 
     }

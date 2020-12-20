@@ -10,7 +10,6 @@ namespace Match4Ever_WPF.ViewModels.Menu
 {
     public class AdminMenuViewModel : BasisViewModel
     {
-        #region Overriding
         public override string this[string columnName]
         {
             get { return ""; }
@@ -33,6 +32,5 @@ namespace Match4Ever_WPF.ViewModels.Menu
 
             };
         }
-        #endregion
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.Data.UnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork //Geïmplementeerd uit het voorbeeld van Maaike!
     {
         private IRepository<Account> _accountRepo;
         private IRepository<AccountVoorkeur> _accountVoorkeurRepo;

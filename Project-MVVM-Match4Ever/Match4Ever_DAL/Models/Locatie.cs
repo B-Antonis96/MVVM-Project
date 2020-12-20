@@ -20,11 +20,6 @@ namespace Match4Ever_DAL.Models
         public string Stad { get; set; }
 
         [Required]
-        [MaxLength(15)]
-        [Index(IsUnique = true)]
-        public string Postcode { get; set; } //String omdat in sommige landen een postcode letters kan bevatten
-
-        [Required]
         [MaxLength(26)]
         [Index(IsUnique = true)]
         public string Land { get; set; }
@@ -32,6 +27,7 @@ namespace Match4Ever_DAL.Models
         //NAVIGATIE
 
         //Collectie van Account('s)
+        [ForeignKey("LocatieID")]
         public ICollection<Account> Accounts { get; set; }
     }
 }

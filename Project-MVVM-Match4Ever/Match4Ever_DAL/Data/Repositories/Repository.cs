@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.Data.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class, new()
+    public class Repository<T> : IRepository<T> where T : class, new() //Geïmplementeerd uit het voorbeeld van Maaike!
     {
         protected DbContext Context { get; }
 
@@ -18,28 +18,28 @@ namespace Match4Ever_DAL.Data.Repositories
             this.Context = context;
         }
 
-        public IEnumerable<T> Ophalen()
+        public IEnumerable<T> AllesOphalen()
         {
             return Context.Set<T>().ToList();
         }
 
-        public void Toevoegen(T entity)
+        public void EntityToevoegen(T entity)
         {
             Context.Set<T>().Add(entity);
         }
 
-        public void Aanpassen(T entity)
+        public void EntityAanpassen(T entity)
         {
             Context.Entry<T>(entity).State = EntityState.Modified;
         }
 
-        public void Verwijderen(T entity)
+        public void EntityVerwijderen(T entity)
         {
             Context.Entry(entity).State = EntityState.Deleted;
         }
 
-        //Uitbreidingen
-        public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes)
+        //UITBREIDINGEN
+        public IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Context.Set<T>();
             if (includes != null)
@@ -57,19 +57,19 @@ namespace Match4Ever_DAL.Data.Repositories
             return query.ToList();
         }
 
-        public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden)
+        public IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden)
         {
-            return Ophalen(voorwaarden, null).ToList();
+            return AllesOphalen(voorwaarden, null).ToList();
         }
 
-        public IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes)
+        public IEnumerable<T> AllesOphalen(params Expression<Func<T, object>>[] includes)
         {
-            return Ophalen(null, includes).ToList();
+            return AllesOphalen(null, includes).ToList();
         }
 
 
         //Handige Functies
-        public T ZoekOpPrimaryKey<TPrimaryKey>(TPrimaryKey id)
+        public T ZoekenOpPrimaryKey<TPrimaryKey>(TPrimaryKey id)
         {
             return Context.Set<T>().Find(id);
         }
@@ -86,7 +86,7 @@ namespace Match4Ever_DAL.Data.Repositories
 
         public void Verwijderen<TPrimaryKey>(TPrimaryKey id)
         {
-            var entity = ZoekOpPrimaryKey(id);
+            var entity = ZoekenOpPrimaryKey(id);
             Context.Set<T>().Remove(entity);
         }
 

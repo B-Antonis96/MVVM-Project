@@ -71,13 +71,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Authenticatie\Authenticator.cs" />
-    <Compile Include="Authenticatie\IAuthenticator.cs" />
-    <Compile Include="Commands\UpdateMainViewCommand.cs" />
-    <Compile Include="Commands\UpdateMenuViewCommand.cs" />
+    <Compile Include="State\Commands\UpdateHuidigViewModelCommand.cs" />
     <Compile Include="Components\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\StartKnop.xaml.cs">
+      <DependentUpon>StartKnop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="State\Authenticators\Authenticator.cs" />
+    <Compile Include="State\Navigators\INavigator.cs" />
+    <Compile Include="State\Navigators\Navigator.cs" />
     <Compile Include="ViewModels\Admin\AdminInstellingenViewModel.cs" />
     <Compile Include="ViewModels\Admin\LijstGebruikersViewModel.cs" />
     <Compile Include="ViewModels\Admin\VoorkeurenWijzigenViewModel.cs" />
@@ -86,7 +89,6 @@
     <Compile Include="ViewModels\Login-Reg\WelkomViewModel.cs" />
     <Compile Include="ViewModels\Props\BasisViewModel.cs" />
     <Compile Include="ViewModels\Login-Reg\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Props\DelegateCommand.cs" />
     <Compile Include="ViewModels\Props\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Menu\AdminMenuViewModel.cs" />
     <Compile Include="ViewModels\Menu\UserMenuViewModel.cs" />
@@ -172,6 +174,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Components\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\StartKnop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataTemplates\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -130,6 +130,20 @@
         <Setter Property="RadiusX" Value="20"/>
         <Setter Property="RadiusY" Value="20"/>
     </Style>
+    
+    <!--STIJL VOOR TERUG KNOP-->
+    <Style x:Key="TerugKnop" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="25px"/>
+        <Setter Property="Width" Value="60px"/>
+        <Setter Property="Margin" Value="10 5 0 5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Content" Value="⬅ Terug"/>
+        <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
+    </Style>
 
 
 
