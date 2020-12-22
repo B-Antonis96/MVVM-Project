@@ -15,7 +15,7 @@ namespace Match4Ever_DAL.Models
         public int AccountID { get; set; }
 
         //FOREIGN KEY
-        public int LocatieID { get; set; }
+        public int? LocatieID { get; set; }
 
         //ATTRIBUTEN
         [Required]

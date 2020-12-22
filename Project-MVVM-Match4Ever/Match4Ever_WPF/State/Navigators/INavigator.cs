@@ -8,6 +8,8 @@ using System.Windows.Input;
 
 namespace Match4Ever_WPF.State.Navigators
 {
+    //Geïmplementeerd uit het voorbeeld van YouTuber SingletonSean! => een ware held!
+
     public enum ViewType
     {
         Login,

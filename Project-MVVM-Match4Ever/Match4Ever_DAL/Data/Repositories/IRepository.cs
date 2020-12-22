@@ -15,9 +15,9 @@ namespace Match4Ever_DAL.Data.Repositories
         void EntityVerwijderen(T entity);
 
         //Uitbreidingen
-        IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden);
-        IEnumerable<T> AllesOphalen(params Expression<Func<T, object>>[] includes);
-        IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes);
+        IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden);
+        IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes);
+        IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes);
 
         //Handige Functies
         T ZoekenOpPrimaryKey<TPrimaryKey>(TPrimaryKey id);

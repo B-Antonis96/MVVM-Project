@@ -12,12 +12,11 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
     public class WachtwoordViewModel : BasisViewModel
     {
         #region WindowControls
-        public INavigator Navigator { get; set; }
+        public INavigator Navigator = UpdateHuidigViewModelCommand.Navigator;
         public UpdateHuidigViewModelCommand UpdateHuidigViewModelCommand { get; set; }
 
-        public WachtwoordViewModel(INavigator navigator)
+        public WachtwoordViewModel()
         {
-            this.Navigator = navigator;
             this.UpdateHuidigViewModelCommand = new UpdateHuidigViewModelCommand(Navigator);
         }
 

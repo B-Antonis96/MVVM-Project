@@ -12,6 +12,6 @@
 
 
     <Button x:Name="btnStart" Content="Start App" Command="{Binding UpdateHuidigViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Login}"
-             Style="{StaticResource LoginRegisterButton}" Click="btnStart_Click">
+             Style="{StaticResource LoginRegisterButton}">
     </Button>
 </UserControl>

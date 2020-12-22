@@ -9,15 +9,15 @@ using System.Windows.Input;
 
 namespace Match4Ever_WPF.State.Commands
 {
-    public class UpdateHuidigViewModelCommand : ICommand
+    public class UpdateHuidigViewModelCommand : ICommand //Geïmplementeerd uit het voorbeeld van YouTuber SingletonSean! => een ware held!
     {
         public event EventHandler CanExecuteChanged;
 
-        private INavigator _navigator;
+        public static INavigator Navigator { get; set; } = new Navigator();
 
         public UpdateHuidigViewModelCommand(INavigator navigator)
         {
-            _navigator = navigator;
+            Navigator = navigator;
         }
 
         public bool CanExecute(object parameter)
@@ -27,21 +27,19 @@ namespace Match4Ever_WPF.State.Commands
 
         public void Execute(object parameter)
         {
-            if (parameter is ViewType)
+            if (parameter is ViewType viewType)
             {
-                ViewType viewType = (ViewType)parameter;
-
                 switch (viewType)
                 {
                     //LOGIN & REGISTRATIE COMMANDS
                     case ViewType.Login:
-                        _navigator.HuidigViewModel = new LoginViewModel(_navigator);
+                        Navigator.HuidigViewModel = new LoginViewModel();
                         break;
                     case ViewType.Registreer:
-                        _navigator.HuidigViewModel = new RegistreerViewModel(_navigator);
+                        Navigator.HuidigViewModel = new RegistreerViewModel();
                         break;
                     case ViewType.Wachtwoord:
-                        _navigator.HuidigViewModel = new WachtwoordViewModel(_navigator);
+                        Navigator.HuidigViewModel = new WachtwoordViewModel();
                         break;
                 }
             }

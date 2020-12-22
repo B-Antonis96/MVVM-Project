@@ -11,8 +11,23 @@ using System.Windows.Input;
 
 namespace Match4Ever_WPF.State.Navigators
 {
-    public class Navigator : INavigator, INotifyPropertyChanged
+    public class Navigator : INavigator, INotifyPropertyChanged //Geïmplementeerd uit het voorbeeld van YouTuber SingletonSean! => een ware held!
     {
+        //ATTRIBUTEN\\
+
+        //Knop zichtbaarheid
+        private Visibility _knopzichtbaarheid = Visibility.Visible;
+        public Visibility KnopZichtbaarheid
+        {
+            get { return _knopzichtbaarheid; }
+            set
+            {
+                _knopzichtbaarheid = value;
+                NotifyViewModelChanged(nameof(KnopZichtbaarheid));
+            }
+        }
+
+        //Huidig viewmodel bepalen
         private BasisViewModel _huidigviewmodel;
         public BasisViewModel HuidigViewModel
         {
@@ -20,16 +35,25 @@ namespace Match4Ever_WPF.State.Navigators
             set
             {
                 _huidigviewmodel = value;
-                NotifyPropertyChanged(nameof(HuidigViewModel));
+                NotifyViewModelChanged(nameof(HuidigViewModel));
+
+                //StartKnop op zichtbaarheid controleren
+                if (KnopZichtbaarheid == Visibility.Visible)
+                {
+                    //StartKnop onzichtbaar maken!
+                    KnopZichtbaarheid = Visibility.Collapsed;
+                }
             }
         }
 
+        //Huidig viewmodel update command
         public ICommand UpdateHuidigViewModelCommand => new UpdateHuidigViewModelCommand(this);
 
+        //Controleren of ViewModel veranderd
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged(string property)
+        protected void NotifyViewModelChanged(string viewmodel)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(viewmodel));
         }
     }
 }

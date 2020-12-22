@@ -44,16 +44,16 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Gebruikersnaam" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <TextBox Text="{Binding Gebruikersnaam}" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
                 <TextBlock Grid.Row="1" Text="Emailadres" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <TextBox Text="{Binding Email}" Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
                 <TextBlock Grid.Row="2" Text="Wachtwoord" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <TextBox Text="{Binding Wachtwoord}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
                 <TextBlock Grid.Row="3" Text="Wachtwoord bevestigen" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <TextBox Text="{Binding WachtwoordBevestiging}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
             </Grid>
 
             <TextBlock Text="Account informatie" Grid.Row="3" Style="{StaticResource RegTussenTitleStyle}"/>
@@ -72,19 +72,19 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Naam" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <TextBox Text="{Binding Naam}" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
                 <TextBlock Grid.Row="1" Text="Geslacht" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <ComboBox ItemsSource="{Binding GeslachtLijst}" SelectedItem="{Binding Geslacht}" Grid.Row="1" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
 
                 <TextBlock Grid.Row="2" Text="Land" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <ComboBox ItemsSource="{Binding LandLijst}" SelectedItem="{Binding Land}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
 
                 <TextBlock Grid.Row="3" Text="Stad" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
             </Grid>
         </Grid>
 
-        <Button Content="INDIENEN" Grid.Row="3" Style="{StaticResource RegistrationButton}"/>
+        <Button Command="{Binding}" CommandParameter="Registreer" Content="INDIENEN" Grid.Row="3" Style="{StaticResource RegistrationButton}"/>
     </Grid>
 </UserControl>

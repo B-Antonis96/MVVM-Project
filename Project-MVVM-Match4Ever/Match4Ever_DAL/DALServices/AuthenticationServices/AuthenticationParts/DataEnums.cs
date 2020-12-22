@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
 {
-    public class AuthenticationEnums
+    public class DataEnums
     {
         public enum AuthentcatieResultaat
         {

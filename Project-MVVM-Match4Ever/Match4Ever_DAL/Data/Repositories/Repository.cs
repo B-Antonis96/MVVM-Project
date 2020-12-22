@@ -39,7 +39,7 @@ namespace Match4Ever_DAL.Data.Repositories
         }
 
         //UITBREIDINGEN
-        public IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes)
+        public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Context.Set<T>();
             if (includes != null)
@@ -57,14 +57,14 @@ namespace Match4Ever_DAL.Data.Repositories
             return query.ToList();
         }
 
-        public IEnumerable<T> AllesOphalen(Expression<Func<T, bool>> voorwaarden)
+        public IEnumerable<T> Ophalen(Expression<Func<T, bool>> voorwaarden)
         {
-            return AllesOphalen(voorwaarden, null).ToList();
+            return Ophalen(voorwaarden, null).ToList();
         }
 
-        public IEnumerable<T> AllesOphalen(params Expression<Func<T, object>>[] includes)
+        public IEnumerable<T> Ophalen(params Expression<Func<T, object>>[] includes)
         {
-            return AllesOphalen(null, includes).ToList();
+            return Ophalen(null, includes).ToList();
         }
 
 

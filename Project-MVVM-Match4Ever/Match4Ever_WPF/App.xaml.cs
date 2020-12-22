@@ -22,7 +22,6 @@ namespace Match4Ever_WPF
         {
             Window startWindow = new MainWindow
             {
-
                 DataContext = new MainWindowViewModel()
             };
 

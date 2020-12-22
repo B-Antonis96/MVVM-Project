@@ -66,10 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasisModels\BasisKlasse.cs" />
-    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\AuthenticationEnums.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\DataEnums.cs" />
     <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\WachtwoordHasher.cs" />
     <Compile Include="DALServices\AuthenticationServices\LoginService.cs" />
     <Compile Include="DALServices\AuthenticationServices\RegistrationService.cs" />
+    <Compile Include="DALServices\DataServices\DataService.cs" />
+    <Compile Include="DALServices\DataServices\DataTools.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
@@ -82,6 +84,10 @@
     <Compile Include="Migrations\202012181650332_ModelsUpdateMigration.cs" />
     <Compile Include="Migrations\202012181650332_ModelsUpdateMigration.designer.cs">
       <DependentUpon>202012181650332_ModelsUpdateMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012210031430_ExtraveranderingenMigration.cs" />
+    <Compile Include="Migrations\202012210031430_ExtraveranderingenMigration.designer.cs">
+      <DependentUpon>202012210031430_ExtraveranderingenMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012181650332_ModelsUpdateMigration.resx">
       <DependentUpon>202012181650332_ModelsUpdateMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012210031430_ExtraveranderingenMigration.resx">
+      <DependentUpon>202012210031430_ExtraveranderingenMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

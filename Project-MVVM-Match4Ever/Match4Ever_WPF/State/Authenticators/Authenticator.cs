@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_WPF.State.Authenticators
 {
-    public static class Authenticator //Static class om ingelogde gebruiker op te slaan
+    public static class Authenticator //Static class om ingelogde gebruiker op te slaan => ook een "beetje" op het voorbeeld van YouTuber SingletonSean!
     {
         //het ingelogde account
         public static Account HuidigAccount { get; set; }

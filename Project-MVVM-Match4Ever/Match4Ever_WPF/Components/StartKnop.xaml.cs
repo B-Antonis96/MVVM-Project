@@ -25,10 +25,5 @@ namespace Match4Ever_WPF.Components
         {
             InitializeComponent();
         }
-
-        private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-            btnStart.Visibility = Visibility.Collapsed; //Niet zo zeer MVVM vriendelijk, maar is de beste manier om deze bepaalde knop te verbergen!
-        }
     }
 }

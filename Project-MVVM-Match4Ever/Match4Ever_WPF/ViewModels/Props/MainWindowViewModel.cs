@@ -1,16 +1,25 @@
-﻿using Match4Ever_WPF.State.Navigators;
+﻿using Match4Ever_WPF.State.Commands;
+using Match4Ever_WPF.State.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Match4Ever_WPF.ViewModels.Props
 {
     public class MainWindowViewModel : BasisViewModel
     {
-        #region Overervingen
+        #region WindowControls
+
+        public INavigator Navigator { get; set; } = UpdateHuidigViewModelCommand.Navigator;
+
+        public Visibility Zichtbaarheid { get; set; }
+
+        #endregion
+
         public override string this[string columnName]
         {
             get { return ""; }
@@ -22,12 +31,11 @@ namespace Match4Ever_WPF.ViewModels.Props
         }
 
         public override void Execute(object parameter) { }
-        #endregion
 
-        #region WindowControls
+        //COMMAND METHODES\\
+        public void MaakOnzichtbaar()
+        {
 
-        public INavigator Navigator { get; set; } = new Navigator();
-
-        #endregion
+        }
     }
 }

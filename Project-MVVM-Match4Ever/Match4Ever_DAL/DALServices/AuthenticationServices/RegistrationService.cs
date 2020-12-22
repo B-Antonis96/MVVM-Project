@@ -1,28 +1,25 @@
 ﻿using Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts;
+using Match4Ever_DAL.DALServices.DataServices;
 using Match4Ever_DAL.Data;
-using Match4Ever_DAL.Data.UnitOfWork;
 using Match4Ever_DAL.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts.AuthenticationEnums;
+using static Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts.DataEnums;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices
 {
     public class RegistrationService
     {
         //BENODIGDHEDEN\\
-        private readonly IUnitOfWork WorkUnit = new UnitOfWork(new Match4EverEntities());
         private readonly WachtwoordHasher Hasher = new WachtwoordHasher();
-        private ObservableCollection<Account> Accounts { get; set; }
+        private readonly DataService DataService = new DataService();
+        private DataTools Tools = new DataTools();
+        public AuthentcatieResultaat ResultaatEnum { get; private set; }
 
-        public RegistrationService()
-        {
-
-        }
+        //REGISTRATIE FUNCTIES\\
 
         //Admin registreren
         //public void RegistreerAdmin(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, Locatie locatie)
@@ -41,13 +38,13 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
         //        };
 
         //        //Admin toevoegen aan database
-        //        ToevoegenAccount(admin);
+        //        DataService.ToevoegenAccount(admin);
         //    }
         //}
 
         //Gebruiker registreren
         public void RegistreerGebruiker(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, 
-            string naam, string geslacht, string geaardheid, DateTime geboortedatum, Locatie locatie)
+            string naam, string geslacht/*, DateTime geboortedatum*/, string land, string stad)
         {
             //Acount check uitvoeren
             if (CheckAccounts(gebruikersnaam, email, wachtwoord, bevestigwachtwoord) == AuthentcatieResultaat.Gelukt)
@@ -60,58 +57,72 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
                     Wachtwoord = Hasher.HashWachtwoord(wachtwoord),
                     Naam = naam,
                     Geslacht = geslacht,
-                    Geaardheid = geaardheid,
-                    Geboortedatum = geboortedatum,
-                    Locatie = locatie,
+                    //Geboortedatum = geboortedatum,
+                    LocatieID = DataService.LocatieIDOphalen(land, stad),
                     IsAdmin = false
                 };
 
                 //Gebruiker toevoegen aan database
-                ToevoegenAccount(gebruiker);
+                DataService.ToevoegenAccount(gebruiker);
             }
         }
 
+        //Resultaat registreren
+        public string Resultaat()
+        {
+            //Controleren of gebruikersnaam of email al bestaat
+            if (ResultaatEnum == AuthentcatieResultaat.EmailBestaatAl ||
+                ResultaatEnum == AuthentcatieResultaat.GebruikersnaamBestaatAl)
+            {
+                return "Gebruiker bestaat al!";
+            }
 
-        //GEDEELDE FUNCTIES\
+            if (ResultaatEnum == AuthentcatieResultaat.WachtwoordenNietHetZelfde)
+            {
+                return "Wachtwoorden komen niet overeen!";
+            }
 
-        //Parameter checker
-        private bool ParameterCheck(string parameter, string parameterCheck) => parameter == parameterCheck;
-
-        //Toevoegen account in database
-        private void ToevoegenAccount(Account account) => WorkUnit.AccountRepo.EntityToevoegen(account);
+            return "Registreren gelukt!";
+        }
 
 
-        //REGISTRATIE FUNCTIE\\
+        //REGISTRATIE HELPER FUNCTIES\\
 
-        //Check naar bestaande accounts
+        //Check naar bestaande accounts en wachtwoord overeenkomst
         private protected AuthentcatieResultaat CheckAccounts(string gebruikersnaam, string email, string wachtwoord, string bevestigwachtwoord)
         {
-            //Accounts ophalen uit database
-            Accounts = new ObservableCollection<Account>(WorkUnit.AccountRepo.AllesOphalen());
+            //Controleren of gebruikersnaam gelinkt is aan een AccountID
+            int id = DataService.AccountIDOphalenOpNaam(gebruikersnaam);
 
-            //Acounts controleren via iteratie
-            foreach (Account account in Accounts)
+            //Als account op gebruikersnaam opgehaald kon worden....
+            if (id > 0)
             {
-                //Controleren of gebruikersnaam al bestaat
-                if (ParameterCheck(gebruikersnaam, account.Gebruikersnaam))
-                {
-                    return AuthentcatieResultaat.GebruikersnaamBestaatAl;
-                }
+                ResultaatEnum = AuthentcatieResultaat.GebruikersnaamBestaatAl;
+            }
+            else
+            {
+                //Controleren of email gelinkt is aan een AccountID
+                id = DataService.AccountIDOphalenOpEmail(email);
 
                 //Controleren of email al bestaat
-                if (ParameterCheck(email, account.Emailadres))
+                if (id > 0)
                 {
-                    return AuthentcatieResultaat.EmailBestaatAl;
+                    ResultaatEnum = AuthentcatieResultaat.EmailBestaatAl;
+                }
+                else
+                {
+                    //Wachtwoord controleren
+                    if (Tools.ParameterCheck(wachtwoord, bevestigwachtwoord))
+                    {
+                        ResultaatEnum = AuthentcatieResultaat.Gelukt;
+                    }
+                    else
+                    {
+                        ResultaatEnum = AuthentcatieResultaat.WachtwoordenNietHetZelfde;
+                    }
                 }
             }
-
-            //Wachtwoord controleren
-            if (!ParameterCheck(wachtwoord, bevestigwachtwoord))
-            {
-                return AuthentcatieResultaat.WachtwoordenNietHetZelfde;
-            }
-
-            return AuthentcatieResultaat.Gelukt;
+            return ResultaatEnum;
         }
     }
 }

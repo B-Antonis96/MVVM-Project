@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <comps:StartKnop Grid.Row="1" DataContext="{Binding Navigator}"/>
+        <comps:StartKnop Grid.Row="1" DataContext="{Binding Navigator}" Visibility="{Binding KnopZichtbaarheid}"/>
 
         <ContentControl Grid.Row="1" Content="{Binding Navigator.HuidigViewModel}"/>
     </Grid>
