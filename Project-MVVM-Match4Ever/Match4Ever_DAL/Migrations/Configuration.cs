@@ -15,7 +15,7 @@
 
         protected override void Seed(Match4EverEntities context)
         {
-            //  This method will be called after migrating to the latest version.
+            //Niets aan te passen hier!
         }
     }
 }

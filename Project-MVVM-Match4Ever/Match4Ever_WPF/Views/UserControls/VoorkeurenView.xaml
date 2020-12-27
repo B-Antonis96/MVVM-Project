@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
@@ -13,9 +14,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Text="VOORKEUREN OPGEVEN" Style="{StaticResource SecondTitleTextblock}"/>
-
+        
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.8*" />
@@ -40,10 +39,10 @@
 
                 <TextBlock Text="Voorkeur vraag:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
 
-                <Label Content="Voorkeurvraag : 1 " Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BasisVoorkeurLabel}"/>
+                <Label Content="{Binding Inhoud}" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BasisVoorkeurLabel}"/>
 
-                <Button Content="◀" HorizontalAlignment="Right" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="▶" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Vorige}" Content="◀" HorizontalAlignment="Right" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Volgende}" Content="▶" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
             </Grid>
 
             <Grid Grid.Column="1" Grid.Row="1">
@@ -55,9 +54,9 @@
 
                 <TextBlock Text="Voorkeur antwoord:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
 
-                <ListBox Grid.Row="1" Style="{StaticResource VoorkeurListbox}"/>
+                <ComboBox ItemsSource="{Binding AntwoordLijst}" SelectedItem="{Binding Antwoord}" Grid.Row="1" Style="{StaticResource VoorkeurComboBox}"/>
 
-                <Button Content="ANTWOORD OPSLAAN" Grid.Row="2" Style="{StaticResource AanvaardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="ANTWOORD OPSLAAN" Grid.Row="2" Style="{StaticResource AanvaardVoorkeurButton}"/>
             </Grid>
         </Grid>
     </Grid>

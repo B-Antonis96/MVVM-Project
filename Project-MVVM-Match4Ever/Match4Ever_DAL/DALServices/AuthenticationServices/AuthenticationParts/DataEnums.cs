@@ -11,10 +11,7 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
         public enum AuthentcatieResultaat
         {
             Gelukt,
-            WachtwoordenNietHetZelfde,
-            GebruikerBestaatNiet,
-            EmailBestaatAl,
-            GebruikersnaamBestaatAl
+            NietGelukt
         }
     }
 }

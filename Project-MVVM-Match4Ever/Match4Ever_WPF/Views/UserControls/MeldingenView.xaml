@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
@@ -13,8 +14,6 @@
             <RowDefinition Height="360"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Label Content="MELDINGEN" Style="{StaticResource SecondTitleStyle}"/>
 
         <ListBox Grid.Row="1" Margin="10">
             <ListBox.ItemTemplate>

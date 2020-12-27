@@ -15,10 +15,7 @@ namespace Match4Ever_DAL.Models
         public int MatchID { get; set; }
 
         //FOREIGN KEY('S)
-        [Index(IsUnique = true)]
         public int Account1ID { get; set; }
-
-        [Index(IsUnique = true)]
         public int Account2ID { get; set; }
 
         //ATTRIBUTEN

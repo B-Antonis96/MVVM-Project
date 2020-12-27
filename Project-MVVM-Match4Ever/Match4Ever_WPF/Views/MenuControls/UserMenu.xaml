@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.MenuControls"
+             xmlns:nav="clr-namespace:Match4Ever_WPF.State.Navigators"
              mc:Ignorable="d" 
              d:DesignHeight="70" d:DesignWidth="700">
 
@@ -14,9 +15,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ToggleButton Grid.Column="0" Content="VOORKEUREN" Style="{StaticResource ToggleButtonMenu}"/>
-        <ToggleButton Grid.Column="1" Content="MELDINGEN" Style="{StaticResource ToggleButtonMenu}"/>
-        <ToggleButton Grid.Column="2" Content="MATCHES" Style="{StaticResource ToggleButtonMenu}"/>
-        <ToggleButton Grid.Column="3" Content="INSTELLINGEN" Style="{StaticResource ToggleButtonMenu}"/>
+        <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Voorkeuren}"  Grid.Column="0" Content="VOORKEUREN" Style="{StaticResource RadioButtonMenu}"/>
+        <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Meldingen}"  Grid.Column="1" Content="MELDINGEN" Style="{StaticResource RadioButtonMenu}"/>
+        <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Matches}"  Grid.Column="2" Content="MATCHES" Style="{StaticResource RadioButtonMenu}"/>
+        <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.InstellingenUser}"  Grid.Column="3" Content="INSTELLINGEN" Style="{StaticResource RadioButtonMenu}"/>
     </Grid>
 </UserControl>

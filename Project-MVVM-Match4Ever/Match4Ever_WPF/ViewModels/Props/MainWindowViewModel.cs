@@ -1,5 +1,6 @@
 ﻿using Match4Ever_WPF.State.Commands;
 using Match4Ever_WPF.State.Navigators;
+using Match4Ever_WPF.ViewModels.Login_Reg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,30 +13,22 @@ namespace Match4Ever_WPF.ViewModels.Props
 {
     public class MainWindowViewModel : BasisViewModel
     {
-        #region WindowControls
+        //SCHERM CONTROLE\\
+        public INavigator StaticNavigator => Navigator.StaticNavigator; //Verwijzing naar statische Navigator
 
-        public INavigator Navigator { get; set; } = UpdateHuidigViewModelCommand.Navigator;
-
-        public Visibility Zichtbaarheid { get; set; }
-
-        #endregion
-
-        public override string this[string columnName]
+        //CONTRUCTOR\\
+        public MainWindowViewModel()
         {
-            get { return ""; }
+            ViewModelBuilder.ViewModelsAanmaken();
+            StaticNavigator.SwitchViewModel.Execute(ViewType.Login);
         }
 
+        //Aleen maar overschrijven van basisviewmodel, moeten overerven want anders werkt navigatie hier niet! 
         public override bool CanExecute(object parameter)
         {
             return true;
         }
 
         public override void Execute(object parameter) { }
-
-        //COMMAND METHODES\\
-        public void MaakOnzichtbaar()
-        {
-
-        }
     }
 }

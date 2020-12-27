@@ -4,12 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
+             xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.15*"/>
         </Grid.RowDefinitions>
@@ -18,9 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Text="INSTELLINGEN" Grid.ColumnSpan="2" Style="{StaticResource SecondTitleTextblock}"/>
-
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -38,39 +37,35 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Profielfoto uploaden" Style="{StaticResource InstellingenTextBlock}"/>
-            <ComboBox Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
+            <ComboBox ItemsSource="{Binding FotoLinks}" SelectedItem="{Binding FotoLink}" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
             <TextBlock Text="Geaardheid" Grid.Row="1" Style="{StaticResource InstellingenTextBlock}"/>
-            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
+            <ComboBox ItemsSource="{Binding GeaardheidLijst}" SelectedItem="{Binding Geaardheid}" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
-            <TextBlock Text="Land" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
-            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
+            <TextBlock Text="Stad" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
+            <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
-            <TextBlock Text="Stad" Grid.Row="3" Style="{StaticResource InstellingenTextBlock}"/>
-            <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
-
-            <Rectangle Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingImageRectangle}">
-                <Rectangle.Fill>
-                    <ImageBrush Stretch="Fill" ImageSource="pack://application:,,,/Styles/TestImages/ProfilePicTest.png"/>
-                </Rectangle.Fill>
-            </Rectangle>
+            <Rectangle Fill="{Binding Foto}" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingImageRectangle}"/>
 
             <TextBlock Text="Wachtwoord veranderen" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource InstellingenTussenTitel}"/>
 
             <TextBlock Text="Huidig wachtwoord" Grid.Row="5" Style="{StaticResource InstellingenTextBlock}"/>
-            <PasswordBox Grid.Row="5" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+            <comps:BindablePasswordBox Password="{Binding HuidigWachtwoord}" Height="30" Grid.Row="5" Grid.Column="1"/>
             
             <TextBlock Text="Nieuw wachtwoord" Grid.Row="6" Style="{StaticResource InstellingenTextBlock}"/>
-            <PasswordBox Grid.Row="6" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+            <comps:BindablePasswordBox Password="{Binding NiewWachtwoord}" Grid.Row="6" Height="30" Grid.Column="1"/>
 
             <TextBlock Text="Bevestig wachtwoord" Grid.Row="7" Style="{StaticResource InstellingenTextBlock}"/>
-            <PasswordBox Grid.Row="7" Grid.Column="1" Style="{StaticResource InstellingenPasswordBox}"/>
+            <comps:BindablePasswordBox Grid.Row="7" Password="{Binding NiewWachtwoordBevestiging}" Height="30" Grid.Column="1"/>
 
-            <Label Grid.Row="4" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingenInfoLabel}"/>
+            <Label Content="{Binding AccountInfo}" Grid.Row="4" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingenInfoLabel}"/>
         </Grid>
 
-        <Button Content="WIJZIG WACHTWOORD" Grid.Row="2" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
-        <Button Content="VERWIJDER ACCOUNT" Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenVerwijderAccountButton}"/>
-
+      
+        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="OPSLAAN" Grid.Row="1" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Afmelden}" Content="LOG UIT" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenLoguitAccountButton}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Verwijder}" Content="VERWIJDER ACCOUNT" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenVerwijderAccountButton}"/>
+        </DockPanel>
     </Grid>
 </UserControl>

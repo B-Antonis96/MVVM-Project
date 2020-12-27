@@ -19,11 +19,6 @@ namespace Match4Ever_DAL.Models
         [MaxLength(15)]
         public string Stad { get; set; }
 
-        [Required]
-        [MaxLength(26)]
-        [Index(IsUnique = true)]
-        public string Land { get; set; }
-
         //NAVIGATIE
 
         //Collectie van Account('s)

@@ -1,32 +1,18 @@
-﻿using Match4Ever_WPF.State.Commands;
-using Match4Ever_WPF.State.Navigators;
+﻿using Match4Ever_WPF.State.Navigators;
 using Match4Ever_WPF.ViewModels.Props;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Match4Ever_WPF.ViewModels.Login_Reg
 {
     public class WachtwoordViewModel : BasisViewModel
     {
-        #region WindowControls
-        public INavigator Navigator = UpdateHuidigViewModelCommand.Navigator;
-        public UpdateHuidigViewModelCommand UpdateHuidigViewModelCommand { get; set; }
-
-        public WachtwoordViewModel()
-        {
-            this.UpdateHuidigViewModelCommand = new UpdateHuidigViewModelCommand(Navigator);
-        }
-
-        #endregion
-
-
-        public override string this[string columnName]
-        {
-            get { return ""; }
-        }
+        //SCHERM CONTROLE\\
+        public ICommand SwitchViewModel => Navigator.StaticNavigator.SwitchViewModel;
 
         public override bool CanExecute(object parameter)
         {

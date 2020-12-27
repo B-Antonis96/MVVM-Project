@@ -4,13 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Match4Ever_DAL.DALServices.AuthenticationServices;
 
 namespace Match4Ever_WPF.State.Authenticators
 {
     public static class Authenticator //Static class om ingelogde gebruiker op te slaan => ook een "beetje" op het voorbeeld van YouTuber SingletonSean!
     {
-        //het ingelogde account
+        //Het ingelogde account
         public static Account HuidigAccount { get; set; }
+
+        //De gelinkt AccountVoorkeuren
+        public static List<AccountVoorkeur> AccountVoorkeuren { get; set; }
+
+        //De gelinkt AccountVoorkeuren
+        public static List<Match> Matches { get; set; }
+
+        //De gelinkt Locatie
+        public static Locatie HuidigeLocatie { get; set; }
 
         //Gebruiker ingelogd controle
         public static bool IsIngelogd { get; set; }

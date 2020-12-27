@@ -13,31 +13,69 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
     public class LoginService
     {
         //BENODIGDHEDEN
-        private readonly WachtwoordHasher Hasher = new WachtwoordHasher();
+        private readonly WachtwoordService Hasher = new WachtwoordService();
         private readonly DataService DataService = new DataService();
         private readonly DataTools Tools = new DataTools();
-        public AuthentcatieResultaat Resultaat { get; private set; }
+        public string ResultaatString { get; private set; }
+        private Account Account { get; set; }
+
+
+        //ACCOUNT FUNCTIES\\
 
         //Account login
         public Account Login(string gebruikersnaam, string wachtwoord)
         {
-            Resultaat = AuthentcatieResultaat.GebruikerBestaatNiet;
+            //Resultaten aanmaken + standaard resultaat
+            string[] zinnen = { "Gebruiker bestaat niet!", "Wachtwoord niet correct!", "Gelukt"};
+            ResultaatString = zinnen[0];
 
+            //AccountID ophalen op gebruikersnaam
             int id = DataService.AccountIDOphalenOpNaam(gebruikersnaam);
 
-            if (id > 0)
+            if (Tools.SizeChecker(id, 0))
             {
-                Account account = DataService.AccountOphalenOpID(id);
-                Resultaat = AuthentcatieResultaat.WachtwoordenNietHetZelfde;
+                //Wachtwoord ophalen op AccountID
+                string accountWachtwoord = DataService.AccountWachtwoordOphalenOpID(id);
+                ResultaatString = zinnen[1];
 
-                if (Tools.ParameterCheck(Hasher.HashWachtwoord(wachtwoord), account.Wachtwoord))
+                //Contoleren of wachtwoorden overeenkomen
+                if (Hasher.HashCheck(wachtwoord, accountWachtwoord))
                 {
-                    Resultaat = AuthentcatieResultaat.Gelukt;
-                    return account;
+                    //Account ophalen op AccountID
+                    Account = DataService.AccountOphalenOpID(id);
+                    ResultaatString = zinnen[2];
+                    return Account;
                 }
             }
 
-            return null; //Indien account niet gevonden wordt NULL terug gegeven
+            return null; //Indien account niet gevonden wordt of wachtwoord niet klopt NULL teruggeven
         }
+
+        //Account updaten of verwijderen
+        public Account AccountUpdatenOfVerwijderen(Account account, bool switcher)
+        {
+            ResultaatString = "Wijzigingen konden niet worden aangebracht!";
+            if (account != null)
+            {
+                if (switcher)
+                {
+                    if (DataService.AanpassenAccount(account))
+                    {
+                        ResultaatString = "Account aangepast!";
+                        return account;
+                    }
+                }
+                else
+                {
+                    if (DataService.VerwijderenAccount(account))
+                    {
+                        ResultaatString = "Gebruiker verwijderd!";
+                        return null;
+                    }
+                }
+            }
+            return null;
+        }
+
     }
 }

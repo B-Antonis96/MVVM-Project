@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
@@ -16,8 +17,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Text="GEBRUIKERS BEHEREN" Style="{StaticResource SecondTitleTextblock}"/>
-
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.65*"/>

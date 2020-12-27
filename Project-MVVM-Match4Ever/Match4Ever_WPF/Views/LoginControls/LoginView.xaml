@@ -6,31 +6,41 @@
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
              xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
              xmlns:nav="clr-namespace:Match4Ever_WPF.State.Navigators"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
              mc:Ignorable="d" 
              Style="{StaticResource LoginControlStijl}">
     
     <StackPanel>
+        <!--AANMELDEN-->
         <TextBlock Text="AANMELDEN" Style="{StaticResource HeadTitleStyle}"/>
         <StackPanel Style="{StaticResource MarginLoginStackPanel}">
             <Label Content="Gebruikersnaam" Style="{StaticResource TextStyle}"/>
             <TextBox Text="{Binding AccountLogin}" Style="{StaticResource RoundTextBox}"/>
         </StackPanel>
+
+        <!--WACHTWOORD-->
         <StackPanel Style="{StaticResource MarginLoginStackPanel}">
             <Label Content="Wachtwoord" Style="{StaticResource TextStyle}"/>
             <comps:BindablePasswordBox Password="{Binding Wachtwoord}"/>
         </StackPanel>
         <DockPanel>
+
+            <!--HYPERLINK REGISTREREN-->
             <TextBlock HorizontalAlignment="Left" Margin="100 10 0 20">
-                <Hyperlink Command="{Binding UpdateHuidigViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Registreer}">
+                <Hyperlink Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Registreer}" Style="{StaticResource HperlinkStyle}">
                     Nog geen profiel? Registreer je!
                 </Hyperlink>
             </TextBlock>
+
+            <!--HYPERLINK WACHTWOORD VERGETEN-->
             <TextBlock HorizontalAlignment="Right" Margin="0 10 100 20">
-                <Hyperlink Command="{Binding UpdateHuidigViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Wachtwoord}">
+                <Hyperlink Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Wachtwoord}" Style="{StaticResource HperlinkStyle}">
                     Wachtwoord vergeten?
                 </Hyperlink>
             </TextBlock>
         </DockPanel>
-        <Button Style="{StaticResource  LoginRegisterButton}"/>
+
+        <!--LOGIN KNOP-->
+        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Aanmelden}" Style="{StaticResource  LoginRegisterButton}"/>
     </StackPanel>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Match4Ever_WPF.Styles">
+                    xmlns:local="clr-namespace:Match4Ever_WPF.Styles"
+                    xmlns:comps="clr-namespace:Match4Ever_WPF.Components">
 
 
     <!--/////////// ALGEMEEN ///////////-->
@@ -91,8 +92,8 @@
         </Style.Resources>
     </Style>
 
-    <!--BASIS STIJL VOOR TOGGLEBUTTON (ROND)-->
-    <Style x:Key="ToggleButtonBaseRound" TargetType="{x:Type ToggleButton}">
+    <!--BASIS STIJL VOOR RADIOBUTTON (ROND)-->
+    <Style x:Key="RadioButtonBaseRound" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
         <Setter Property="FontFamily" Value="Impact"/>
         <Setter Property="FontSize" Value="22"/>
         <Style.Resources>
@@ -188,6 +189,8 @@
 
     <!--STIJL VOOR RONDE COMBOBOX-->
     <Style  x:Key="RoundComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -197,8 +200,8 @@
                             <ColumnDefinition MaxWidth="25"/>
                         </Grid.ColumnDefinitions>
                         <TextBox
-                             Style="{StaticResource RoundComboTextBox}"
-                             Height="{TemplateBinding Height}"/>
+                            Style="{StaticResource RoundComboTextBox}"
+                            Height="{TemplateBinding Height}"/>
                         <ToggleButton 
                             Style="{StaticResource ToggleButtonComboRound}"
                             Grid.Column="1"
@@ -227,7 +230,8 @@
                             <Grid
                                 SnapsToDevicePixels="True"                
                                 MinWidth="{TemplateBinding ActualWidth}"
-                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                Background="{StaticResource MainWitColor}">
                                 <Border 
                                     x:Name="DropDownBorder"
                                     BorderThickness="1"
@@ -298,13 +302,14 @@
     <!--STIJL VOOR REGISTRATIE ITEMS-->
     <Style x:Key="RegistrationItemStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource RegTussenTitleStyle}">
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="10 10 10 0"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="Margin" Value="10 10 0 0"/>
     </Style>
     
     <!--STIJL VOOR REGISTRATIE TEXTBOX-->
     <Style x:Key="RegistrationTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
-        <Setter Property="Margin" Value="5 5 0 5"/>
+        <Setter Property="Margin" Value="0 5 0 5"/>
+        <Setter Property="TextAlignment" Value="Center"/>
     </Style>
     
     <!--STIJL REGISTRATIE KNOP-->
@@ -315,26 +320,48 @@
         <Setter Property="Margin" Value="0 8 0 8"/>
     </Style>
 
-    <!--STIJL VOOR WACHTWOORD ITEMS-->
+    <!--STIJL VOOR WACHTWOORDEN ITEMS-->
     <Style x:Key="PasswordItemStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource RegTussenTitleStyle}">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="0 10 0 0"/>
     </Style>
 
-    <!--STIJL VOOR WACHTWOORD TEXTBOX-->
-    <Style x:Key="PasswordTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource RoundTextBox}">
-        <Setter Property="Margin" Value="0 5 0 5"/>
-    </Style>
-    
-    <!--STIJL VOOR WACHTWOORD KNOP-->
+    <!--STIJL VOOR WACHTWOORDEN KNOP-->
     <Style x:Key="PasswordButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RegistrationButton}">
         <Setter Property="Width" Value="220"/>
         <Setter Property="Margin" Value="0 8 0 8"/>
     </Style>
 
-
-
+    <!--STIJL VOOR REGISTRATION COMBOBOX-->
+    <Style x:Key="RegistrationComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource RoundComboBox}">
+        <Setter Property="Margin" Value="0 5 0 5"/>
+    </Style>
+    
+    <!--STIJL VOOR DATEPICKER -->
+    <Style x:Key="RegDatePicker" TargetType="{x:Type DatePicker}">
+        <Setter Property="Margin" Value="0 5 0 5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style TargetType="{x:Type DatePickerTextBox}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+    
+    <!--STIJL VOOR HYPERLINKS-->
+    <Style x:Key="HperlinkStyle" TargetType="{x:Type Hyperlink}">
+        <Setter Property="FontFamily" Value="{StaticResource MainFontFamily}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="{StaticResource MainRoodColor}"/>
+    </Style>
+    
 
     <!--/////////// STARTSCHERM BASIS ///////////-->
 
@@ -347,7 +374,7 @@
     </Style>
 
     <!--STIJL VOOR MENU KNOPPEN-->
-    <Style x:Key="ToggleButtonMenu" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ToggleButtonBaseRound}">
+    <Style x:Key="RadioButtonMenu" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource RadioButtonBaseRound}">
         <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
     </Style>
 
@@ -536,15 +563,12 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Margin" Value="5 20 0 5"/>
     </Style>
-    
-    <!--STIJL VOOR INSTELLINGEN PASSWORDBOX-->
-    <Style x:Key="InstellingenPasswordBox" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource RoundPasswordBox}">
-        <Setter Property="Height" Value="30"/>
-    </Style>
-    
+
     <!--STIJL VOOR INSTELLINGEN INFO LABEL-->
     <Style x:Key="InstellingenInfoLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource RoundBasisLabel}">
         <Setter Property="Margin" Value="10 15 10 5"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
         <Setter Property="Background" Value="{StaticResource MainBlauwMenuColor}"/>
         <Setter Property="BorderBrush" Value="{StaticResource MainDonkerZwartColor}"/>
         <Setter Property="BorderThickness" Value="2"/>
@@ -553,15 +577,21 @@
     <!--STIJL VOOR INSTELLINGEN WACHTWOORD BUTTON-->
     <Style x:Key="InstellingenWijzigWachtwoordButton" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundBasisButton}">
         <Setter Property="Background" Value="{StaticResource MainGroenColor}"/>
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="Width" Value="200"/>
+        <Setter Property="Width" Value="160"/>
         <Setter Property="Height" Value="30"/>
     </Style>
 
     <!--STIJL VOOR INSTELLINGEN VERWIJDER ACCOUNT BUTTON-->
     <Style x:Key="InstellingenVerwijderAccountButton" TargetType="{x:Type Button}" BasedOn="{StaticResource InstellingenWijzigWachtwoordButton}">
+        <Setter Property="Width" Value="200"/>
         <Setter Property="Background" Value="{StaticResource MainWarningRoodColor}"/>
         <Setter Property="Foreground" Value="{StaticResource MainWitColor}"/>
+    </Style>
+
+    <!--STIJL VOOR INSTELLINGEN VERWIJDER ACCOUNT BUTTON-->
+    <Style x:Key="InstellingenLoguitAccountButton" TargetType="{x:Type Button}" BasedOn="{StaticResource InstellingenVerwijderAccountButton}">
+        <Setter Property="Width" Value="100"/>
+
     </Style>
 
 

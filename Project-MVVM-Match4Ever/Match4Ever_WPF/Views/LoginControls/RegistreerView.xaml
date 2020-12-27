@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
              xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
              mc:Ignorable="d" 
              Style="{StaticResource LoginControlStijl}">
 
@@ -16,7 +17,10 @@
             <RowDefinition Height="0.12*"/>
         </Grid.RowDefinitions>
 
-        <Button Command="{Binding UpdateHuidigViewModelCommand}" CommandParameter="{x:Static nav:ViewType.Login}" Style="{StaticResource TerugKnop}"/>
+        <!--TERUGKNOP-->
+        <Button Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Login}" Style="{StaticResource TerugKnop}"/>
+        
+        <!--TITEL-->
         <TextBlock Text="REGISTEREN" Style="{StaticResource RegistrationTitleStyle}"/>
 
         <Grid Grid.Row="1">
@@ -28,6 +32,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <!--ACCOUNT AANMAKEN TUSSENTITEL-->
             <TextBlock Text="Account aanmaken" Style="{StaticResource RegTussenTitleStyle}"/>
 
             <Grid Grid.Row="1">
@@ -43,19 +48,24 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
+                <!--GEBRUIKERSNAAM-->
                 <TextBlock Text="Gebruikersnaam" Style="{StaticResource RegistrationItemStyle}"/>
                 <TextBox Text="{Binding Gebruikersnaam}" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
+                <!--EMAIL-->
                 <TextBlock Grid.Row="1" Text="Emailadres" Style="{StaticResource RegistrationItemStyle}"/>
                 <TextBox Text="{Binding Email}" Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
 
+                <!--WACHTWOORD-->
                 <TextBlock Grid.Row="2" Text="Wachtwoord" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Text="{Binding Wachtwoord}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <comps:BindablePasswordBox Password="{Binding Wachtwoord}" Grid.Row="2" Grid.Column="1" Margin="0 5 0 5"/>
 
+                <!--WACHTWOORD BEVESTIGEN-->
                 <TextBlock Grid.Row="3" Text="Wachtwoord bevestigen" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Text="{Binding WachtwoordBevestiging}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <comps:BindablePasswordBox Password="{Binding WachtwoordBevestiging}" Grid.Row="3" Grid.Column="1" Margin="0 5 0 5"/>
             </Grid>
 
+            <!--ACCOUNT INFORMATIE TUSSENTITEL-->
             <TextBlock Text="Account informatie" Grid.Row="3" Style="{StaticResource RegTussenTitleStyle}"/>
 
             <Grid Grid.Row="4">
@@ -71,20 +81,25 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Naam" Style="{StaticResource RegistrationItemStyle}"/>
-                <TextBox Text="{Binding Naam}" Grid.Column="1" Style="{StaticResource RegistrationTextBox}"/>
+                <!--GEMEENTE-->
+                <TextBlock Text="Gemeente" Style="{StaticResource RegistrationItemStyle}"/>
+                <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Column="1" Style="{StaticResource RegistrationComboBox}"/>
 
-                <TextBlock Grid.Row="1" Text="Geslacht" Style="{StaticResource RegistrationItemStyle}"/>
-                <ComboBox ItemsSource="{Binding GeslachtLijst}" SelectedItem="{Binding Geslacht}" Grid.Row="1" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
+                <!--NAAM-->
+                <TextBlock Grid.Row="1" Text="Geaardheid" Style="{StaticResource RegistrationItemStyle}"/>
+                <ComboBox ItemsSource="{Binding GeaardheidLijst}" SelectedItem="{Binding Geaardheid}" Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationComboBox}"/>
 
-                <TextBlock Grid.Row="2" Text="Land" Style="{StaticResource RegistrationItemStyle}"/>
-                <ComboBox ItemsSource="{Binding LandLijst}" SelectedItem="{Binding Land}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
+                <!--GESLACHT-->
+                <TextBlock Grid.Row="2" Text="Geslacht" Style="{StaticResource RegistrationItemStyle}"/>
+                <ComboBox ItemsSource="{Binding GeslachtLijst}" SelectedItem="{Binding Geslacht}" Grid.Row="2" Grid.Column="1" Style="{StaticResource RegistrationComboBox}"/>
 
-                <TextBlock Grid.Row="3" Text="Stad" Style="{StaticResource RegistrationItemStyle}"/>
-                <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RoundComboBox}"/>
+                <!--GEBOORTEDATUM-->
+                <TextBlock Grid.Row="3" Text="Geboortedatum" Style="{StaticResource RegistrationItemStyle}"/>
+                <DatePicker SelectedDate="{Binding Geboortedatum}" Grid.Row="3" Grid.Column="1" Style="{StaticResource RegDatePicker}"/>
             </Grid>
         </Grid>
 
-        <Button Command="{Binding}" CommandParameter="Registreer" Content="INDIENEN" Grid.Row="3" Style="{StaticResource RegistrationButton}"/>
+        <!--REGISTREER KNOP-->
+        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Registreer}" Content="INDIENEN" Grid.Row="3" Style="{StaticResource RegistrationButton}"/>
     </Grid>
 </UserControl>

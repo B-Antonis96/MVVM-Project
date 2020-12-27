@@ -1,114 +1,140 @@
-﻿using Match4Ever_DAL.DALServices.AuthenticationServices;
-using Match4Ever_DAL.Data.UnitOfWork;
-using Match4Ever_DAL.Models;
-using Match4Ever_WPF.State.Commands;
+﻿using Match4Ever_WPF.State.Commands;
 using Match4Ever_WPF.State.Navigators;
 using Match4Ever_WPF.ViewModels.Props;
+using Match4Ever_WPF.WPFTools;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
+using Match4Ever_WPF.State.Authenticators;
+using static Match4Ever_WPF.WPFTools.WPFEnums;
 
 namespace Match4Ever_WPF.ViewModels.Login_Reg
 {
     public class RegistreerViewModel : BasisViewModel
-    {
-        #region WindowControls
-        public INavigator Navigator = UpdateHuidigViewModelCommand.Navigator;
-        public UpdateHuidigViewModelCommand UpdateHuidigViewModelCommand { get; set; }
-        #endregion
+    {   
+        //SCHERM CONTROLE\\
+        public ICommand SwitchViewModel => Navigator.StaticNavigator.SwitchViewModel;
+
+        //BENODIGDHEDEN\\
+        private readonly DataComs DataCom = new DataComs();
+        private readonly DateTime TijdMin18Jaar;
+        private readonly Tools Tools = new Tools();
 
         //CONSTRUCTOR\\
         public RegistreerViewModel()
         {
-            this.UpdateHuidigViewModelCommand = new UpdateHuidigViewModelCommand(Navigator);
+            GeslachtLijst = Enum.GetNames(typeof(Geslachten)).ToList();
+            GeaardheidLijst = Enum.GetNames(typeof(Geaardheden)).ToList();
+            TijdMin18Jaar = DateTime.Now.AddDays(-1).AddYears(-18);
         }
 
-        //BENODIGDHEEDEN\\
-        private RegistrationService Registreren = new RegistrationService();
+        //UPDATEVIEWMODEL\\
+        public void UpdateRegistreerViewModel()
+        {
+            //Locaties opniew opvullen
+            StadLijst = DataCom.LocatiesOphalen();
 
-        //GETTERS & SETTERS\\
+            //Reset
+            Gebruikersnaam = null;
+            Email = null;
+            Geaardheid = null;
+            Geslacht = null;
+            Stad = null;
+            Geboortedatum = TijdMin18Jaar;
+        }
+
+        //ONDERDELEN\\
         public string Gebruikersnaam { get; set; }
         public string Email { get; set; }
         public string Wachtwoord { get; set; }
         public string WachtwoordBevestiging { get; set; }
-        public string Naam { get; set; }
+        public List<string> GeaardheidLijst { get; set; }
+        public string Geaardheid { get; set; }
         public List<string> GeslachtLijst { get; set; }
         public string Geslacht { get; set; }
-        public List<string> LandLijst { get; set; }
-        public string Land { get; set; }
+        public DateTime Geboortedatum { get; set; }
         public List<string> StadLijst { get; set; }
         public string Stad { get; set; }
 
-
-        public override string this[string columnName]
-        {
-            get { return ""; }
-        }
-
+        //Testen van commands
         public override bool CanExecute(object parameter)
         {
-            switch (parameter.ToString())
+            if (parameter is Commands command)
             {
-                case "Registreer":
-                    return true;
-            };
+                switch (command)
+                {
+                    case Commands.Registreer:
+                        return true;
+                    case Commands.Update:
+                        return true;
+                }
+            }
 
-            return true;
+            return false;
         }
 
+        //Uitvoeren van commands
         public override void Execute(object parameter)
         {
-            switch (parameter.ToString())
+            if (parameter is Commands command)
             {
-                case "Registreer":
-                    Registreer();
-                    break;
-            };
+                switch (command)
+                {
+                    case Commands.Registreer:
+                        Registreer();
+                        break;
+                    case Commands.Update:
+                        UpdateRegistreerViewModel();
+                        break;
+                        
+                }
+            }
         }
 
-        //COMMAND PARAMETERS\\
+
+        //COMMANDS\\
+
+        //Registreer
         public void Registreer()
         {
             string resultaat = "Alle velden moeten ingevuld zijn!";
 
+            //Controleren op lege velden doormiddel van VeldChecker methode
             if (VeldChecker())
             {
-                Registreren.RegistreerGebruiker(Email, Gebruikersnaam, Wachtwoord, WachtwoordBevestiging, Naam, Geslacht, Land, Stad);
-                resultaat = Registreren.Resultaat();
+                //Gebruiker registreren doormidddel van Registratie service + resultaat opvragen
+                resultaat = DataCom.Registreren(Email.ToLower(), Gebruikersnaam, Wachtwoord,
+                    WachtwoordBevestiging, Geaardheid, Geslacht, Geboortedatum, Stad);
             }
 
+            //Meldingen tonen
             MessageBox.Show(resultaat);
 
+            //Indien registratie succesvol was terug naar login scherm
+            if (Authenticator.IsIngelogd)
+            {
+                //Benodigde ViewModels aanmaken
+                ViewModelBuilder.ViewModelsAanmaken();
+                SwitchViewModel.Execute(ViewType.MenuUser);
+                SwitchViewModel.Execute(ViewType.Welkom);
+            }
         }
-
 
         //HULP METHODES\\
 
         //Checken op lege velden
         private bool VeldChecker()
         {
-            if (VeldVol(Gebruikersnaam) &&
-                VeldVol(Email) &&
-                VeldVol(Wachtwoord) &&
-                VeldVol(WachtwoordBevestiging) &&
-                VeldVol(Naam) &&
-                VeldVol(Geslacht) &&
-                VeldVol(Land) &&
-                VeldVol(Stad))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        //Kijken of veld "vol" is => kwestie van niet vaak !string.IsNullOrWhiteSpace() te moeten typen!
-        private bool VeldVol(string veld)
-        {
-            if (!string.IsNullOrWhiteSpace(veld))
+            if (Tools.VeldVol(Gebruikersnaam) &&
+                Tools.VeldVol(Email) &&
+                Tools.VeldVol(Wachtwoord) &&
+                Tools.VeldVol(WachtwoordBevestiging) &&
+                Tools.VeldVol(Geaardheid) &&
+                Tools.VeldVol(Geslacht) &&
+                Geboortedatum != null &&
+                Tools.VeldVol(Stad))
             {
                 return true;
             }

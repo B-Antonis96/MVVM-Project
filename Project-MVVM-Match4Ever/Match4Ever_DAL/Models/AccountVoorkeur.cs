@@ -20,14 +20,14 @@ namespace Match4Ever_DAL.Models
 
         public int VoorkeurID { get; set; }
 
+        public int VoorkeurAntwoordID { get; set; }
+
         //NAVIGATIE
 
         //Account meegeven
-        [ForeignKey("AccountID")]
         public Account Account { get; set; }
 
         //Voorkeur meegeven
-        [ForeignKey("VoorkeurID")]
         public Voorkeur Voorkeur { get; set; }
     }
 }

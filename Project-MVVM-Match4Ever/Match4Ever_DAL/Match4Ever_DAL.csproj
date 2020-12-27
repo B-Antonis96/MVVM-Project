@@ -65,9 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasisModels\BasisKlasse.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AccountVoorkeurService.cs" />
     <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\DataEnums.cs" />
-    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\WachtwoordHasher.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\WachtwoordService.cs" />
     <Compile Include="DALServices\AuthenticationServices\LoginService.cs" />
     <Compile Include="DALServices\AuthenticationServices\RegistrationService.cs" />
     <Compile Include="DALServices\DataServices\DataService.cs" />
@@ -88,6 +88,26 @@
     <Compile Include="Migrations\202012210031430_ExtraveranderingenMigration.cs" />
     <Compile Include="Migrations\202012210031430_ExtraveranderingenMigration.designer.cs">
       <DependentUpon>202012210031430_ExtraveranderingenMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012231123559_AccountModelChangesMigration.cs" />
+    <Compile Include="Migrations\202012231123559_AccountModelChangesMigration.designer.cs">
+      <DependentUpon>202012231123559_AccountModelChangesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012240115414_LocationChangesMigration.cs" />
+    <Compile Include="Migrations\202012240115414_LocationChangesMigration.designer.cs">
+      <DependentUpon>202012240115414_LocationChangesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012250330572_ModelChangesNaamMigration.cs" />
+    <Compile Include="Migrations\202012250330572_ModelChangesNaamMigration.designer.cs">
+      <DependentUpon>202012250330572_ModelChangesNaamMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012251919122_MatchUpdateMigration.cs" />
+    <Compile Include="Migrations\202012251919122_MatchUpdateMigration.designer.cs">
+      <DependentUpon>202012251919122_MatchUpdateMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012251926565_ExtraMatchUpdateMigration.cs" />
+    <Compile Include="Migrations\202012251926565_ExtraMatchUpdateMigration.designer.cs">
+      <DependentUpon>202012251926565_ExtraMatchUpdateMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -115,6 +135,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012210031430_ExtraveranderingenMigration.resx">
       <DependentUpon>202012210031430_ExtraveranderingenMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012231123559_AccountModelChangesMigration.resx">
+      <DependentUpon>202012231123559_AccountModelChangesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012240115414_LocationChangesMigration.resx">
+      <DependentUpon>202012240115414_LocationChangesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012250330572_ModelChangesNaamMigration.resx">
+      <DependentUpon>202012250330572_ModelChangesNaamMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012251919122_MatchUpdateMigration.resx">
+      <DependentUpon>202012251919122_MatchUpdateMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012251926565_ExtraMatchUpdateMigration.resx">
+      <DependentUpon>202012251926565_ExtraMatchUpdateMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
-﻿using Match4Ever_WPF.ViewModels.Props;
+﻿using Match4Ever_WPF.State.Navigators;
+using Match4Ever_WPF.ViewModels.Props;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +11,15 @@ namespace Match4Ever_WPF.ViewModels.Menu
 {
     public class UserMenuViewModel : BasisViewModel
     {
-        public override string this[string columnName]
-        {
-            get { return ""; }
-        }
+        //SCHERM CONTROLE\\
+        public ICommand SwitchViewModel => Navigator.StaticNavigator.SwitchViewModel;
 
+        //Aleen maar overschrijven van basisviewmodel, moeten overerven want anders werkt navigatie hier niet! 
         public override bool CanExecute(object parameter)
         {
-            switch (parameter.ToString())
-            {
-
-            };
-
             return true;
         }
 
-        public override void Execute(object parameter)
-        {
-            switch (parameter.ToString())
-            {
-
-            };
-        }
+        public override void Execute(object parameter) { }
     }
 }
