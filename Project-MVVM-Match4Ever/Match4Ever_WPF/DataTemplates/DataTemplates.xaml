@@ -13,6 +13,9 @@
                     xmlns:adminviews="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
                     xmlns:userviews="clr-namespace:Match4Ever_WPF.Views.UserControls">
 
+    
+    <!--Geïmplementeerd uit het voorbeeld van YouTuber SingletonSean! => een ware held!-->
+
     <!--/////// DATATEMPLATES (binden van views en viewmodels) \\\\\\\-->
 
     <!--MAIN WINDOW & MAIN VIEW-->

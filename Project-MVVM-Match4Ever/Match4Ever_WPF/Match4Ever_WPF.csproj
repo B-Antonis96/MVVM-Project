@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,6 +45,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PropertyChanged, Version=3.3.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.3.1\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -71,16 +75,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="State\Authenticators\AdminInstellingen.cs" />
+    <Compile Include="State\Authenticators\AuthenticatorInstellingen.cs" />
+    <Compile Include="State\Authenticators\DataComs.cs" />
+    <Compile Include="State\Commands\CommandEnums.cs" />
     <Compile Include="State\Commands\UpdateHuidigViewModelCommand.cs" />
     <Compile Include="Components\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\StartKnop.xaml.cs">
-      <DependentUpon>StartKnop.xaml</DependentUpon>
-    </Compile>
     <Compile Include="State\Authenticators\Authenticator.cs" />
     <Compile Include="State\Navigators\INavigator.cs" />
     <Compile Include="State\Navigators\Navigator.cs" />
+    <Compile Include="State\Navigators\ViewModelBuilder.cs" />
+    <Compile Include="Styles\TestImages\FotoLinks.cs" />
     <Compile Include="ViewModels\Admin\AdminInstellingenViewModel.cs" />
     <Compile Include="ViewModels\Admin\LijstGebruikersViewModel.cs" />
     <Compile Include="ViewModels\Admin\VoorkeurenWijzigenViewModel.cs" />
@@ -138,6 +145,8 @@
     <Compile Include="Views\UserControls\VoorkeurenView.xaml.cs">
       <DependentUpon>VoorkeurenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFTools\Tools.cs" />
+    <Compile Include="WPFTools\WPFEnums.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -174,10 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Components\BindablePasswordBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\StartKnop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,9 +260,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Styles\TestImages\ProfilePicTest.png" />
+    <Resource Include="Styles\TestImages\FinalPic1.jpg" />
+    <Resource Include="Styles\TestImages\FinalPic2.jpg" />
+    <Resource Include="Styles\TestImages\FinalPic3.jpg" />
+    <Resource Include="Styles\TestImages\FinalPic4.jpg" />
+    <Resource Include="Styles\TestImages\FinalPic5.png" />
+    <Resource Include="Styles\TestImages\FinalPic6.jpg" />
+    <Resource Include="Styles\TestImages\FinalPic7.png" />
+    <Resource Include="Styles\TestImages\FinalPic8.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -265,6 +276,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.6.3.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.3.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.3.1\build\PropertyChanged.Fody.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />
 </Project>

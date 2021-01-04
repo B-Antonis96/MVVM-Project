@@ -1,65 +1,66 @@
-﻿using Match4Ever_DAL.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-using Match4Ever_DAL.Data;
-using Match4Ever_DAL.Data.UnitOfWork;
 using Match4Ever_WPF.ViewModels.Props;
-using System.Windows.Input;
 using Match4Ever_WPF.State.Commands;
 using Match4Ever_WPF.State.Authenticators;
 using Match4Ever_WPF.State.Navigators;
+using System.Windows.Input;
+using Match4Ever_WPF.WPFTools;
+using System.Windows;
 
 namespace Match4Ever_WPF.ViewModels.Login_Reg
 {
     public class LoginViewModel : BasisViewModel
     {
-        #region WindowControls
-        public INavigator Navigator { get; set; }
-        public UpdateHuidigViewModelCommand UpdateHuidigViewModelCommand { get; set; }
+        //SCHERM CONTROLE\\
+        public ICommand SwitchViewModel => Navigator.StaticNavigator.SwitchViewModel;
 
-        public LoginViewModel(INavigator navigator)
-        {
-            this.Navigator = navigator;
-            this.UpdateHuidigViewModelCommand = new UpdateHuidigViewModelCommand(Navigator);
-        }
+        //BENODIGDHEDEN\\
+        private readonly AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
 
-        #endregion
-
-        //Attributen
+        //ONDERDELEN\\
         public string AccountLogin { get; set; }
-
         public string Wachtwoord { get; set; }
 
-        public ObservableCollection<Account> Accounts { get; set; }
-
-
-        public override string this[string columnName]
+        //UPDATEVIEWMODEL\\
+        public void UpdateLoginViewModel()
         {
-            get { return ""; }
+            AccountLogin = null;
         }
 
+        //Testen van commands
         public override bool CanExecute(object parameter)
         {
-            switch (parameter.ToString())
+            if (parameter is Commands command)
             {
-
-            };
-
-            return true;
+                switch (command)
+                {
+                    case Commands.Aanmelden:
+                        return true;
+                    case Commands.Update:
+                        return true;
+                }
+            }
+            return false;
         }
 
+        //Uitvoeren van commands
         public override void Execute(object parameter)
         {
-            switch (parameter.ToString())
+            if (parameter is Commands command)
             {
-
-            };
+                switch (command)
+                {
+                    case Commands.Aanmelden:
+                        Instellingen.LogIn(AccountLogin, Wachtwoord);
+                        break;
+                    case Commands.Update:
+                        UpdateLoginViewModel();
+                        break;
+                }
+            }
         }
-
-
     }
 }

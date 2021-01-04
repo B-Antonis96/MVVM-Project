@@ -4,20 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Match4Ever_WPF.Views"
-        
-        xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
-        
         mc:Ignorable="d"
         Title="Match4Ever" Style="{StaticResource CustomWindow}">
 
     <Grid>
+        <!--INHOUD MAINWINDOW-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <comps:StartKnop Grid.Row="1" DataContext="{Binding Navigator}"/>
-
-        <ContentControl Grid.Row="1" Content="{Binding Navigator.HuidigViewModel}"/>
+        <!--MENU-->
+        <ContentControl Content="{Binding StaticNavigator.HuidigMenuViewModel}"/>
+        
+        <!--SCHERM-->
+        <ContentControl Grid.Row="1" Content="{Binding StaticNavigator.HuidigViewModel}"/>
     </Grid>
 </Window>

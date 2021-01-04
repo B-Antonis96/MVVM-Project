@@ -1,56 +1,34 @@
 ﻿using Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts;
+using Match4Ever_DAL.DALServices.DataServices;
 using Match4Ever_DAL.Data;
-using Match4Ever_DAL.Data.UnitOfWork;
 using Match4Ever_DAL.Models;
 using System;
+using System.Net.Mail;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts.AuthenticationEnums;
+using System.Text.RegularExpressions;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices
 {
-    public class RegistrationService
+    public sealed class RegistrationService
     {
         //BENODIGDHEDEN\\
-        private readonly IUnitOfWork WorkUnit = new UnitOfWork(new Match4EverEntities());
-        private readonly WachtwoordHasher Hasher = new WachtwoordHasher();
-        private ObservableCollection<Account> Accounts { get; set; }
+        private readonly WachtwoordService Hasher = new WachtwoordService();
+        private readonly DataService DataService = new DataService();
+        private readonly DataTools Tools = new DataTools();
+        public List<string> ResultaatString { get; private set; } = new List<string>();
 
-        public RegistrationService()
-        {
 
-        }
-
-        //Admin registreren
-        //public void RegistreerAdmin(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, Locatie locatie)
-        //{
-        //    //Account check uitvoeren
-        //    if (CheckAccounts(gebruikersnaam, email, wachtwoord, bevestigwachtwoord) == AuthentcatieResultaat.Gelukt)
-        //    {
-        //        //Admin aanmaken
-        //        Account admin = new Account()
-        //        {
-        //            Emailadres = email,
-        //            Gebruikersnaam = gebruikersnaam,
-        //            Wachtwoord = Hasher.HashWachtwoord(wachtwoord),
-        //            Locatie = locatie,
-        //            IsAdmin = true
-        //        };
-
-        //        //Admin toevoegen aan database
-        //        ToevoegenAccount(admin);
-        //    }
-        //}
+        //REGISTRATIE FUNCTIES\\
 
         //Gebruiker registreren
-        public void RegistreerGebruiker(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, 
-            string naam, string geslacht, string geaardheid, DateTime geboortedatum, Locatie locatie)
+        public Account Registreer(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, 
+            string geaardheid, string geslacht, DateTime geboortedatum, string stad, bool admin)
         {
             //Acount check uitvoeren
-            if (CheckAccounts(gebruikersnaam, email, wachtwoord, bevestigwachtwoord) == AuthentcatieResultaat.Gelukt)
+            if (!AccountChecks(gebruikersnaam, email, wachtwoord, bevestigwachtwoord, geboortedatum).Contains(false))
             {
                 //Gebruiker aanmaken
                 Account gebruiker = new Account()
@@ -58,60 +36,96 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
                     Emailadres = email,
                     Gebruikersnaam = gebruikersnaam,
                     Wachtwoord = Hasher.HashWachtwoord(wachtwoord),
-                    Naam = naam,
-                    Geslacht = geslacht,
                     Geaardheid = geaardheid,
+                    Geslacht = geslacht,
                     Geboortedatum = geboortedatum,
-                    Locatie = locatie,
-                    IsAdmin = false
+                    LocatieID = DataService.LocatieIDOphalen(stad),
+                    IsAdmin = admin
                 };
 
+                //Anders fout op admin toe te voegen!
+                if (gebruiker.LocatieID == 0)
+                {
+                    gebruiker.LocatieID = null;
+                }
+
+                if ((bool)!gebruiker.IsAdmin)
+                {
+                    gebruiker.AccountVoorkeuren = new List<AccountVoorkeur>();
+                }
+
                 //Gebruiker toevoegen aan database
-                ToevoegenAccount(gebruiker);
+                DataService.ToevoegenAccount(gebruiker);
+                return gebruiker;
             }
+
+            return null; //Indien registratie niet gelukt is NULL teruggeven
         }
 
 
-        //GEDEELDE FUNCTIES\
+        //REGISTRATIE HELPER FUNCTIES\\
 
-        //Parameter checker
-        private bool ParameterCheck(string parameter, string parameterCheck) => parameter == parameterCheck;
-
-        //Toevoegen account in database
-        private void ToevoegenAccount(Account account) => WorkUnit.AccountRepo.EntityToevoegen(account);
-
-
-        //REGISTRATIE FUNCTIE\\
-
-        //Check naar bestaande accounts
-        private protected AuthentcatieResultaat CheckAccounts(string gebruikersnaam, string email, string wachtwoord, string bevestigwachtwoord)
+        //Leeftijd checken
+        private int LeeftijdChecker(DateTime geboortedatum)
         {
-            //Accounts ophalen uit database
-            Accounts = new ObservableCollection<Account>(WorkUnit.AccountRepo.AllesOphalen());
-
-            //Acounts controleren via iteratie
-            foreach (Account account in Accounts)
+            var vandaag = DateTime.Today;
+            var leeftijd = vandaag.Year - geboortedatum.Year;
+            if (geboortedatum > vandaag.AddYears(-leeftijd))
             {
-                //Controleren of gebruikersnaam al bestaat
-                if (ParameterCheck(gebruikersnaam, account.Gebruikersnaam))
-                {
-                    return AuthentcatieResultaat.GebruikersnaamBestaatAl;
-                }
-
-                //Controleren of email al bestaat
-                if (ParameterCheck(email, account.Emailadres))
-                {
-                    return AuthentcatieResultaat.EmailBestaatAl;
-                }
+                leeftijd--;
             }
+            return leeftijd;
+        }
 
-            //Wachtwoord controleren
-            if (!ParameterCheck(wachtwoord, bevestigwachtwoord))
+        //Account checker
+        private List<bool> AccountChecks(string gebruikersnaam, string email, string wachtwoord, string bevestigwachtwoord, DateTime geboortedatum)
+        {
+            //Leegmaken resultaat string
+            ResultaatString.Clear();
+
+            //List van controle bools
+            List<bool> bools = new List<bool>();
+
+            //Array van meldingen
+            string[] zinnen = { "Gebruiker bestaat al!\n",
+                "Email is al gekoppeld aan gebruiker!\n", "Een wachtwoord moet minstens 8 tekens bevatten!\n",
+                "Wachtwoorden komen niet overeen!\n", "Je moet 18 jaar of ouder zijn om deze app te gebruiken!\n",
+                "Registreren gelukt!"};
+
+            //Controleren of gebruikersnaam of email gelinkt is aan een AccountID
+            int[] id = { DataService.AccountIDOphalenOpNaam(gebruikersnaam), DataService.AccountIDOphalenOpEmail(email) };
+
+            //Als account op gebruikersnaam opgehaald kon worden....
+            bools.Add(IngaveChecker(Tools.SizeChecker(id[0], 0), zinnen[0]));
+
+            //Controleren of email al bestaat
+            bools.Add(IngaveChecker(Tools.SizeChecker(id[1], 0), zinnen[1]));
+
+            ////Controleren of wachtwoord meer dan 8 tekens bevat
+            bools.Add(IngaveChecker(Tools.SizeChecker(8, wachtwoord.Length), zinnen[2]));
+
+            //Wachtwoorden controleren
+            bools.Add(IngaveChecker(!Tools.ParameterCheck(wachtwoord, bevestigwachtwoord), zinnen[3]));
+
+            //Geboortedatum checken op huidige leeftijd! Ouder dan 18 jaar
+            bools.Add(IngaveChecker(Tools.SizeChecker(18, LeeftijdChecker(geboortedatum)), zinnen[4]));
+
+            //Nergens problemen, dan 'Gelukt' teruggeven aan ResultaatString
+            IngaveChecker(!bools.Contains(false), zinnen[5]);
+
+            return bools;
+        }
+
+        //Bool controleren
+        private bool IngaveChecker(bool ingave, string zin)
+        {
+            bool test = true;
+            if (ingave)
             {
-                return AuthentcatieResultaat.WachtwoordenNietHetZelfde;
+                test = false;
+                ResultaatString.Add(zin);
             }
-
-            return AuthentcatieResultaat.Gelukt;
+            return test;
         }
     }
 }

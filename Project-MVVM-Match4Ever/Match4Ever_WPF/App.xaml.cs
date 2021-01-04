@@ -10,25 +10,34 @@ using Match4Ever_WPF.ViewModels;
 using System.Windows.Input;
 using Match4Ever_WPF.ViewModels.Props;
 using Match4Ever_WPF.ViewModels.Login_Reg;
+using Match4Ever_WPF.State.Navigators;
+using Match4Ever_WPF.State.Authenticators;
 
 namespace Match4Ever_WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application //Geïmplementeerd uit het voorbeeld van Kilian (BindablePasswordBox)!
+    public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e) //Geïmplementeerd uit het voorbeeld van de lessen (BindablePasswordBox)!
         {
             Window startWindow = new MainWindow
             {
-
                 DataContext = new MainWindowViewModel()
             };
 
             startWindow.Show();
 
             base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            //Gebruiker uitloggen wanneer venster sluit
+            AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
+            Instellingen.LogUit(true);
+            base.OnExit(e);
         }
     }
 }

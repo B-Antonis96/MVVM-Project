@@ -15,7 +15,7 @@ namespace Match4Ever_DAL.Models
         public int AccountID { get; set; }
 
         //FOREIGN KEY
-        public int LocatieID { get; set; }
+        public int? LocatieID { get; set; } //Mag ook leeg zijn voor admin!
 
         //ATTRIBUTEN
         [Required]
@@ -34,9 +34,6 @@ namespace Match4Ever_DAL.Models
 
         [MaxLength(50)]
         public string ProfielfotoLink { get; set; }
-
-        [MaxLength(26)]
-        public string Naam { get; set; }
 
         [MaxLength(25)]
         public string Geslacht { get; set; }
@@ -57,7 +54,7 @@ namespace Match4Ever_DAL.Models
         //Collectie van AccountVoorkeur
         public ICollection<AccountVoorkeur> AccountVoorkeuren { get; set; }
 
-        //Collectie van Matchen
-        public ICollection<Match> Matchen { get; set; }
+        ////Collectie van Matchen
+        //public ICollection<Match> Matchen { get; set; }
     }
 }

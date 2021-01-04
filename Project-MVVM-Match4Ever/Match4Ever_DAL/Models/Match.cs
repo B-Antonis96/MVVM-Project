@@ -15,10 +15,7 @@ namespace Match4Ever_DAL.Models
         public int MatchID { get; set; }
 
         //FOREIGN KEY('S)
-        [Index(IsUnique = true)]
         public int Account1ID { get; set; }
-
-        [Index(IsUnique = true)]
         public int Account2ID { get; set; }
 
         //ATTRIBUTEN
@@ -30,10 +27,10 @@ namespace Match4Ever_DAL.Models
 
         //NAVIGATIE
 
-        //FOREIGN KEY naar Account1 (eigen Account)
+        //FOREIGN KEY naar Account1
         public Account Account1 { get; set; }
 
-        //FOREIGN KEY naar Account2 (andere Account => match)
+        //FOREIGN KEY naar Account2
         public Account Account2 { get; set; }
 
         //Collectie van Melding(en)
