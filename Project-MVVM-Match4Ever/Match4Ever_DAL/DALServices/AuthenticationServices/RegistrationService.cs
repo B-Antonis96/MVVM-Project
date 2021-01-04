@@ -8,31 +8,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts.DataEnums;
 using System.Text.RegularExpressions;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices
 {
-    public class RegistrationService
+    public sealed class RegistrationService
     {
         //BENODIGDHEDEN\\
         private readonly WachtwoordService Hasher = new WachtwoordService();
         private readonly DataService DataService = new DataService();
-        private DataTools Tools = new DataTools();
-        public string ResultaatString { get; private set; }
+        private readonly DataTools Tools = new DataTools();
+        public List<string> ResultaatString { get; private set; } = new List<string>();
 
-        //Regex voor email
-        private string RegexPattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
 
-        
         //REGISTRATIE FUNCTIES\\
 
         //Gebruiker registreren
-        public Account RegistreerGebruiker(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, 
-            string geaardheid, string geslacht, DateTime geboortedatum, string stad)
+        public Account Registreer(string email, string gebruikersnaam, string wachtwoord, string bevestigwachtwoord, 
+            string geaardheid, string geslacht, DateTime geboortedatum, string stad, bool admin)
         {
             //Acount check uitvoeren
-            if (AccountChecks(gebruikersnaam, email, wachtwoord, bevestigwachtwoord, geboortedatum) == AuthentcatieResultaat.Gelukt)
+            if (!AccountChecks(gebruikersnaam, email, wachtwoord, bevestigwachtwoord, geboortedatum).Contains(false))
             {
                 //Gebruiker aanmaken
                 Account gebruiker = new Account()
@@ -44,18 +40,23 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
                     Geslacht = geslacht,
                     Geboortedatum = geboortedatum,
                     LocatieID = DataService.LocatieIDOphalen(stad),
-                    IsAdmin = false
+                    IsAdmin = admin
                 };
 
+                //Anders fout op admin toe te voegen!
+                if (gebruiker.LocatieID == 0)
+                {
+                    gebruiker.LocatieID = null;
+                }
+
+                if ((bool)!gebruiker.IsAdmin)
+                {
+                    gebruiker.AccountVoorkeuren = new List<AccountVoorkeur>();
+                }
+
                 //Gebruiker toevoegen aan database
-                if (DataService.ToevoegenAccount(gebruiker))
-                {
-                    return gebruiker;
-                }
-                else
-                {
-                    ResultaatString = "Er is iets fout gegaan!";
-                }
+                DataService.ToevoegenAccount(gebruiker);
+                return gebruiker;
             }
 
             return null; //Indien registratie niet gelukt is NULL teruggeven
@@ -64,7 +65,7 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
 
         //REGISTRATIE HELPER FUNCTIES\\
 
-        //Leeftijd checken op +18 jaar
+        //Leeftijd checken
         private int LeeftijdChecker(DateTime geboortedatum)
         {
             var vandaag = DateTime.Today;
@@ -77,61 +78,54 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
         }
 
         //Account checker
-        private protected AuthentcatieResultaat AccountChecks(string gebruikersnaam, string email, string wachtwoord, string bevestigwachtwoord, DateTime geboortedatum)
+        private List<bool> AccountChecks(string gebruikersnaam, string email, string wachtwoord, string bevestigwachtwoord, DateTime geboortedatum)
         {
-            string[] zinnen = { "Gebruiker bestaat al!", "Geen correct emailadres ingegeven!",
-                "Email is al gekoppeld aan gebruiker!", "Wachtwoord te kort!\nEen wachtwoord moet minstens 8 tekens bevatten!",
-                "Wachtwoorden komen niet overeen!", "Je bent te jong!\nJe moet 18 jaar of ouder zijn om deze app te gebruiken!",
+            //Leegmaken resultaat string
+            ResultaatString.Clear();
+
+            //List van controle bools
+            List<bool> bools = new List<bool>();
+
+            //Array van meldingen
+            string[] zinnen = { "Gebruiker bestaat al!\n",
+                "Email is al gekoppeld aan gebruiker!\n", "Een wachtwoord moet minstens 8 tekens bevatten!\n",
+                "Wachtwoorden komen niet overeen!\n", "Je moet 18 jaar of ouder zijn om deze app te gebruiken!\n",
                 "Registreren gelukt!"};
 
             //Controleren of gebruikersnaam of email gelinkt is aan een AccountID
             int[] id = { DataService.AccountIDOphalenOpNaam(gebruikersnaam), DataService.AccountIDOphalenOpEmail(email) };
 
             //Als account op gebruikersnaam opgehaald kon worden....
-            if (Tools.SizeChecker(id[0], 0)) 
-            { 
-                ResultaatString = zinnen[0]; 
-                return AuthentcatieResultaat.NietGelukt;
-            }
-
-            //Controleren of email juist gevalideerd is
-            if (!Regex.IsMatch(email, RegexPattern)) 
-            {
-                ResultaatString = zinnen[1]; 
-                return AuthentcatieResultaat.NietGelukt;
-            }
+            bools.Add(IngaveChecker(Tools.SizeChecker(id[0], 0), zinnen[0]));
 
             //Controleren of email al bestaat
-            if (Tools.SizeChecker(id[1], 0)) 
-            { 
-                ResultaatString = zinnen[2]; 
-                return AuthentcatieResultaat.NietGelukt; 
-            }
+            bools.Add(IngaveChecker(Tools.SizeChecker(id[1], 0), zinnen[1]));
 
-            //Controleren of wachtwoord meer dan 8 tekens bevat
-            if (Tools.SizeChecker(8, wachtwoord.Length)) 
-            { 
-                ResultaatString = zinnen[3]; 
-                return AuthentcatieResultaat.NietGelukt; 
-            }
+            ////Controleren of wachtwoord meer dan 8 tekens bevat
+            bools.Add(IngaveChecker(Tools.SizeChecker(8, wachtwoord.Length), zinnen[2]));
 
             //Wachtwoorden controleren
-            if (!Tools.ParameterCheck(wachtwoord, bevestigwachtwoord)) 
-            {
-                ResultaatString = zinnen[4]; 
-                return AuthentcatieResultaat.NietGelukt;
-            }
+            bools.Add(IngaveChecker(!Tools.ParameterCheck(wachtwoord, bevestigwachtwoord), zinnen[3]));
 
-            //Geboortedatum checken op huidige leeftijd!
-            if (Tools.SizeChecker(18, LeeftijdChecker(geboortedatum))) 
-            {
-                ResultaatString = zinnen[5];
-                return AuthentcatieResultaat.NietGelukt; 
-            }
+            //Geboortedatum checken op huidige leeftijd! Ouder dan 18 jaar
+            bools.Add(IngaveChecker(Tools.SizeChecker(18, LeeftijdChecker(geboortedatum)), zinnen[4]));
 
-            //Nergens problemen, dan 'Gelukt' teruggeven
-            ResultaatString = zinnen[6];
-            return AuthentcatieResultaat.Gelukt;
+            //Nergens problemen, dan 'Gelukt' teruggeven aan ResultaatString
+            IngaveChecker(!bools.Contains(false), zinnen[5]);
+
+            return bools;
+        }
+
+        //Bool controleren
+        private bool IngaveChecker(bool ingave, string zin)
+        {
+            bool test = true;
+            if (ingave)
+            {
+                test = false;
+                ResultaatString.Add(zin);
+            }
+            return test;
         }
     }
 }

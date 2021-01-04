@@ -66,10 +66,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALServices\AuthenticationServices\AccountVoorkeurService.cs" />
-    <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\DataEnums.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AdminService.cs" />
     <Compile Include="DALServices\AuthenticationServices\AuthenticationParts\WachtwoordService.cs" />
     <Compile Include="DALServices\AuthenticationServices\LoginService.cs" />
     <Compile Include="DALServices\AuthenticationServices\RegistrationService.cs" />
+    <Compile Include="DALServices\AuthenticationServices\AntwoordVoorkeurService.cs" />
     <Compile Include="DALServices\DataServices\DataService.cs" />
     <Compile Include="DALServices\DataServices\DataTools.cs" />
     <Compile Include="Data\Match4EverEntities.cs" />

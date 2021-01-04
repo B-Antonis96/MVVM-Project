@@ -6,11 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts.DataEnums;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices
 {
-    public class LoginService
+    public sealed class LoginService
     {
         //BENODIGDHEDEN
         private readonly WachtwoordService Hasher = new WachtwoordService();
@@ -47,31 +46,31 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices
                     return Account;
                 }
             }
-
             return null; //Indien account niet gevonden wordt of wachtwoord niet klopt NULL teruggeven
         }
 
         //Account updaten of verwijderen
         public Account AccountUpdatenOfVerwijderen(Account account, bool switcher)
         {
-            ResultaatString = "Wijzigingen konden niet worden aangebracht!";
+            //Resultaten aanmaken + standaard resultaat
+            string[] zinnen = { "Wijzigingen konden niet worden aangebracht!", "Account aangepast!", "Gebruiker verwijderd!" };
+            ResultaatString = zinnen[0];
+
             if (account != null)
             {
                 if (switcher)
                 {
-                    if (DataService.AanpassenAccount(account))
-                    {
-                        ResultaatString = "Account aangepast!";
-                        return account;
-                    }
+                    //Account aanpassen en gewijzigde gebruiker + resultaat teruggeven
+                    DataService.AanpassenAccount(account);
+                    ResultaatString = zinnen[1];
+                    return account;
                 }
                 else
                 {
-                    if (DataService.VerwijderenAccount(account))
-                    {
-                        ResultaatString = "Gebruiker verwijderd!";
-                        return null;
-                    }
+                    //Account verwijderen en null + resultaat teruggeven
+                    DataService.VerwijderenAccount(account);
+                    ResultaatString = zinnen[2];
+                    return null;
                 }
             }
             return null;

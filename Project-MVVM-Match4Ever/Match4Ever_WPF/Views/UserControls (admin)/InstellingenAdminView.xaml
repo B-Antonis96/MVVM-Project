@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
              xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
-                          xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
+             xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.8*"/>
@@ -21,7 +20,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -34,22 +33,31 @@
                 <ColumnDefinition Width="1.15*"/>
             </Grid.ColumnDefinitions>
 
+            <!--WACHTWOORD VERANDEREN TITEL-->
             <TextBlock Text="Wachtwoord veranderen" Grid.ColumnSpan="2" Style="{StaticResource InstellingenTussenTitel}"/>
 
+            <!--HUIDIG WACHTWOORD-->
             <TextBlock Text="Huidig wachtwoord" Grid.Row="1" Style="{StaticResource InstellingenTextBlock}"/>
             <comps:BindablePasswordBox Password="{Binding HuidigWachtwoord}"  Height="30" Grid.Row="1" Grid.Column="1"/>
 
+            <!--NIEUW WACHTWOORD-->
             <TextBlock Text="Nieuw wachtwoord" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
-            <comps:BindablePasswordBox Password="{Binding NiewWachtwoord}" Height="30" Grid.Row="2" Grid.Column="1"/>
+            <comps:BindablePasswordBox Password="{Binding NieuwWachtwoord}" Height="30" Grid.Row="2" Grid.Column="1"/>
 
+            <!--BEVESTIG WACHTWOORD-->
             <TextBlock Text="Bevestig wachtwoord" Grid.Row="3" Style="{StaticResource InstellingenTextBlock}"/>
-            <comps:BindablePasswordBox Password="{Binding NiewWachtwoordBevestiging}"  Height="30" Grid.Row="3" Grid.Column="1"/>
+            <comps:BindablePasswordBox Password="{Binding NieuwWachtwoordBevestiging}"  Height="30" Grid.Row="3" Grid.Column="1"/>
 
+            <!--ACCOUNT INFO-->
             <Label Content="{Binding AccountInfo}" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingenInfoLabel}"/>
         </Grid>
-
-        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="OPSLAAN" Grid.Row="2" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
-        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Verwijder}" Content="VERWIJDER ACCOUNT" Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenVerwijderAccountButton}"/>
+        
+        <!--KNOPPEN-->
+        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="OPSLAAN" Grid.Row="1" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
+        <DockPanel Grid.Row="1" Grid.Column="1">
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Afmelden}" Content="LOG UIT" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenLoguitAccountButton}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Verwijder}" Content="VERWIJDER ACCOUNT" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenVerwijderAccountButton}"/>
+        </DockPanel>
 
     </Grid>
 </UserControl>

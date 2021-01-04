@@ -41,18 +41,22 @@
                     <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
 
+                <!--VOORKEUR VRAAG TITEL-->
                 <TextBlock Text="Voorkeur vraag:" Grid.ColumnSpan="4" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
 
-                <Label Content="Voorkeurvraag : 1 " Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource BasisVoorkeurLabel}"/>
+                <!--INHOUD LABEL-->
+                <Label Content="{Binding Inhoud}" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource BasisVoorkeurLabel}"/>
 
+                <!--VOORKEUR VRAAG AANPASSEN-->
                 <TextBlock Text="Voorkeur vraag aanpassen:" Grid.Row="2" Grid.ColumnSpan="4" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
-                <TextBox Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource VoorkeurTextBox}"/>
+                <TextBox Text="{Binding VoorkeurVraag}" Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource VoorkeurTextBox}"/>
 
-                <Button Content="◀" HorizontalAlignment="Right" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="▶" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="+" HorizontalAlignment="Right" ToolTip="Voeg een nieuwe vraag toe!" Grid.Column="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="🗑" HorizontalAlignment="Left" ToolTip="Verwijder huidige vraag!" Grid.Column="1" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="✔" HorizontalAlignment="Center" ToolTip="Bewaar huidige vraag!" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <!--VRAAG BEWERKING KNOPPEN-->
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Vorige}" Content="◀" HorizontalAlignment="Right" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Volgende}" Content="▶" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.ToevoegenVoorkeur}" Content="+" HorizontalAlignment="Right" ToolTip="Voeg een nieuwe vraag toe!" Grid.Column="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.VerwijderenVoorkeur}" Content="🗑" HorizontalAlignment="Left" ToolTip="Verwijder huidige vraag!" Grid.Column="1" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.AanpassenVoorkeur}" Content="✔" HorizontalAlignment="Center" ToolTip="Bewaar huidige vraag!" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
             </Grid>
             
             <Grid Grid.Column="1" Grid.Row="1">
@@ -69,15 +73,18 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <!--ANTWOORD SELECTEREN-->
                 <TextBlock Text="Voorkeur antwoord selecteren:" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
-                <ComboBox Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurComboBox}"/>
+                <ComboBox ItemsSource="{Binding AntwoordLijst}" SelectedItem="{Binding VoorkeurAntwoord}" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurComboBox}"/>
 
+                <!--ANTWOORD WIJZIGEN OF TOEVOEGEN-->
                 <TextBlock Text="Voorkeur antwoord wijzigen / toevoegen:" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource VoorkeurAdminTitleTextBlock}"/>
-                <TextBox Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurTextBox}"/>
+                <TextBox Text="{Binding Antwoord}" Grid.Row="3" Grid.ColumnSpan="3" Style="{StaticResource VoorkeurTextBox}"/>
 
-                <Button Content="+" HorizontalAlignment="Left" ToolTip="Voeg een nieuwe antwoord toe!" Grid.Column="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="🗑" HorizontalAlignment="Right" ToolTip="Verwijder huidig antwoord!" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
-                <Button Content="✔" HorizontalAlignment="Center" ToolTip="Bewaar huidig antwoord!" Grid.Column="1" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <!--ANTWOORD BEWERKING KNOPPEN-->
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.ToevoegenAntwoord}" Content="+" HorizontalAlignment="Left" ToolTip="Voeg een nieuwe antwoord toe!" Grid.Column="2" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.VerwijderenAntwoord}" Content="🗑" HorizontalAlignment="Right" ToolTip="Verwijder huidig antwoord!" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.AanpassenAntwoord}" Content="✔" HorizontalAlignment="Center" ToolTip="Bewaar huidig antwoord!" Grid.Column="1" Grid.Row="4" Style="{StaticResource BackForwardVoorkeurButton}"/>
             </Grid>
         </Grid>
     </Grid>

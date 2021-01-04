@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.Data.UnitOfWork
 {
-    public interface IUnitOfWork : IDisposable //Geïmplementeerd uit het voorbeeld van Maaike!
+    public interface IUnitOfWork : IDisposable //Geïmplementeerd uit het voorbeeld van de lessen!
     {
         IRepository<Account> AccountRepo { get; }
         IRepository<AccountVoorkeur> AccountVoorkeurRepo { get; }

@@ -59,7 +59,6 @@ namespace Match4Ever_WPF.State.Navigators
                     MeldingenVM = new MeldingenViewModel();
                     UserInstellingenVM = new UserInstellingenViewModel();
                     VoorkeurenVM = new VoorkeurenViewModel();
-                    LoginRegViewModelsNullen();
                 }
                 else
                 {
@@ -68,8 +67,8 @@ namespace Match4Ever_WPF.State.Navigators
                     AdminInstellingenVM = new AdminInstellingenViewModel();
                     LijstGebruikersVM = new LijstGebruikersViewModel();
                     VoorkeurenWijzigenVM = new VoorkeurenWijzigenViewModel();
-                    LoginRegViewModelsNullen();
                 }
+                LoginRegViewModelsNullen();
             }
         }
 
@@ -97,7 +96,7 @@ namespace Match4Ever_WPF.State.Navigators
         }
 
         //Login en registratie ViewModel op null zetten
-        public static void LoginRegViewModelsNullen()
+        private static void LoginRegViewModelsNullen()
         {
             //Menu ViewModels op null zetten
             LoginVM = null;

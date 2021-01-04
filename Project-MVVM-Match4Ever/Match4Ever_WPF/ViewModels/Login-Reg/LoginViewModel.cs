@@ -18,13 +18,17 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
         public ICommand SwitchViewModel => Navigator.StaticNavigator.SwitchViewModel;
 
         //BENODIGDHEDEN\\
-        private readonly Tools Tools = new Tools();
-        private readonly DataComs DataCom = new DataComs();
+        private readonly AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
 
         //ONDERDELEN\\
         public string AccountLogin { get; set; }
-
         public string Wachtwoord { get; set; }
+
+        //UPDATEVIEWMODEL\\
+        public void UpdateLoginViewModel()
+        {
+            AccountLogin = null;
+        }
 
         //Testen van commands
         public override bool CanExecute(object parameter)
@@ -34,6 +38,8 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
                 switch (command)
                 {
                     case Commands.Aanmelden:
+                        return true;
+                    case Commands.Update:
                         return true;
                 }
             }
@@ -48,49 +54,12 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
                 switch (command)
                 {
                     case Commands.Aanmelden:
-                        Aanmelden();
+                        Instellingen.LogIn(AccountLogin, Wachtwoord);
+                        break;
+                    case Commands.Update:
+                        UpdateLoginViewModel();
                         break;
                 }
-            }
-        }
-
-        //Aanmelden
-        public void Aanmelden()
-        {
-            string resultaat = "Gebruikersnaam en wachtwoord moeten ingevuld zijn!";
-
-            //Controleren op lege velden
-            if (Tools.VeldVol(AccountLogin) &&
-                Tools.VeldVol(Wachtwoord))
-            {
-                //Gebruiker proberen inloggen, anders fouten teruggeven
-                resultaat = DataCom.LogIn(AccountLogin, Wachtwoord);
-            }
-
-            //Controleren of gebruiker is ingelogd
-            if (Authenticator.IsIngelogd)
-            {
-                //Benodigde ViewModels aanmaken
-                ViewModelBuilder.ViewModelsAanmaken();
-
-                if (!Authenticator.IsAdmin)
-                {
-                    //Naar gebruiker gedeelte
-                    SwitchViewModel.Execute(ViewType.MenuUser);
-                    SwitchViewModel.Execute(ViewType.Welkom);
-                }
-                else
-                {
-                    //Naar admin gedeelte
-                    SwitchViewModel.Execute(ViewType.MenuAdmin);
-                    SwitchViewModel.Execute(ViewType.VoorkeurenWijzigen);
-
-                }
-            }
-            else
-            {
-                //Fouten tonen
-                MessageBox.Show(resultaat);
             }
         }
     }

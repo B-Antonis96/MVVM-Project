@@ -8,13 +8,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="70" d:DesignWidth="700">
 
-    <Grid Grid.Row="0">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
+        <!--MENU RADIO BUTTONS-->
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Voorkeuren}"  Grid.Column="0" Content="VOORKEUREN" Style="{StaticResource RadioButtonMenu}"/>
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Meldingen}"  Grid.Column="1" Content="MELDINGEN" Style="{StaticResource RadioButtonMenu}"/>
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Matches}"  Grid.Column="2" Content="MATCHES" Style="{StaticResource RadioButtonMenu}"/>

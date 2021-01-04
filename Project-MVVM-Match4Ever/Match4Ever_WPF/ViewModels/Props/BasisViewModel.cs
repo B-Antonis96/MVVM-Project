@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Match4Ever_WPF.ViewModels.Props
 {
-    public abstract class BasisViewModel : ICommand, INotifyPropertyChanged  //Geïmplementeerd uit het voorbeeld van Maaike!
+    public abstract class BasisViewModel : ICommand, INotifyPropertyChanged  //Geïmplementeerd uit het voorbeeld van de lessen!
     {
         //EXECUTION PROPERTIES
         public event EventHandler CanExecuteChanged

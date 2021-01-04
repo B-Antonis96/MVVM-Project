@@ -8,9 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/profilepicdonaldduck.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/profilepicgoofy.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/profilepicmickey.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/profilepicminimouse.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic1.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic2.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic3.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic4.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic5.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic6.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic7.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("styles/testimages/finalpic8.jpg")]
 
 

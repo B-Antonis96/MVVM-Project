@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              Style="{StaticResource LoginControlStijl}">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
             <RowDefinition Height="0.15*"/>
@@ -36,15 +36,15 @@
         <!--EMAIL INGEVEN-->
         <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0" Visibility="{Binding Zichtbaarheid1}">
             <TextBlock Text="Emailadres" Style="{StaticResource PasswordItemStyle}"/>
-            <TextBox Style="{StaticResource RoundTextBox}"/>
-            <Button Content="VERSTUUR CODE" Style="{StaticResource RegistrationButton}"/>
+            <TextBox Text="{Binding Email}" Style="{StaticResource RoundTextBox}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Registreer}" Content="VERSTUUR CODE" Style="{StaticResource RegistrationButton}"/>
         </StackPanel>
 
         <!--CODE INVOEREN-->
         <StackPanel Grid.Row="3" Grid.Column="1" Visibility="{Binding Zichtbaarheid2}">
             <TextBlock Text="Voer ontvangen code in" Style="{StaticResource PasswordItemStyle}" Visibility="{Binding Zichtbaarheid2}"/>
-            <TextBox Style="{StaticResource RoundTextBox}"/>
-            <Button Content="CHECK CODE" Style="{StaticResource RegistrationButton}"/>
+            <TextBox Text="{Binding Code}" Style="{StaticResource RoundTextBox}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Aanmelden}" Content="CHECK CODE" Style="{StaticResource RegistrationButton}"/>
         </StackPanel>
 
         <!--NIEUW WACHTWOORD AANMAKEN-->
@@ -53,7 +53,7 @@
             <comps:BindablePasswordBox Password="{Binding Wachtwoord}"/>
             <TextBlock Text="Bevestig nieuw wachtwoord" Style="{StaticResource PasswordItemStyle}"/>
             <comps:BindablePasswordBox Password="{Binding WachtwoordBevestiging}"/>
-            <Button Content="VERANDER WACHTWOORD" Style="{StaticResource PasswordButton}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="VERANDER WACHTWOORD" Style="{StaticResource PasswordButton}"/>
         </StackPanel>
     </Grid>
 </UserControl>

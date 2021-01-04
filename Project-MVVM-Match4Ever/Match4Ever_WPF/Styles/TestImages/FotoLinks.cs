@@ -10,12 +10,17 @@ namespace Match4Ever_WPF.Styles.TestImages
     {
         public List<string> FotoLinksMethode()
         {
-            List<string> links = new List<string>();
-            links.Add("ProfilePicTest.png");
-            links.Add("ProfilePicDonaldDuck.jpg");
-            links.Add("ProfilePicGoofy.jpg");
-            links.Add("ProfilePicMickey.png");
-            links.Add("ProfilePicMiniMouse.png");
+            List<string> links = new List<string>
+            {
+                "FinalPic1.jpg",
+                "FinalPic2.jpg",
+                "FinalPic3.jpg",
+                "FinalPic4.jpg",
+                "FinalPic5.jpg",
+                "FinalPic6.jpg",
+                "FinalPic7.jpg",
+                "FinalPic8.jpg"
+            };
 
             return links;
         }

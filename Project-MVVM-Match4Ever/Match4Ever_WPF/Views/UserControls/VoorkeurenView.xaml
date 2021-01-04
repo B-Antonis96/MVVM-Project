@@ -37,10 +37,11 @@
                     <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
 
+                <!--VOORKEUR VRAAG WEERGEVEN-->
                 <TextBlock Text="Voorkeur vraag:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
-
                 <Label Content="{Binding Inhoud}" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BasisVoorkeurLabel}"/>
 
+                <!--KNOPPEN NAVIGATIE-->
                 <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Vorige}" Content="◀" HorizontalAlignment="Right" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
                 <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Volgende}" Content="▶" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
             </Grid>
@@ -52,10 +53,9 @@
                     <RowDefinition Height="0.8*"/>
                 </Grid.RowDefinitions>
 
+                <!--VOORKEUR ANTWOORD INSTELLEN-->
                 <TextBlock Text="Voorkeur antwoord:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
-
                 <ComboBox ItemsSource="{Binding AntwoordLijst}" SelectedItem="{Binding Antwoord}" Grid.Row="1" Style="{StaticResource VoorkeurComboBox}"/>
-
                 <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="ANTWOORD OPSLAAN" Grid.Row="2" Style="{StaticResource AanvaardVoorkeurButton}"/>
             </Grid>
         </Grid>

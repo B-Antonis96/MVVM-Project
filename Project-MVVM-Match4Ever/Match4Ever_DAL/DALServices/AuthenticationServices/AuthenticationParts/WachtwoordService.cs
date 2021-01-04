@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
 {
-    public class WachtwoordService
+    public sealed class WachtwoordService
     {
         //BENODIGDHEDEN\\
         private readonly IPasswordHasher Hasher = new PasswordHasher(); //ASP.NET onderdeel => zinloos om het wiel opnieuw uit te vinden !
-        private readonly DataService DataService = new DataService();
+        private DataService DataService = new DataService();
+        private DataTools Tools = new DataTools();
         public string ResultaatString { get; set; }
         public string Code { get; set; }
+        public int AccountID { get; set; }
 
         //Custom PasswordHasher
         public string HashWachtwoord(string wachtwoord) => Hasher.HashPassword(wachtwoord); 
@@ -27,13 +29,20 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
         //Verander wachtwoord
         public void VeranderWachtwoord(Account account, string niewWachtwoord, string bevestigWachtwoord)
         {
+            string[] zinnen = { "Wachtwoord zijn niet hetzelfde!", "Wachtwoord is aangepast!" };
+
+            ResultaatString = zinnen[0];
+
+            //Controleren of velden hetzelfde zijn
             if (WachtwoordCheck(niewWachtwoord, bevestigWachtwoord))
             {
-                ResultaatString = "Wachtwoord kon niet aangepast worden!";
-                account.Wachtwoord = HashWachtwoord(niewWachtwoord);
-                if (DataService.AanpassenAccount(account))
+                //Lengte van wachtwoord controleren
+                if (!Tools.SizeChecker(8, niewWachtwoord.Length))
                 {
-                    ResultaatString = "Wachtwoord is aangepast!";
+                    //Wachtwoord hashen en opslaan als neiuw wachtwoord
+                    account.Wachtwoord = HashWachtwoord(niewWachtwoord);
+                    ResultaatString = zinnen[1];
+                    DataService.AanpassenAccount(account);
                 }
             }
         }
@@ -41,33 +50,38 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
         //Wachtwoord vergeten
         public void WachtwoordVergeten(int id, string niewWachtwoord, string bevestigWachtwoord, string code)
         {
-            ResultaatString = "Email is niet gelinkt aan een account!";
-            if (id > 0)
+            string[] zinnen = { "Email is niet gelinkt aan een account!", "Code komt niet overeen!", "Wachtwoord aangepast.\nLogin met nieuwe wachtwoord!" };
+
+            ResultaatString = zinnen[0];
+
+            //Id op grootte controleren
+            if (Tools.SizeChecker(id, 0))
             {
-                ResultaatString = "Code komt niet overeen!";
-                if (code == Code)
+                ResultaatString = zinnen[1];
+
+                //Codes controleren met elkaar
+                if (Tools.ParameterCheck(code, Code))
                 {
+                    //Controleren of wachtwoorden hetzelfde zijn
                     if (WachtwoordCheck(niewWachtwoord, bevestigWachtwoord))
                     {
-                        ResultaatString = "Er is een onverwachte fout opgetreden!";
+                        //Account ophalen en wachtwoord veranderen + opslaan
                         Account account = DataService.AccountOphalenOpID(id);
                         account.Wachtwoord = HashWachtwoord(niewWachtwoord);
-                        if (DataService.AanpassenAccount(account))
-                        {
-                            ResultaatString = "Wachtwoord aangepast.\nLogin met nieuwe wachtwoord!";
-                        }
+                        ResultaatString = zinnen[2];
+                        DataService.AanpassenAccount(account);
                     }
                 }
             }
         }
 
         //Wachtwoord vergeten helper, code generator
-        public int CodeGenerator(string email)
+        public bool CodeGenerator(string email) //Genereerd een code op basis van email door alles naar chars te gooien en hier elke letter op het plaats van het alfabet op te halen
         {
             ResultaatString = "Email is niet gelinkt aan een account!";
 
             int id = DataService.AccountIDOphalenOpEmail(email);
-            if (id > 0)
+            if (Tools.SizeChecker(id, 0))
             {
                 string uitkomst = "";
                 Regex rgx = new Regex("[^a-zA-Z0-9 -]");
@@ -77,20 +91,24 @@ namespace Match4Ever_DAL.DALServices.AuthenticationServices.AuthenticationParts
                     uitkomst += (char.ToUpper(clean[i]) - 64).ToString();
                 }
                 Code = uitkomst;
-                return id;
+                AccountID = id;
+                return true;
             }
-            return 0;
+            return false;
         }
 
         //Wachtwoord helper lengte en hetzelfde
         public bool WachtwoordCheck(string niewWw, string bevestigWw)
         {
-            ResultaatString = "Wachtwoord moet minstens 8 tekens bevatten!";
-            if (niewWw.Length > 8)
+            string[] zinnen = { "Wachtwoord moet minstens 8 tekens bevatten!", "Wachtwoorden komen niet overeen!" };
+
+            ResultaatString = zinnen[0];
+            if (Tools.SizeChecker(niewWw.Length, 8))
             {
-                ResultaatString = "Wachtwoorden komen niet overeen!";
-                if (niewWw == bevestigWw)
+                ResultaatString = zinnen[1];
+                if (Tools.ParameterCheck(niewWw, bevestigWw))
                 {
+                    ResultaatString = "";
                     return true;
                 }
             }

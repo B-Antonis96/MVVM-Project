@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
              xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
+             xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
              mc:Ignorable="d" 
              Style="{StaticResource UserControlStijl}">
 
@@ -20,19 +21,17 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.65*"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Zoeken op gebruikersnaam" Style="{StaticResource GebruikersBeheerTextBlock}"/>
-            <TextBox Grid.Row="1" Style="{StaticResource GebruikersBeheerTextBox}"/>
-            
-            <TextBlock Text="Selecteer gebruiker" Grid.Row="2" Style="{StaticResource GebruikersBeheerTextBlock}"/>
-            <ComboBox Grid.Row="3" Style="{StaticResource GebruikersBeheerComboBox}"/>
+            <!--SELECTEER EEN GEBRUIKER-->
+            <TextBlock Text="Selecteer gebruiker" Grid.Row="1" Style="{StaticResource GebruikersBeheerTextBlock}"/>
+            <ComboBox ItemsSource="{Binding GebruikersLijst}" SelectedItem="{Binding Gebruiker}" Grid.Row="2" Style="{StaticResource GebruikersBeheerComboBox}"/>
 
-            <Button Content="VERWIJDER GEBRUIKER" Grid.Row="4" Style="{StaticResource VerwijderGebruikerButton}"/>
+            <!--VERWIJDER GEBRUIKER KNOP-->
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Verwijder}" Content="VERWIJDER GEBRUIKER" Grid.Row="3" Style="{StaticResource VerwijderGebruikerButton}"/>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -50,23 +49,27 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+            <!--VOEG ADMIN TOE TITEL-->
             <TextBlock Text="VOEG ADMIN TOE" Style="{StaticResource GebruikerTussenTitelTextBlock}"/>
 
+            <!--GEBRUIKERSNAAM OPGEVEN-->
             <TextBlock Text="Gebruikersnaam" Grid.Row="1" Style="{StaticResource GebruikerInvoerTextBlock}"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+            <TextBox Text="{Binding Gebruikersnaam}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
 
+            <!--EMAIL OPGEVEN-->
             <TextBlock Text="Emailadres" Grid.Row="2" Style="{StaticResource GebruikerInvoerTextBlock}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+            <TextBox Text="{Binding Email}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
 
+            <!--WACHTWOORD OPGEVEN-->
             <TextBlock Text="Wachtwoord" Grid.Row="3" Style="{StaticResource GebruikerInvoerTextBlock}"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
+            <comps:BindablePasswordBox Password="{Binding Wachtwoord}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="350" Height="30"/>
 
+            <!--WACHTWOORD BEVESTIGING OPGEVEN-->
             <TextBlock Text="Bevestig wachtwoord" Grid.Row="4" Style="{StaticResource GebruikerInvoerTextBlock}"/>
-            <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource AdminBeheerTextBox}"/>
-
-
+            <comps:BindablePasswordBox Password="{Binding WachtwoordBevestiging}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="350" Height="30"/>
         </Grid>
 
-        <Button Content="VOEG ADMIN TOE" Grid.Row="3" Style="{StaticResource VoegAdminToeButton}"/>
+        <!--VOEG ADMIN TOE KNOP-->
+        <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Registreer}" Content="VOEG ADMIN TOE" Grid.Row="3" Style="{StaticResource VoegAdminToeButton}"/>
     </Grid>
 </UserControl>

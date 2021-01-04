@@ -82,7 +82,7 @@
                 </Grid.RowDefinitions>
 
                 <!--GEMEENTE-->
-                <TextBlock Text="Gemeente" Style="{StaticResource RegistrationItemStyle}"/>
+                <TextBlock Text="Locatie" Style="{StaticResource RegistrationItemStyle}"/>
                 <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Column="1" Style="{StaticResource RegistrationComboBox}"/>
 
                 <!--NAAM-->

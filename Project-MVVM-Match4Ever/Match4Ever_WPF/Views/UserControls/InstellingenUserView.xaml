@@ -36,32 +36,42 @@
                 <ColumnDefinition Width="1.15*"/>
             </Grid.ColumnDefinitions>
 
+            <!--PROFIEL FOTO INSTELLEN-->
             <TextBlock Text="Profielfoto uploaden" Style="{StaticResource InstellingenTextBlock}"/>
             <ComboBox ItemsSource="{Binding FotoLinks}" SelectedItem="{Binding FotoLink}" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
+            <!--GEAARDHEID AANPASSEN-->
             <TextBlock Text="Geaardheid" Grid.Row="1" Style="{StaticResource InstellingenTextBlock}"/>
             <ComboBox ItemsSource="{Binding GeaardheidLijst}" SelectedItem="{Binding Geaardheid}" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
-            <TextBlock Text="Stad" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
+            <!--LOCATIE AANPASSEN-->
+            <TextBlock Text="Locatie" Grid.Row="2" Style="{StaticResource InstellingenTextBlock}"/>
             <ComboBox ItemsSource="{Binding StadLijst}" SelectedItem="{Binding Stad}" Grid.Row="2" Grid.Column="1" Style="{StaticResource InstellingenComboBox}"/>
 
+            <!--FOTO WEERGEVEN-->
             <Rectangle Fill="{Binding Foto}" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingImageRectangle}"/>
 
+            <!--WACHTWOORD WIJZIGEN TITEL-->
             <TextBlock Text="Wachtwoord veranderen" Grid.ColumnSpan="2" Grid.Row="4" Style="{StaticResource InstellingenTussenTitel}"/>
 
+            <!--HUIDIG WACHTWOORD-->
             <TextBlock Text="Huidig wachtwoord" Grid.Row="5" Style="{StaticResource InstellingenTextBlock}"/>
             <comps:BindablePasswordBox Password="{Binding HuidigWachtwoord}" Height="30" Grid.Row="5" Grid.Column="1"/>
             
+            <!--NIEUW WACHTWOORD-->
             <TextBlock Text="Nieuw wachtwoord" Grid.Row="6" Style="{StaticResource InstellingenTextBlock}"/>
-            <comps:BindablePasswordBox Password="{Binding NiewWachtwoord}" Grid.Row="6" Height="30" Grid.Column="1"/>
+            <comps:BindablePasswordBox Password="{Binding NieuwWachtwoord}" Grid.Row="6" Height="30" Grid.Column="1"/>
 
+            <!--BEVESTIG WACHTWOORD-->
             <TextBlock Text="Bevestig wachtwoord" Grid.Row="7" Style="{StaticResource InstellingenTextBlock}"/>
-            <comps:BindablePasswordBox Grid.Row="7" Password="{Binding NiewWachtwoordBevestiging}" Height="30" Grid.Column="1"/>
+            <comps:BindablePasswordBox Grid.Row="7" Password="{Binding NieuwWachtwoordBevestiging}" Height="30" Grid.Column="1"/>
 
+            <!--ACCOUNT INFO-->
             <Label Content="{Binding AccountInfo}" Grid.Row="4" Grid.RowSpan="4" Grid.Column="2" Style="{StaticResource InstellingenInfoLabel}"/>
         </Grid>
 
       
+        <!--KNOPPEN-->
         <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="OPSLAAN" Grid.Row="1" Style="{StaticResource InstellingenWijzigWachtwoordButton}"/>
         <DockPanel Grid.Row="1" Grid.Column="1">
             <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Afmelden}" Content="LOG UIT" Grid.Row="1" Grid.Column="1" Style="{StaticResource InstellingenLoguitAccountButton}"/>

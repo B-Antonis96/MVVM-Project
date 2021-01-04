@@ -16,6 +16,13 @@ namespace Match4Ever_WPF.State.Commands
         Vorige,
         Volgende,
         Opslaan,
-        Verwijder
+        Verwijder,
+
+        ToevoegenVoorkeur,
+        AanpassenVoorkeur,
+        VerwijderenVoorkeur,
+        ToevoegenAntwoord,
+        AanpassenAntwoord,
+        VerwijderenAntwoord
     }
 }

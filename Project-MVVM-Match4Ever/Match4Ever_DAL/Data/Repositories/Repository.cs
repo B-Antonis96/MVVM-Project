@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Match4Ever_DAL.Data.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class, new() //Geïmplementeerd uit het voorbeeld van Maaike!
+    public class Repository<T> : IRepository<T> where T : class, new() //Geïmplementeerd uit het voorbeeld van de lessen!
     {
         protected DbContext Context { get; }
 

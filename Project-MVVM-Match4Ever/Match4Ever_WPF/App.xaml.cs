@@ -35,8 +35,8 @@ namespace Match4Ever_WPF
         protected override void OnExit(ExitEventArgs e)
         {
             //Gebruiker uitloggen wanneer venster sluit
-            DataComs DataCom = new DataComs();
-            DataCom.LogUit(true);
+            AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
+            Instellingen.LogUit(true);
             base.OnExit(e);
         }
     }

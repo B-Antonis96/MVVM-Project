@@ -20,7 +20,7 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
         //BENODIGDHEDEN\\
         private readonly DataComs DataCom = new DataComs();
         private readonly DateTime TijdMin18Jaar;
-        private readonly Tools Tools = new Tools();
+        private readonly AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
 
         //CONSTRUCTOR\\
         public RegistreerViewModel()
@@ -34,7 +34,7 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
         public void UpdateRegistreerViewModel()
         {
             //Locaties opniew opvullen
-            StadLijst = DataCom.LocatiesOphalen();
+            StadLijst = DataCom.LocatiesNamenOphalen();
 
             //Reset
             Gebruikersnaam = null;
@@ -83,7 +83,9 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
                 switch (command)
                 {
                     case Commands.Registreer:
-                        Registreer();
+                        //Registreren via AuthenticatorInstellingen class
+                        Instellingen.Registreren(Email, Gebruikersnaam, Wachtwoord,
+                            WachtwoordBevestiging, Geaardheid, Geslacht, Geboortedatum, Stad);
                         break;
                     case Commands.Update:
                         UpdateRegistreerViewModel();
@@ -91,54 +93,6 @@ namespace Match4Ever_WPF.ViewModels.Login_Reg
                         
                 }
             }
-        }
-
-
-        //COMMANDS\\
-
-        //Registreer
-        public void Registreer()
-        {
-            string resultaat = "Alle velden moeten ingevuld zijn!";
-
-            //Controleren op lege velden doormiddel van VeldChecker methode
-            if (VeldChecker())
-            {
-                //Gebruiker registreren doormidddel van Registratie service + resultaat opvragen
-                resultaat = DataCom.Registreren(Email.ToLower(), Gebruikersnaam, Wachtwoord,
-                    WachtwoordBevestiging, Geaardheid, Geslacht, Geboortedatum, Stad);
-            }
-
-            //Meldingen tonen
-            MessageBox.Show(resultaat);
-
-            //Indien registratie succesvol was terug naar login scherm
-            if (Authenticator.IsIngelogd)
-            {
-                //Benodigde ViewModels aanmaken
-                ViewModelBuilder.ViewModelsAanmaken();
-                SwitchViewModel.Execute(ViewType.MenuUser);
-                SwitchViewModel.Execute(ViewType.Welkom);
-            }
-        }
-
-        //HULP METHODES\\
-
-        //Checken op lege velden
-        private bool VeldChecker()
-        {
-            if (Tools.VeldVol(Gebruikersnaam) &&
-                Tools.VeldVol(Email) &&
-                Tools.VeldVol(Wachtwoord) &&
-                Tools.VeldVol(WachtwoordBevestiging) &&
-                Tools.VeldVol(Geaardheid) &&
-                Tools.VeldVol(Geslacht) &&
-                Geboortedatum != null &&
-                Tools.VeldVol(Stad))
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

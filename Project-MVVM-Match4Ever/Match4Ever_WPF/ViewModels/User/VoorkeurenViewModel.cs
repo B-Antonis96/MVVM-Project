@@ -1,16 +1,15 @@
-﻿using Match4Ever_WPF.State.Authenticators;
+﻿using Match4Ever_DAL.Models;
+using Match4Ever_WPF.State.Authenticators;
 using Match4Ever_WPF.State.Commands;
 using Match4Ever_WPF.State.Navigators;
 using Match4Ever_WPF.ViewModels.Props;
 using Match4Ever_WPF.WPFTools;
-using PropertyChanged;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using System.Windows;
 
 namespace Match4Ever_WPF.ViewModels.User
 {
@@ -18,27 +17,32 @@ namespace Match4Ever_WPF.ViewModels.User
     {
         //BENODIGDHEDEN\\
         private readonly DataComs DataCom = new DataComs();
+        private readonly AuthenticatorInstellingen Instellingen = new AuthenticatorInstellingen();
         private readonly Tools Tools = new Tools();
         private int VoorkeurTeller { get; set; } = 1;
+        private int VoorkeurID { get; set; }
+        public int AntwoordID { get; set; }
 
-        //CONSTRUCTOR\\
-        public VoorkeurenViewModel()
-        {
-            VoorkeurLijst = DataCom.VoorkeurVragenOphalen();
-        }
+
+        //ONDERDELEN\\
+        public List<Voorkeur> VoorkeurLijst { get; set; }
+        public string Inhoud { get; set; }
+        public List<VoorkeurAntwoord> VoorkeurAntwoordLijst { get; set; }
+        public List<string> AntwoordLijst { get; set; }
+        public string Antwoord { get; set; }
+
 
         //UPDATEVIEWMODEL\\
         public void UpdateVoorkeurenViewModel()
         {
-            Inhoud = VoorkeurLijst[VoorkeurTeller - 1];
-            AntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurTeller);
+            VoorkeurLijst = DataCom.VoorkeurVragenOphalen();
+            VoorkeurAntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurLijst[VoorkeurTeller - 1].VoorkeurID);
+            Inhoud = VoorkeurLijst[VoorkeurTeller - 1].Vraag;
+            AntwoordLijst = VoorkeurAntwoordLijst.Select(x => x.Antwoord).ToList();
+            Antwoord = AntwoordLijst.FirstOrDefault();
+            AntwoordIDSetter();
+            VoorkeurID = VoorkeurLijst.Where(x => x.Vraag == Inhoud).Select(x => x.VoorkeurID).FirstOrDefault();
         }
-
-        //ONDERDELEN\\
-        public List<string> VoorkeurLijst { get; set; }
-        public string Inhoud { get; set; }
-        public List<string> AntwoordLijst { get; set; }
-        public string Antwoord { get; set; }
 
 
         //Testen van commands
@@ -69,65 +73,29 @@ namespace Match4Ever_WPF.ViewModels.User
                 switch (command)
                 {
                     case Commands.Volgende:
-                        Navigeer(true);
+                        VoorkeurTeller = Tools.Navigeer(true, VoorkeurTeller, VoorkeurLijst.Count);
                         break;
                     case Commands.Vorige:
-                        Navigeer(false);
+                        VoorkeurTeller = Tools.Navigeer(false, VoorkeurTeller, VoorkeurLijst.Count);
                         break;
                     case Commands.Update:
-                        UpdateVoorkeurenViewModel();
+                        //Niet meer nodig wordt beneden opgeroepen => maar command is nog wel nodig!
                         break;
                     case Commands.Opslaan:
+                        AntwoordIDSetter();
+                        Instellingen.AccountVoorkeurenToevoegen(AntwoordID, VoorkeurID);
                         break;
                 }
+                UpdateVoorkeurenViewModel();
             }
         }
 
+        //METHODES
 
-        //COMMANDS\\
-
-        //Opslaan voorkeur antwoorden
-        public void Opslaan()
+        //AntwoordID setter
+        private void AntwoordIDSetter()
         {
-            string resultaat = "Er moet een antwoord geslecteerd zijn!";
-
-            if (Tools.VeldVol(Antwoord))
-            {
-
-            }
-        }
-
-        //Voorkeur navigatie
-        private void Navigeer(bool value)
-        {
-            int lengte = VoorkeurLijst.Count;
-            if (value)
-            {
-                //Volgende voorkeur
-                if (VoorkeurTeller < lengte)
-                {
-                    VoorkeurTeller += 1;
-                }
-                else
-                {
-                    VoorkeurTeller = 1;
-                }
-            }
-            else
-            {
-                //Vorige voorkeur
-                if (VoorkeurTeller > 1)
-                {
-                    VoorkeurTeller -= 1;
-                }
-                else
-                {
-                    VoorkeurTeller = lengte;
-                }
-            }
-
-            //Update viewmodel
-            UpdateVoorkeurenViewModel();
+            AntwoordID = VoorkeurAntwoordLijst.Where(x => x.Antwoord == Antwoord).Select(x => x.VoorkeurAntwoordID).FirstOrDefault();
         }
     }
 }

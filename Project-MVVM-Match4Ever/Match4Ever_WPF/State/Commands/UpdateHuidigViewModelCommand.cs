@@ -85,6 +85,7 @@ namespace Match4Ever_WPF.State.Commands
                     //LOGIN & REGISTRATIE COMMANDS
                     case ViewType.Login:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.LoginVM;
+                        ViewModelBuilder.LoginVM.Execute(Commands.Update);
                         break;
                     case ViewType.Registreer:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.RegistreerVM;
@@ -92,6 +93,7 @@ namespace Match4Ever_WPF.State.Commands
                         break;
                     case ViewType.Wachtwoord:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.WachtwoordVM;
+                        ViewModelBuilder.WachtwoordVM.Execute(Commands.Update);
                         break;
                     case ViewType.Welkom:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.WelkomVM;
@@ -106,6 +108,7 @@ namespace Match4Ever_WPF.State.Commands
                         break;
                     case ViewType.InstellingenUser:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.UserInstellingenVM;
+                        ViewModelBuilder.UserInstellingenVM.Execute(Commands.Update);
                         break;
                     case ViewType.Voorkeuren:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.VoorkeurenVM;
@@ -115,12 +118,15 @@ namespace Match4Ever_WPF.State.Commands
                     //ADMIN COMMANDS\\
                     case ViewType.InstellingenAdmin:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.AdminInstellingenVM;
+                        ViewModelBuilder.AdminInstellingenVM.Execute(Commands.Update);
                         break;
                     case ViewType.LijstGebruikers:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.LijstGebruikersVM;
+                        ViewModelBuilder.LijstGebruikersVM.Execute(Commands.Update);
                         break;
                     case ViewType.VoorkeurenWijzigen:
                         StaticNavigator.HuidigViewModel = ViewModelBuilder.VoorkeurenWijzigenVM;
+                        ViewModelBuilder.VoorkeurenWijzigenVM.Execute(Commands.Update);
                         break;
                 }
             }

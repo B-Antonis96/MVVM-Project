@@ -14,6 +14,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        <!--MENU RADIO BUTTONS-->
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.VoorkeurenWijzigen}" IsChecked="{Binding VoorkeurButtonChecked}" Grid.Column="0" Content="VOORKEUREN WIJZIGEN" Style="{StaticResource RadioButtonMenu}"/>
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.LijstGebruikers}" Grid.Column="1" Content="LIJST VAN GEBRUIKERS" Style="{StaticResource RadioButtonMenu}"/>
         <RadioButton Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.InstellingenAdmin}" Grid.Column="3" Content="INSTELLINGEN" Style="{StaticResource RadioButtonMenu}"/>
