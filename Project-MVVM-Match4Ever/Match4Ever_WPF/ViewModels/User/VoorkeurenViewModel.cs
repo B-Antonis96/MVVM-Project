@@ -36,12 +36,15 @@ namespace Match4Ever_WPF.ViewModels.User
         public void UpdateVoorkeurenViewModel()
         {
             VoorkeurLijst = DataCom.VoorkeurVragenOphalen();
-            VoorkeurAntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurLijst[VoorkeurTeller - 1].VoorkeurID);
-            Inhoud = VoorkeurLijst[VoorkeurTeller - 1].Vraag;
-            AntwoordLijst = VoorkeurAntwoordLijst.Select(x => x.Antwoord).ToList();
-            Antwoord = AntwoordLijst.FirstOrDefault();
-            AntwoordIDSetter();
-            VoorkeurID = VoorkeurLijst.Where(x => x.Vraag == Inhoud).Select(x => x.VoorkeurID).FirstOrDefault();
+            if (VoorkeurLijst.Count > 0)
+            {
+                VoorkeurAntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurLijst[VoorkeurTeller - 1].VoorkeurID);
+                Inhoud = VoorkeurLijst[VoorkeurTeller - 1].Vraag;
+                AntwoordLijst = VoorkeurAntwoordLijst.Select(x => x.Antwoord).ToList();
+                Antwoord = AntwoordLijst.FirstOrDefault();
+                VoorkeurID = VoorkeurLijst.Where(x => x.Vraag == Inhoud).Select(x => x.VoorkeurID).FirstOrDefault();
+                AntwoordIDSetter();
+            }
         }
 
 

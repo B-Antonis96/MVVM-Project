@@ -37,12 +37,19 @@ namespace Match4Ever_WPF.ViewModels.Admin
             //Alles ophalen en instellen
             DataCom = new DataComs(); //Anders updated inhoud niet!?
             VoorkeurLijst = DataCom.VoorkeurVragenOphalen();
-            VoorkeurAntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurLijst[VoorkeurTeller - 1].VoorkeurID);
-            Inhoud = VoorkeurLijst[VoorkeurTeller - 1].Vraag;
-            AntwoordLijst = VoorkeurAntwoordLijst.Select(x => x.Antwoord).ToList();
-            VoorkeurAntwoord = AntwoordLijst.FirstOrDefault();
-            VoorkeurID = VoorkeurLijst.Where(x => x.Vraag == Inhoud).Select(x => x.VoorkeurID).FirstOrDefault();
-            AntwoordID = VoorkeurAntwoordLijst.Where(x => x.Antwoord == VoorkeurAntwoord).Select(x => x.VoorkeurAntwoordID).FirstOrDefault();
+            if (VoorkeurLijst.Count > 0)
+            {
+                VoorkeurAntwoordLijst = DataCom.VoorkeurAntwoordenOpIDOphalen(VoorkeurLijst[VoorkeurTeller - 1].VoorkeurID);
+                Inhoud = VoorkeurLijst[VoorkeurTeller - 1].Vraag;
+                AntwoordLijst = VoorkeurAntwoordLijst.Select(x => x.Antwoord).ToList();
+                VoorkeurAntwoord = AntwoordLijst.FirstOrDefault();
+                VoorkeurID = VoorkeurLijst.Where(x => x.Vraag == Inhoud).Select(x => x.VoorkeurID).FirstOrDefault();
+                AntwoordID = VoorkeurAntwoordLijst.Where(x => x.Antwoord == VoorkeurAntwoord).Select(x => x.VoorkeurAntwoordID).FirstOrDefault();
+            }
+            else
+            {
+                Inhoud = null;
+            }
 
             //Leegmaken velden
             VoorkeurVraag = null;

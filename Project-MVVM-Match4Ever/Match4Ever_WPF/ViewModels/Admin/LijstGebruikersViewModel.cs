@@ -82,7 +82,7 @@ namespace Match4Ever_WPF.ViewModels.Admin
         //HULP METHODES\\
 
         //Timer
-        private void TimerSetter(bool timerstand)
+        public void TimerSetter(bool timerstand)
         {
             if (timerstand)
             {

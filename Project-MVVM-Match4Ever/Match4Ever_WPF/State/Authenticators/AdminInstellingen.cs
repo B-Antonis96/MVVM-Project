@@ -106,7 +106,10 @@ namespace Match4Ever_WPF.State.Authenticators
         public List<string> GebruikerNamenOphalen()
         {
             List<string> gebruikers = AdminService.GebruikersOphalen();
-            gebruikers.Remove(Authenticator.HuidigAccount.Gebruikersnaam);
+            if (Authenticator.HuidigAccount.Gebruikersnaam != null)
+            {
+                gebruikers.Remove(Authenticator.HuidigAccount.Gebruikersnaam);
+            }
             return gebruikers;
         }
 

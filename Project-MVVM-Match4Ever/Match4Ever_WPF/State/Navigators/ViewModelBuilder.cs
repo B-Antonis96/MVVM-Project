@@ -90,6 +90,7 @@ namespace Match4Ever_WPF.State.Navigators
                 //Admin ViewModels op null zetten
                 AdminMenuVM = null;
                 AdminInstellingenVM = null;
+                LijstGebruikersVM.TimerSetter(false);
                 LijstGebruikersVM = null;
                 VoorkeurenWijzigenVM = null;
             }
