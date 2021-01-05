@@ -16,9 +16,9 @@ namespace Match4Ever_WPF.Styles.TestImages
                 "FinalPic2.jpg",
                 "FinalPic3.jpg",
                 "FinalPic4.jpg",
-                "FinalPic5.jpg",
+                "FinalPic5.png",
                 "FinalPic6.jpg",
-                "FinalPic7.jpg",
+                "FinalPic7.png",
                 "FinalPic8.jpg"
             };
 

@@ -63,7 +63,6 @@ namespace Match4Ever_WPF.State.Authenticators
                 }
                 else
                 {
-                    resultaten.Clear();
                     resultaten.Add(tester);
                 }
             }
@@ -227,7 +226,7 @@ namespace Match4Ever_WPF.State.Authenticators
         public string EmailChecker(string email)
         {
             //Resultaten aanmaken + standaard resultaat
-            string[] zinnen = { "Veld mag niet leeg zijn!", "Geen correct emailadres ingegeven!" };
+            string[] zinnen = { "Veld mag niet leeg zijn!", "Geen geldig emailadres ingegeven!" };
 
             if (!Tools.VeldVol(email))
             {
