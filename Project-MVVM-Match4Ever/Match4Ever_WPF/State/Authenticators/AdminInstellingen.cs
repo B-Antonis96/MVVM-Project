@@ -102,8 +102,13 @@ namespace Match4Ever_WPF.State.Authenticators
 
         //LIJSTGERBUIKERS METHODES
 
-        //Ophalen gebruikersnamen
-        public List<string> GebruikerNamenOphalen() => AdminService.GebruikersOphalen();
+        //Ophalen gebruikersnamen weglaten ingelogd account
+        public List<string> GebruikerNamenOphalen()
+        {
+            List<string> gebruikers = AdminService.GebruikersOphalen();
+            gebruikers.Remove(Authenticator.HuidigAccount.Gebruikersnaam);
+            return gebruikers;
+        }
 
         //Admin registreren
         public void RegistrerenAdmin(string gebruikersnaam, string email, string wachtwoord, string bevestigWw)
