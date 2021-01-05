@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    
+                    xmlns:propsviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Props"
+                    xmlns:menuviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Menu"
+                    xmlns:loginregviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Login_Reg"
+                    xmlns:userviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.User"
+                    xmlns:adminviewmodels="clr-namespace:Match4Ever_WPF.ViewModels.Admin"
+             
+                    xmlns:window="clr-namespace:Match4Ever_WPF.Views"
+                    xmlns:loginviews="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+                    xmlns:menuviews="clr-namespace:Match4Ever_WPF.Views.MenuControls"
+                    xmlns:adminviews="clr-namespace:Match4Ever_WPF.Views.UserControls__admin_"
+                    xmlns:userviews="clr-namespace:Match4Ever_WPF.Views.UserControls">
+
+    
+    <!--Geïmplementeerd uit het voorbeeld van YouTuber SingletonSean! => een ware held!-->
+
+    <!--/////// DATATEMPLATES (binden van views en viewmodels) \\\\\\\-->
+
+    <!--MAIN WINDOW & MAIN VIEW-->
+    <DataTemplate DataType="{x:Type propsviewmodels:MainWindowViewModel}">
+        <window:MainWindow/>
+    </DataTemplate>
+
+
+    <!--LOGIN - REGISTRATIE-->
+    <DataTemplate DataType="{x:Type loginregviewmodels:LoginViewModel}">
+        <loginviews:LoginView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loginregviewmodels:RegistreerViewModel}">
+        <loginviews:RegistreerView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loginregviewmodels:WachtwoordViewModel}">
+        <loginviews:WachtwoordView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loginregviewmodels:WelkomViewModel}">
+        <loginviews:WelkomView/>
+    </DataTemplate>
+
+    <!--MENU-->
+    <DataTemplate DataType="{x:Type menuviewmodels:AdminMenuViewModel}">
+        <menuviews:AdminMenu/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type menuviewmodels:UserMenuViewModel}">
+        <menuviews:UserMenu/>
+    </DataTemplate>
+
+    <!--USER-->
+    <DataTemplate DataType="{x:Type userviewmodels:VoorkeurenViewModel}">
+        <userviews:VoorkeurenView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type userviewmodels:MatchesViewModel}">
+        <userviews:MatchesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type userviewmodels:MeldingenViewModel}">
+        <userviews:MeldingenView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type userviewmodels:UserInstellingenViewModel}">
+        <userviews:InstellingenUserView/>
+    </DataTemplate>
+
+    <!--ADMIN-->
+    <DataTemplate DataType="{x:Type adminviewmodels:VoorkeurenWijzigenViewModel}">
+        <adminviews:VoorkeurenWijzigenView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type adminviewmodels:LijstGebruikersViewModel}">
+        <adminviews:LijstGebruikersView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type adminviewmodels:AdminInstellingenViewModel}">
+        <adminviews:InstellingenAdminView/>
+    </DataTemplate>
+    
+</ResourceDictionary>

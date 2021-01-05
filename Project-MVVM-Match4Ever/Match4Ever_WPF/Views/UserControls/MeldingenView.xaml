@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.UserControls.MeldingenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Toch iets om de leegte te vullen!..-->
+        <Label Content="!! UNDER CONSTRUCTION !!" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Yellow" Style="{StaticResource TextStyle}"/>
+        
+        <!--<ListBox Grid.Row="1" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem Margin="0.5">
+                        <Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="MELDING {NUMMER}" Grid.Column="1" Style="{StaticResource MeldingTextBlock}"/>
+                                <CheckBox VerticalAlignment="Center" Grid.Row="1" Style="{StaticResource BasisRoundCheckbox}"/>
+                                <Label Content="blablablablablablabla" Grid.Row="1" Grid.Column="1" Style="{StaticResource MeldingLabel}"/>
+                            </Grid>
+                        </Border>
+                    </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Grid.Row="2" Background="Gray" Style="{StaticResource MenuButton}">
+            <Button.Content>
+                <TextBlock TextAlignment="Center">
+                    <Run Text="VERWIJDER GESELECTEERDE"/><LineBreak/><Run Text="MELDINGEN"/>
+                </TextBlock>
+            </Button.Content>
+        </Button>-->
+    </Grid>
+</UserControl>

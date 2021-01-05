@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.UserControls.VoorkeurenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.UserControls"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.40*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--VOORKEUR VRAAG WEERGEVEN-->
+                <TextBlock Text="Voorkeur vraag:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
+                <Label Content="{Binding Inhoud}" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BasisVoorkeurLabel}"/>
+
+                <!--KNOPPEN NAVIGATIE-->
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Vorige}" Content="◀" HorizontalAlignment="Right" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Volgende}" Content="▶" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Style="{StaticResource BackForwardVoorkeurButton}"/>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+
+                <!--VOORKEUR ANTWOORD INSTELLEN-->
+                <TextBlock Text="Voorkeur antwoord:" Style="{StaticResource VoorkeurTitleTextBlock}"/>
+                <ComboBox ItemsSource="{Binding AntwoordLijst}" SelectedItem="{Binding Antwoord}" Grid.Row="1" Style="{StaticResource VoorkeurComboBox}"/>
+                <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="ANTWOORD OPSLAAN" Grid.Row="2" Style="{StaticResource AanvaardVoorkeurButton}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Match4Ever_WPF.Styles">
+
+    <!--/////////// KLEUREN ///////////-->
+    
+    <!--MAINKLEUR ROOD-->
+    <Color x:Key="MainRoodInit">#d80f0a</Color>
+    <SolidColorBrush x:Key="MainRoodColor" Color="{StaticResource MainRoodInit}"/>
+    
+    <!--MAINKLEUR BLAUWE MENUKNOPPEN-->
+    <Color x:Key="MainBlauwMenuInit">#9fc1df</Color>
+    <SolidColorBrush x:Key="MainBlauwMenuColor" Color="{StaticResource MainBlauwMenuInit}"/>
+    
+    <!--MAINKLEUR WIT-->
+    <Color x:Key="MainWitInit">#E6E6E6</Color>
+    <SolidColorBrush x:Key="MainWitColor" Color="{StaticResource MainWitInit}"/>
+    
+    <!--MAINKLEUR GRIJS-->
+    <Color x:Key="MainGrijsInit">#828282</Color>
+    <SolidColorBrush x:Key="MainGrijsColor" Color="{StaticResource MainGrijsInit}"/>
+    
+    <!--MAINKLEUR ZWART-->
+    <Color x:Key="MainZwartInit">#282828</Color>
+    <SolidColorBrush x:Key="MainZwartColor" Color="{StaticResource MainZwartInit}"/>
+
+    <!--MAINKLEUR DONKERZWART-->
+    <Color x:Key="MainDonkerZwartInit">#040404</Color>
+    <SolidColorBrush x:Key="MainDonkerZwartColor" Color="{StaticResource MainZwartInit}"/>
+    
+    <!--MAINKLEUR GROEN-->
+    <Color x:Key="MainGroenInit">#3CC814</Color>
+    <SolidColorBrush x:Key="MainGroenColor" Color="{StaticResource MainGroenInit}"/>
+
+    <!--MAINKLEUR WARNING ROOD-->
+    <Color x:Key="MainWarningRoodInit">#C8140A</Color>
+    <SolidColorBrush x:Key="MainWarningRoodColor" Color="{StaticResource MainWarningRoodInit}"/>
+
+
+    <!--/////////// OVERIGE ///////////-->
+    
+    <!--MAIN STIJL LETTERTYPE => IMPACT-->
+    <FontFamily x:Key="MainFontFamily">Impact</FontFamily>
+
+
+</ResourceDictionary>

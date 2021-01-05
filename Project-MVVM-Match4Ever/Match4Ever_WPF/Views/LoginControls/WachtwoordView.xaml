@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.LoginControls.WachtwoordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+             xmlns:comps="clr-namespace:Match4Ever_WPF.Components"
+             xmlns:nav="clr-namespace:Match4Ever_WPF.State.Navigators"
+             xmlns:commands="clr-namespace:Match4Ever_WPF.State.Commands"
+             mc:Ignorable="d" 
+             Style="{StaticResource LoginControlStijl}">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--TERUGKNOP-->
+        <Button Command="{Binding SwitchViewModel}" CommandParameter="{x:Static nav:ViewType.Login}" Style="{StaticResource TerugKnop}"/>
+
+        <!--TITEL-->
+        <TextBlock Text="WACHTWOORD VERGETEN" Grid.ColumnSpan="3" Style="{StaticResource RegistrationTitleStyle}"/>
+
+        <!--TUSSENTITEL-->
+        <TextBlock Text="Wachtwoord opnieuw instellen" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource RegTussenTitleStyle}"/>
+
+        <!--EMAIL INGEVEN-->
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0 10 0 0" Visibility="{Binding Zichtbaarheid1}">
+            <TextBlock Text="Emailadres" Style="{StaticResource PasswordItemStyle}"/>
+            <TextBox Text="{Binding Email}" Style="{StaticResource RoundTextBox}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Registreer}" Content="VERSTUUR CODE" Style="{StaticResource RegistrationButton}"/>
+        </StackPanel>
+
+        <!--CODE INVOEREN-->
+        <StackPanel Grid.Row="3" Grid.Column="1" Visibility="{Binding Zichtbaarheid2}">
+            <TextBlock Text="Voer ontvangen code in" Style="{StaticResource PasswordItemStyle}" Visibility="{Binding Zichtbaarheid2}"/>
+            <TextBox Text="{Binding Code}" Style="{StaticResource RoundTextBox}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Aanmelden}" Content="CHECK CODE" Style="{StaticResource RegistrationButton}"/>
+        </StackPanel>
+
+        <!--NIEUW WACHTWOORD AANMAKEN-->
+        <StackPanel Grid.Row="4" Grid.Column="1" Visibility="{Binding Zichtbaarheid3}">
+            <TextBlock Text="Voer nieuw wachtwoord in" Style="{StaticResource PasswordItemStyle}"/>
+            <comps:BindablePasswordBox Password="{Binding Wachtwoord}"/>
+            <TextBlock Text="Bevestig nieuw wachtwoord" Style="{StaticResource PasswordItemStyle}"/>
+            <comps:BindablePasswordBox Password="{Binding WachtwoordBevestiging}"/>
+            <Button Command="{Binding}" CommandParameter="{x:Static commands:Commands.Opslaan}" Content="VERANDER WACHTWOORD" Style="{StaticResource PasswordButton}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

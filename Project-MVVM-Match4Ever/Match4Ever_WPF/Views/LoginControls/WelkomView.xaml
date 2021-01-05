@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Match4Ever_WPF.Views.LoginControls.WelkomView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Match4Ever_WPF.Views.LoginControls"
+             mc:Ignorable="d" 
+             Style="{StaticResource UserControlStijl}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource WelkomTextBlock}" VerticalAlignment="Bottom"/>
+        <TextBlock Text="Klaar om uw ideale match te vinden?" FontSize="14" Style="{StaticResource WelkomTextBlock}" Grid.Row="1"/>
+    </Grid>
+</UserControl>
